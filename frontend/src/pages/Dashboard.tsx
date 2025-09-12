@@ -9,6 +9,7 @@ import TweetsTable from '../components/TweetsTable'
 import { supabase } from '../lib/supabase'
 import { Tweet, SentimentData, SentimentDistribution } from '../lib/supabase'
 import '@n8n/chat/style.css'
+import { AI_ASSISTANT_CONFIG } from '../config/ai-assistant'
 
 interface AgentTweetResponse {
   "Tweet by": string;
@@ -453,8 +454,11 @@ const CustomSearchTab: React.FC = () => {
     setError(null)
     setWebhookResponse(null)
     try {
-      const response = await fetch(`https://n8n.nrmcampaign.com:5678/webhook-test/myagent?message=${encodeURIComponent(searchQuery)}`, {
+      const response = await fetch(`${AI_ASSISTANT_CONFIG.customSearchWebhookUrl}?message=${encodeURIComponent(searchQuery)}`, {
         method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+        },
       })
 
       if (!response.ok) {
@@ -580,8 +584,11 @@ const YouTubeSearchTab: React.FC = () => {
     setError(null)
     setYoutubeResponse(null)
     try {
-      const response = await fetch(`https://n8n.nrmcampaign.com:5678/webhook-test/youtubeagent?message=${encodeURIComponent(searchQuery)}`, {
+      const response = await fetch(`${AI_ASSISTANT_CONFIG.youtubeWebhookUrl}?message=${encodeURIComponent(searchQuery)}`, {
         method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+        },
       })
 
       if (!response.ok) {

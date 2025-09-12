@@ -3,10 +3,10 @@ export const AI_ASSISTANT_CONFIG = {
   // Your n8n webhook URL
   webhookUrl: 'https://n8n.nrmcampaign.com/webhook/51da722f-7785-479a-a7a5-04175eb3b754/chat',
   // YouTube search webhook URL
-  youtubeWebhookUrl: 'http://n8n.nrmcampaign.com:5678/webhook/youtubeagent',
+  youtubeWebhookUrl: 'https://n8n.nrmcampaign.com/webhook/youtubeagent',
   
   // Custom search webhook URL
-  customSearchWebhookUrl: 'http://n8n.nrmcampaign.com:5678/webhook/myagent',
+  customSearchWebhookUrl: 'https://n8n.nrmcampaign.com/webhook/myagent',
  
   // Assistant settings
   name: 'Hi there!  👋',
