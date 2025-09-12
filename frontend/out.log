@@ -1,0 +1,574 @@
+2025-09-12 11:58:39: 
+2025-09-12 11:58:39: > uganda-sentiment-dashboard@1.0.0 start
+2025-09-12 11:58:39: > react-scripts start
+2025-09-12 11:58:39: 
+2025-09-12 11:58:40: Starting the development server...
+2025-09-12 11:58:40: 
+2025-09-12 11:58:59: Compiled with warnings.
+2025-09-12 11:58:59: 
+2025-09-12 11:58:59: [eslint] 
+2025-09-12 11:58:59: src/components/SentimentPieChart.tsx
+2025-09-12 11:58:59:   Line 4:10:  'SentimentDistribution' is defined but never used  @typescript-eslint/no-unused-vars
+2025-09-12 11:58:59: 
+2025-09-12 11:58:59: src/components/SentimentTimeline.tsx
+2025-09-12 11:58:59:   Line 2:10:  'LineChart' is defined but never used                                                                                  @typescript-eslint/no-unused-vars
+2025-09-12 11:58:59:   Line 2:21:  'Line' is defined but never used                                                                                       @typescript-eslint/no-unused-vars
+2025-09-12 11:58:59:   Line 14:6:  React Hook useEffect has a missing dependency: 'fetchSentimentData'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-12 11:58:59: 
+2025-09-12 11:58:59: src/components/TweetsTable.tsx
+2025-09-12 11:58:59:   Line 23:6:  React Hook useEffect has a missing dependency: 'fetchTweets'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-12 11:58:59: 
+2025-09-12 11:58:59: src/pages/Dashboard.tsx
+2025-09-12 11:58:59:   Line 10:10:   'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 11:58:59:   Line 10:17:   'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-12 11:58:59:   Line 10:32:   'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 11:58:59:   Line 56:6:    React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-12 11:58:59:   Line 195:33:  Unnecessary escape character: \'                                                                                                                 no-useless-escape
+2025-09-12 11:58:59: 
+2025-09-12 11:58:59: Search for the keywords to learn more about each warning.
+2025-09-12 11:58:59: To ignore, add // eslint-disable-next-line to the line before.
+2025-09-12 11:58:59: 
+2025-09-12 11:58:59: WARNING in [eslint] 
+2025-09-12 11:58:59: src/components/SentimentPieChart.tsx
+2025-09-12 11:58:59:   Line 4:10:  'SentimentDistribution' is defined but never used  @typescript-eslint/no-unused-vars
+2025-09-12 11:58:59: 
+2025-09-12 11:58:59: src/components/SentimentTimeline.tsx
+2025-09-12 11:58:59:   Line 2:10:  'LineChart' is defined but never used                                                                                  @typescript-eslint/no-unused-vars
+2025-09-12 11:58:59:   Line 2:21:  'Line' is defined but never used                                                                                       @typescript-eslint/no-unused-vars
+2025-09-12 11:58:59:   Line 14:6:  React Hook useEffect has a missing dependency: 'fetchSentimentData'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-12 11:58:59: 
+2025-09-12 11:58:59: src/components/TweetsTable.tsx
+2025-09-12 11:58:59:   Line 23:6:  React Hook useEffect has a missing dependency: 'fetchTweets'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-12 11:58:59: 
+2025-09-12 11:58:59: src/pages/Dashboard.tsx
+2025-09-12 11:58:59:   Line 10:10:   'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 11:58:59:   Line 10:17:   'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-12 11:58:59:   Line 10:32:   'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 11:58:59:   Line 56:6:    React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-12 11:58:59:   Line 195:33:  Unnecessary escape character: \'                                                                                                                 no-useless-escape
+2025-09-12 11:58:59: 
+2025-09-12 11:58:59: webpack compiled with 1 warning
+2025-09-12 11:58:59: No issues found.
+2025-09-12 14:55:16: 
+2025-09-12 14:55:16: > uganda-sentiment-dashboard@1.0.0 start
+2025-09-12 14:55:16: > react-scripts start
+2025-09-12 14:55:16: 
+2025-09-12 14:55:18: Starting the development server...
+2025-09-12 14:55:18: 
+2025-09-12 14:55:21: Compiled successfully!
+2025-09-12 14:55:21: 
+2025-09-12 14:55:21: You can now view uganda-sentiment-dashboard in the browser.
+2025-09-12 14:55:21: 
+2025-09-12 14:55:21:   http://localhost:3000
+2025-09-12 14:55:21: 
+2025-09-12 14:55:21: Note that the development build is not optimized.
+2025-09-12 14:55:21: To create a production build, use npm run build.
+2025-09-12 14:55:21: 
+2025-09-12 14:55:21: webpack compiled successfully
+2025-09-12 14:55:21: Files successfully emitted, waiting for typecheck results...
+2025-09-12 14:55:21: Issues checking in progress...
+2025-09-12 14:55:22: No issues found.
+2025-09-12 15:17:56: Compiling...
+2025-09-12 15:17:57: Failed to compile.
+2025-09-12 15:17:57: 
+2025-09-12 15:17:57: Module not found: Error: Can't resolve './App' in '/home/ubuntu/projects/sentiment-analysis-app/frontend/src'
+2025-09-12 15:17:57: ERROR in ./src/index.tsx 7:0-24
+2025-09-12 15:17:57: Module not found: Error: Can't resolve './App' in '/home/ubuntu/projects/sentiment-analysis-app/frontend/src'
+2025-09-12 15:17:57: 
+2025-09-12 15:17:57: webpack compiled with 1 error
+2025-09-12 15:18:14: Compiling...
+2025-09-12 15:18:16: Compiled with warnings.
+2025-09-12 15:18:16: 
+2025-09-12 15:18:16: [eslint] 
+2025-09-12 15:18:16: src/App.tsx
+2025-09-12 15:18:16:   Line 43:29:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:16:   Line 86:35:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:16:   Line 138:29:  Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:16: 
+2025-09-12 15:18:16: Search for the keywords to learn more about each warning.
+2025-09-12 15:18:16: To ignore, add // eslint-disable-next-line to the line before.
+2025-09-12 15:18:16: 
+2025-09-12 15:18:16: WARNING in [eslint] 
+2025-09-12 15:18:16: src/App.tsx
+2025-09-12 15:18:16:   Line 43:29:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:16:   Line 86:35:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:16:   Line 138:29:  Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:16: 
+2025-09-12 15:18:16: webpack compiled with 1 warning
+2025-09-12 15:18:16: Compiling...
+2025-09-12 15:18:17: Compiled with warnings.
+2025-09-12 15:18:17: 
+2025-09-12 15:18:17: [eslint] 
+2025-09-12 15:18:17: src/App.tsx
+2025-09-12 15:18:17:   Line 43:29:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:17:   Line 86:35:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:17:   Line 138:29:  Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:17: 
+2025-09-12 15:18:17: Search for the keywords to learn more about each warning.
+2025-09-12 15:18:17: To ignore, add // eslint-disable-next-line to the line before.
+2025-09-12 15:18:17: 
+2025-09-12 15:18:17: WARNING in [eslint] 
+2025-09-12 15:18:17: src/App.tsx
+2025-09-12 15:18:17:   Line 43:29:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:17:   Line 86:35:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:17:   Line 138:29:  Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:17: 
+2025-09-12 15:18:17: webpack compiled with 1 warning
+2025-09-12 15:18:18: Compiling...
+2025-09-12 15:18:18: Compiled with warnings.
+2025-09-12 15:18:18: 
+2025-09-12 15:18:18: [eslint] 
+2025-09-12 15:18:18: src/App.tsx
+2025-09-12 15:18:18:   Line 43:29:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:18:   Line 86:35:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:18:   Line 138:29:  Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:18: 
+2025-09-12 15:18:18: Search for the keywords to learn more about each warning.
+2025-09-12 15:18:18: To ignore, add // eslint-disable-next-line to the line before.
+2025-09-12 15:18:18: 
+2025-09-12 15:18:18: WARNING in [eslint] 
+2025-09-12 15:18:18: src/App.tsx
+2025-09-12 15:18:18:   Line 43:29:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:18:   Line 86:35:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:18:   Line 138:29:  Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:18: 
+2025-09-12 15:18:18: webpack compiled with 1 warning
+2025-09-12 15:18:44: Compiling...
+2025-09-12 15:18:44: Failed to compile.
+2025-09-12 15:18:44: 
+2025-09-12 15:18:44: Module not found: Error: Can't resolve './pages/Dashboard' in '/home/ubuntu/projects/sentiment-analysis-app/frontend/src'
+2025-09-12 15:18:44: WARNING in [eslint] 
+2025-09-12 15:18:44: src/App.tsx
+2025-09-12 15:18:44:   Line 43:29:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:44:   Line 86:35:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:44:   Line 138:29:  Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:44: 
+2025-09-12 15:18:44: ERROR in ./src/App.tsx 10:0-42
+2025-09-12 15:18:44: Module not found: Error: Can't resolve './pages/Dashboard' in '/home/ubuntu/projects/sentiment-analysis-app/frontend/src'
+2025-09-12 15:18:44: 
+2025-09-12 15:18:44: webpack compiled with 1 error and 1 warning
+2025-09-12 15:18:44: Files successfully emitted, waiting for typecheck results...
+2025-09-12 15:18:44: Issues checking in progress...
+2025-09-12 15:18:51: Compiling...
+2025-09-12 15:18:51: Failed to compile.
+2025-09-12 15:18:51: 
+2025-09-12 15:18:51: [eslint] 
+2025-09-12 15:18:51: src/pages/Dashboard.tsx
+2025-09-12 15:18:51: Syntax error: JSX element 'div' has no corresponding closing tag (390:9)
+2025-09-12 15:18:51: WARNING in [eslint] 
+2025-09-12 15:18:51: src/App.tsx
+2025-09-12 15:18:51:   Line 43:29:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:51:   Line 86:35:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:51:   Line 138:29:  Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:51: 
+2025-09-12 15:18:51: ERROR in [eslint] 
+2025-09-12 15:18:51: src/pages/Dashboard.tsx
+2025-09-12 15:18:51:   Line 390:9:  Parsing error: JSX element 'div' has no corresponding closing tag
+2025-09-12 15:18:51: 
+2025-09-12 15:18:51: webpack compiled with 1 error and 1 warning
+2025-09-12 15:18:51: Compiling...
+2025-09-12 15:18:52: Failed to compile.
+2025-09-12 15:18:52: 
+2025-09-12 15:18:52: SyntaxError: /home/ubuntu/projects/sentiment-analysis-app/frontend/src/pages/Dashboard.tsx: Unterminated JSX contents. (416:12)
+2025-09-12 15:18:52:   414 |               <TweetsTable />
+2025-09-12 15:18:52:   415 |             </div>
+2025-09-12 15:18:52: > 416 |           )}
+2025-09-12 15:18:52:       |             ^
+2025-09-12 15:18:52:   417 |
+2025-09-12 15:18:52:   418 |           
+2025-09-12 15:18:52:   419 |
+2025-09-12 15:18:52: WARNING in [eslint] 
+2025-09-12 15:18:52: src/App.tsx
+2025-09-12 15:18:52:   Line 43:29:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:52:   Line 86:35:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:52:   Line 138:29:  Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:52: 
+2025-09-12 15:18:52: src/pages/Dashboard.tsx
+2025-09-12 15:18:52:   Line 10:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:18:52:   Line 10:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-12 15:18:52:   Line 10:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:18:52:   Line 54:6:   React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-12 15:18:52: 
+2025-09-12 15:18:52: ERROR in ./src/pages/Dashboard.tsx
+2025-09-12 15:18:52: Module build failed (from ./node_modules/babel-loader/lib/index.js):
+2025-09-12 15:18:52: SyntaxError: /home/ubuntu/projects/sentiment-analysis-app/frontend/src/pages/Dashboard.tsx: Unterminated JSX contents. (416:12)
+2025-09-12 15:18:52: 
+2025-09-12 15:18:52:   414 |               <TweetsTable />
+2025-09-12 15:18:52:   415 |             </div>
+2025-09-12 15:18:52: > 416 |           )}
+2025-09-12 15:18:52:       |             ^
+2025-09-12 15:18:52:   417 |
+2025-09-12 15:18:52:   418 |           
+2025-09-12 15:18:52:   419 |
+2025-09-12 15:18:52:     at constructor (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:367:19)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.raise (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:6630:19)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.jsxReadToken (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:4481:20)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.getTokenFromCode (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:4807:12)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.getTokenFromCode (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10009:11)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.nextToken (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:5813:10)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.next (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:5723:10)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.eat (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:5727:12)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.expect (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:6929:15)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.jsxParseExpressionContainer (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:4670:10)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.jsxParseElementAt (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:4744:36)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.jsxParseElementAt (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:4731:32)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.jsxParseElementAt (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:4731:32)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.jsxParseElement (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:4782:17)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.parseExprAtom (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:4792:19)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.parseExprSubscripts (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:11081:23)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.parseUpdate (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:11066:21)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.parseMaybeUnary (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:11046:23)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.parseMaybeUnary (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:9857:18)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10899:61)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.parseExprOps (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10904:23)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.parseMaybeConditional (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10881:23)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.parseMaybeAssign (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10831:21)
+2025-09-12 15:18:52:     at /home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:9795:39
+2025-09-12 15:18:52:     at TypeScriptParserMixin.tryParse (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:6938:20)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.parseMaybeAssign (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:9795:18)
+2025-09-12 15:18:52:     at /home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10800:39
+2025-09-12 15:18:52:     at TypeScriptParserMixin.allowInAnd (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:12432:12)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.parseMaybeAssignAllowIn (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10800:17)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:12499:17)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.parseParenAndDistinguishExpression (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:11679:28)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.parseExprAtom (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:11331:23)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.parseExprAtom (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:4797:20)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.parseExprSubscripts (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:11081:23)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.parseUpdate (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:11066:21)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.parseMaybeUnary (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:11046:23)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.parseMaybeUnary (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:9857:18)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10899:61)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.parseExprOps (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10904:23)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.parseMaybeConditional (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10881:23)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.parseMaybeAssign (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10831:21)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.parseMaybeAssign (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:9806:20)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.parseExpressionBase (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10784:23)
+2025-09-12 15:18:52:     at /home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10780:39
+2025-09-12 15:18:52:     at TypeScriptParserMixin.allowInAnd (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:12427:16)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.parseExpression (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10780:17)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.parseReturnStatement (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:13147:28)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.parseStatementContent (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:12803:21)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.parseStatementContent (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:9532:18)
+2025-09-12 15:18:52:     at TypeScriptParserMixin.parseStatementLike (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:12772:17)
+2025-09-12 15:18:52: 
+2025-09-12 15:18:52: webpack compiled with 1 error and 1 warning
+2025-09-12 15:18:52: Compiling...
+2025-09-12 15:18:54: Compiled with warnings.
+2025-09-12 15:18:54: 
+2025-09-12 15:18:54: [eslint] 
+2025-09-12 15:18:54: src/App.tsx
+2025-09-12 15:18:54:   Line 43:29:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:54:   Line 86:35:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:54:   Line 138:29:  Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:54: 
+2025-09-12 15:18:54: src/pages/Dashboard.tsx
+2025-09-12 15:18:54:   Line 10:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:18:54:   Line 10:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-12 15:18:54:   Line 10:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:18:54:   Line 54:6:   React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-12 15:18:54: 
+2025-09-12 15:18:54: Search for the keywords to learn more about each warning.
+2025-09-12 15:18:54: To ignore, add // eslint-disable-next-line to the line before.
+2025-09-12 15:18:54: 
+2025-09-12 15:18:54: WARNING in [eslint] 
+2025-09-12 15:18:54: src/App.tsx
+2025-09-12 15:18:54:   Line 43:29:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:54:   Line 86:35:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:54:   Line 138:29:  Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:54: 
+2025-09-12 15:18:54: src/pages/Dashboard.tsx
+2025-09-12 15:18:54:   Line 10:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:18:54:   Line 10:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-12 15:18:54:   Line 10:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:18:54:   Line 54:6:   React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-12 15:18:54: 
+2025-09-12 15:18:54: webpack compiled with 1 warning
+2025-09-12 15:18:54: Compiling...
+2025-09-12 15:18:54: Compiled with warnings.
+2025-09-12 15:18:54: 
+2025-09-12 15:18:54: [eslint] 
+2025-09-12 15:18:54: src/App.tsx
+2025-09-12 15:18:54:   Line 43:29:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:54:   Line 86:35:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:54:   Line 138:29:  Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:54: 
+2025-09-12 15:18:54: src/pages/Dashboard.tsx
+2025-09-12 15:18:54:   Line 10:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:18:54:   Line 10:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-12 15:18:54:   Line 10:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:18:54:   Line 54:6:   React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-12 15:18:54: 
+2025-09-12 15:18:54: Search for the keywords to learn more about each warning.
+2025-09-12 15:18:54: To ignore, add // eslint-disable-next-line to the line before.
+2025-09-12 15:18:54: 
+2025-09-12 15:18:54: WARNING in [eslint] 
+2025-09-12 15:18:54: src/App.tsx
+2025-09-12 15:18:54:   Line 43:29:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:54:   Line 86:35:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:54:   Line 138:29:  Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:18:54: 
+2025-09-12 15:18:54: src/pages/Dashboard.tsx
+2025-09-12 15:18:54:   Line 10:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:18:54:   Line 10:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-12 15:18:54:   Line 10:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:18:54:   Line 54:6:   React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-12 15:18:54: 
+2025-09-12 15:18:54: webpack compiled with 1 warning
+2025-09-12 15:19:32: Compiling...
+2025-09-12 15:19:33: Failed to compile.
+2025-09-12 15:19:33: 
+2025-09-12 15:19:33: Module not found: Error: Can't resolve './config/ai-assistant' in '/home/ubuntu/projects/sentiment-analysis-app/frontend/src'
+2025-09-12 15:19:33: WARNING in [eslint] 
+2025-09-12 15:19:33: src/App.tsx
+2025-09-12 15:19:33:   Line 43:29:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:19:33:   Line 86:35:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:19:33:   Line 138:29:  Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:19:33: 
+2025-09-12 15:19:33: src/pages/Dashboard.tsx
+2025-09-12 15:19:33:   Line 10:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:19:33:   Line 10:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-12 15:19:33:   Line 10:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:19:33:   Line 54:6:   React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-12 15:19:33: 
+2025-09-12 15:19:33: ERROR in ./src/App.tsx 13:0-60
+2025-09-12 15:19:33: Module not found: Error: Can't resolve './config/ai-assistant' in '/home/ubuntu/projects/sentiment-analysis-app/frontend/src'
+2025-09-12 15:19:33: 
+2025-09-12 15:19:33: webpack compiled with 1 error and 1 warning
+2025-09-12 15:19:38: Compiling...
+2025-09-12 15:19:38: Compiled with warnings.
+2025-09-12 15:19:38: 
+2025-09-12 15:19:38: [eslint] 
+2025-09-12 15:19:38: src/App.tsx
+2025-09-12 15:19:38:   Line 43:29:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:19:38:   Line 86:35:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:19:38:   Line 138:29:  Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:19:38: 
+2025-09-12 15:19:38: src/pages/Dashboard.tsx
+2025-09-12 15:19:38:   Line 10:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:19:38:   Line 10:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-12 15:19:38:   Line 10:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:19:38:   Line 54:6:   React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-12 15:19:38: 
+2025-09-12 15:19:38: Search for the keywords to learn more about each warning.
+2025-09-12 15:19:38: To ignore, add // eslint-disable-next-line to the line before.
+2025-09-12 15:19:38: 
+2025-09-12 15:19:38: WARNING in [eslint] 
+2025-09-12 15:19:38: src/App.tsx
+2025-09-12 15:19:38:   Line 43:29:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:19:38:   Line 86:35:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:19:38:   Line 138:29:  Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:19:38: 
+2025-09-12 15:19:38: src/pages/Dashboard.tsx
+2025-09-12 15:19:38:   Line 10:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:19:38:   Line 10:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-12 15:19:38:   Line 10:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:19:38:   Line 54:6:   React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-12 15:19:38: 
+2025-09-12 15:19:38: webpack compiled with 1 warning
+2025-09-12 15:19:39: Compiling...
+2025-09-12 15:19:39: Compiled with warnings.
+2025-09-12 15:19:39: 
+2025-09-12 15:19:39: [eslint] 
+2025-09-12 15:19:39: src/App.tsx
+2025-09-12 15:19:39:   Line 43:29:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:19:39:   Line 86:35:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:19:39:   Line 138:29:  Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:19:39: 
+2025-09-12 15:19:39: src/pages/Dashboard.tsx
+2025-09-12 15:19:39:   Line 10:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:19:39:   Line 10:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-12 15:19:39:   Line 10:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:19:39:   Line 54:6:   React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-12 15:19:39: 
+2025-09-12 15:19:39: Search for the keywords to learn more about each warning.
+2025-09-12 15:19:39: To ignore, add // eslint-disable-next-line to the line before.
+2025-09-12 15:19:39: 
+2025-09-12 15:19:39: WARNING in [eslint] 
+2025-09-12 15:19:39: src/App.tsx
+2025-09-12 15:19:39:   Line 43:29:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:19:39:   Line 86:35:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:19:39:   Line 138:29:  Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:19:39: 
+2025-09-12 15:19:39: src/pages/Dashboard.tsx
+2025-09-12 15:19:39:   Line 10:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:19:39:   Line 10:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-12 15:19:39:   Line 10:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:19:39:   Line 54:6:   React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-12 15:19:39: 
+2025-09-12 15:19:39: webpack compiled with 1 warning
+2025-09-12 15:19:41: Compiling...
+2025-09-12 15:19:41: Compiled with warnings.
+2025-09-12 15:19:41: 
+2025-09-12 15:19:41: [eslint] 
+2025-09-12 15:19:41: src/App.tsx
+2025-09-12 15:19:41:   Line 43:29:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:19:41:   Line 86:35:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:19:41:   Line 138:29:  Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:19:41: 
+2025-09-12 15:19:41: src/pages/Dashboard.tsx
+2025-09-12 15:19:41:   Line 10:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:19:41:   Line 10:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-12 15:19:41:   Line 10:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:19:41:   Line 54:6:   React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-12 15:19:41: 
+2025-09-12 15:19:41: Search for the keywords to learn more about each warning.
+2025-09-12 15:19:41: To ignore, add // eslint-disable-next-line to the line before.
+2025-09-12 15:19:41: 
+2025-09-12 15:19:41: WARNING in [eslint] 
+2025-09-12 15:19:41: src/App.tsx
+2025-09-12 15:19:41:   Line 43:29:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:19:41:   Line 86:35:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:19:41:   Line 138:29:  Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:19:41: 
+2025-09-12 15:19:41: src/pages/Dashboard.tsx
+2025-09-12 15:19:41:   Line 10:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:19:41:   Line 10:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-12 15:19:41:   Line 10:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:19:41:   Line 54:6:   React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-12 15:19:41: 
+2025-09-12 15:19:41: webpack compiled with 1 warning
+2025-09-12 15:20:10: Compiling...
+2025-09-12 15:20:11: Compiled with warnings.
+2025-09-12 15:20:11: 
+2025-09-12 15:20:11: [eslint] 
+2025-09-12 15:20:11: src/App.tsx
+2025-09-12 15:20:11:   Line 43:29:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:20:11:   Line 86:35:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:20:11:   Line 138:29:  Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:20:11: 
+2025-09-12 15:20:11: src/pages/Dashboard.tsx
+2025-09-12 15:20:11:   Line 10:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:20:11:   Line 10:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-12 15:20:11:   Line 10:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:20:11:   Line 54:6:   React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-12 15:20:11: 
+2025-09-12 15:20:11: Search for the keywords to learn more about each warning.
+2025-09-12 15:20:11: To ignore, add // eslint-disable-next-line to the line before.
+2025-09-12 15:20:11: 
+2025-09-12 15:20:11: WARNING in [eslint] 
+2025-09-12 15:20:11: src/App.tsx
+2025-09-12 15:20:11:   Line 43:29:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:20:11:   Line 86:35:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:20:11:   Line 138:29:  Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:20:11: 
+2025-09-12 15:20:11: src/pages/Dashboard.tsx
+2025-09-12 15:20:11:   Line 10:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:20:11:   Line 10:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-12 15:20:11:   Line 10:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:20:11:   Line 54:6:   React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-12 15:20:11: 
+2025-09-12 15:20:11: webpack compiled with 1 warning
+2025-09-12 15:20:23: Compiling...
+2025-09-12 15:20:23: Compiled with warnings.
+2025-09-12 15:20:23: 
+2025-09-12 15:20:23: [eslint] 
+2025-09-12 15:20:23: src/App.tsx
+2025-09-12 15:20:23:   Line 43:29:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:20:23:   Line 86:35:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:20:23:   Line 138:29:  Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:20:23: 
+2025-09-12 15:20:23: src/pages/Dashboard.tsx
+2025-09-12 15:20:23:   Line 10:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:20:23:   Line 10:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-12 15:20:23:   Line 10:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:20:23:   Line 54:6:   React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-12 15:20:23: 
+2025-09-12 15:20:23: Search for the keywords to learn more about each warning.
+2025-09-12 15:20:23: To ignore, add // eslint-disable-next-line to the line before.
+2025-09-12 15:20:23: 
+2025-09-12 15:20:23: WARNING in [eslint] 
+2025-09-12 15:20:23: src/App.tsx
+2025-09-12 15:20:23:   Line 43:29:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:20:23:   Line 86:35:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:20:23:   Line 138:29:  Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:20:23: 
+2025-09-12 15:20:23: src/pages/Dashboard.tsx
+2025-09-12 15:20:23:   Line 10:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:20:23:   Line 10:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-12 15:20:23:   Line 10:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:20:23:   Line 54:6:   React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-12 15:20:23: 
+2025-09-12 15:20:23: webpack compiled with 1 warning
+2025-09-12 15:20:24: Compiling...
+2025-09-12 15:20:24: Compiled with warnings.
+2025-09-12 15:20:24: 
+2025-09-12 15:20:24: [eslint] 
+2025-09-12 15:20:24: src/App.tsx
+2025-09-12 15:20:24:   Line 43:29:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:20:24:   Line 86:35:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:20:24:   Line 138:29:  Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:20:24: 
+2025-09-12 15:20:24: src/pages/Dashboard.tsx
+2025-09-12 15:20:24:   Line 10:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:20:24:   Line 10:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-12 15:20:24:   Line 10:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:20:24:   Line 54:6:   React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-12 15:20:24: 
+2025-09-12 15:20:24: Search for the keywords to learn more about each warning.
+2025-09-12 15:20:24: To ignore, add // eslint-disable-next-line to the line before.
+2025-09-12 15:20:24: 
+2025-09-12 15:20:24: WARNING in [eslint] 
+2025-09-12 15:20:24: src/App.tsx
+2025-09-12 15:20:24:   Line 43:29:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:20:24:   Line 86:35:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:20:24:   Line 138:29:  Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:20:24: 
+2025-09-12 15:20:24: src/pages/Dashboard.tsx
+2025-09-12 15:20:24:   Line 10:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:20:24:   Line 10:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-12 15:20:24:   Line 10:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:20:24:   Line 54:6:   React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-12 15:20:24: 
+2025-09-12 15:20:24: webpack compiled with 1 warning
+2025-09-12 15:20:24: Files successfully emitted, waiting for typecheck results...
+2025-09-12 15:20:24: Issues checking in progress...
+2025-09-12 15:20:26: Compiling...
+2025-09-12 15:20:26: Compiled with warnings.
+2025-09-12 15:20:26: 
+2025-09-12 15:20:26: [eslint] 
+2025-09-12 15:20:26: src/App.tsx
+2025-09-12 15:20:26:   Line 43:29:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:20:26:   Line 86:35:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:20:26:   Line 138:29:  Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:20:26: 
+2025-09-12 15:20:26: src/pages/Dashboard.tsx
+2025-09-12 15:20:26:   Line 10:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:20:26:   Line 10:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-12 15:20:26:   Line 10:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:20:26:   Line 54:6:   React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-12 15:20:26: 
+2025-09-12 15:20:26: Search for the keywords to learn more about each warning.
+2025-09-12 15:20:26: To ignore, add // eslint-disable-next-line to the line before.
+2025-09-12 15:20:26: 
+2025-09-12 15:20:26: WARNING in [eslint] 
+2025-09-12 15:20:26: src/App.tsx
+2025-09-12 15:20:26:   Line 43:29:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:20:26:   Line 86:35:   Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:20:26:   Line 138:29:  Unnecessary escape character: \'  no-useless-escape
+2025-09-12 15:20:26: 
+2025-09-12 15:20:26: src/pages/Dashboard.tsx
+2025-09-12 15:20:26:   Line 10:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:20:26:   Line 10:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-12 15:20:26:   Line 10:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-12 15:20:26:   Line 54:6:   React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-12 15:20:26: 
+2025-09-12 15:20:26: webpack compiled with 1 warning
+2025-09-12 15:23:32: 
+2025-09-12 15:23:32: > uganda-sentiment-dashboard@1.0.0 start
+2025-09-12 15:23:32: > react-scripts start
+2025-09-12 15:23:32: 
+2025-09-12 15:23:34: Starting the development server...
+2025-09-12 15:23:34: 
+2025-09-12 15:23:38: Compiled successfully!
+2025-09-12 15:23:38: 
+2025-09-12 15:23:38: You can now view uganda-sentiment-dashboard in the browser.
+2025-09-12 15:23:38: 
+2025-09-12 15:23:38:   http://localhost:3000
+2025-09-12 15:23:38: 
+2025-09-12 15:23:38: Note that the development build is not optimized.
+2025-09-12 15:23:38: To create a production build, use npm run build.
+2025-09-12 15:23:38: 
+2025-09-12 15:23:38: webpack compiled successfully
+2025-09-12 15:23:38: Files successfully emitted, waiting for typecheck results...
+2025-09-12 15:23:38: Issues checking in progress...
+2025-09-12 15:23:39: No issues found.

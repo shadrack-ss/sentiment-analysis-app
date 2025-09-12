@@ -31,6 +31,34 @@ const AIAssistant: React.FC = () => {
     }
   }, [isOpen])
 
+  // Load persisted messages on mount
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem('ai-assistant-messages')
+      if (stored) {
+        const parsed = JSON.parse(stored)
+        if (Array.isArray(parsed)) {
+          setMessages(parsed.map((m: any) => ({
+            ...m,
+            timestamp: new Date(m.timestamp)
+          })))
+        }
+      }
+    } catch (e) {
+      console.warn('Failed to load persisted chat messages:', e)
+    }
+  }, [])
+
+  // Persist messages on change
+  useEffect(() => {
+    try {
+      const serializable = messages.map(m => ({ ...m, timestamp: m.timestamp.toISOString() }))
+      localStorage.setItem('ai-assistant-messages', JSON.stringify(serializable))
+    } catch (e) {
+      // Ignore persistence errors
+    }
+  }, [messages])
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!inputValue.trim() || isLoading) return
@@ -91,9 +119,6 @@ const AIAssistant: React.FC = () => {
 
   const toggleChat = () => {
     setIsOpen(!isOpen)
-    if (!isOpen) {
-      setMessages([])
-    }
   }
 
   return (

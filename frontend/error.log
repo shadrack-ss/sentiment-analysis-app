@@ -1,0 +1,982 @@
+2025-09-12 11:14:14: /usr/bin/npm: line 2: syntax error near unexpected token `'../lib/cli.js''
+2025-09-12 11:14:14: /usr/bin/npm: line 2: `require('../lib/cli.js')(process)'
+2025-09-12 11:14:14: /usr/bin/npm: line 2: syntax error near unexpected token `'../lib/cli.js''
+2025-09-12 11:14:14: /usr/bin/npm: line 2: `require('../lib/cli.js')(process)'
+2025-09-12 11:14:14: /usr/bin/npm: line 2: syntax error near unexpected token `'../lib/cli.js''
+2025-09-12 11:14:14: /usr/bin/npm: line 2: `require('../lib/cli.js')(process)'
+2025-09-12 11:14:14: /usr/bin/npm: line 2: syntax error near unexpected token `'../lib/cli.js''
+2025-09-12 11:14:14: /usr/bin/npm: line 2: `require('../lib/cli.js')(process)'
+2025-09-12 11:14:14: /usr/bin/npm: line 2: syntax error near unexpected token `'../lib/cli.js''
+2025-09-12 11:14:14: /usr/bin/npm: line 2: `require('../lib/cli.js')(process)'
+2025-09-12 11:14:14: /usr/bin/npm: line 2: syntax error near unexpected token `'../lib/cli.js''
+2025-09-12 11:14:14: /usr/bin/npm: line 2: `require('../lib/cli.js')(process)'
+2025-09-12 11:14:14: /usr/bin/npm: line 2: syntax error near unexpected token `'../lib/cli.js''
+2025-09-12 11:14:14: /usr/bin/npm: line 2: `require('../lib/cli.js')(process)'
+2025-09-12 11:14:14: /usr/bin/npm: line 2: syntax error near unexpected token `'../lib/cli.js''
+2025-09-12 11:14:14: /usr/bin/npm: line 2: `require('../lib/cli.js')(process)'
+2025-09-12 11:14:14: /usr/bin/npm: line 2: syntax error near unexpected token `'../lib/cli.js''
+2025-09-12 11:14:14: /usr/bin/npm: line 2: `require('../lib/cli.js')(process)'
+2025-09-12 11:14:14: /usr/bin/npm: line 2: syntax error near unexpected token `'../lib/cli.js''
+2025-09-12 11:14:14: /usr/bin/npm: line 2: `require('../lib/cli.js')(process)'
+2025-09-12 11:14:14: /usr/bin/npm: line 2: syntax error near unexpected token `'../lib/cli.js''
+2025-09-12 11:14:14: /usr/bin/npm: line 2: `require('../lib/cli.js')(process)'
+2025-09-12 11:14:14: /usr/bin/npm: line 2: syntax error near unexpected token `'../lib/cli.js''
+2025-09-12 11:14:14: /usr/bin/npm: line 2: `require('../lib/cli.js')(process)'
+2025-09-12 11:14:14: /usr/bin/npm: line 2: syntax error near unexpected token `'../lib/cli.js''
+2025-09-12 11:14:14: /usr/bin/npm: line 2: `require('../lib/cli.js')(process)'
+2025-09-12 11:14:14: /usr/bin/npm: line 2: syntax error near unexpected token `'../lib/cli.js''
+2025-09-12 11:14:14: /usr/bin/npm: line 2: `require('../lib/cli.js')(process)'
+2025-09-12 11:14:14: /usr/bin/npm: line 2: syntax error near unexpected token `'../lib/cli.js''
+2025-09-12 11:14:14: /usr/bin/npm: line 2: `require('../lib/cli.js')(process)'
+2025-09-12 11:14:14: /usr/bin/npm: line 2: syntax error near unexpected token `'../lib/cli.js''
+2025-09-12 11:14:14: /usr/bin/npm: line 2: `require('../lib/cli.js')(process)'
+2025-09-12 11:25:57: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:25:57:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:25:57:   errno: -3008,
+2025-09-12 11:25:57:   code: 'ENOTFOUND',
+2025-09-12 11:25:57:   syscall: 'getaddrinfo',
+2025-09-12 11:25:57:   hostname: '-l'
+2025-09-12 11:25:57: }
+2025-09-12 11:25:57: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:25:57:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:25:57:   errno: -3008,
+2025-09-12 11:25:57:   code: 'ENOTFOUND',
+2025-09-12 11:25:57:   syscall: 'getaddrinfo',
+2025-09-12 11:25:57:   hostname: '-l'
+2025-09-12 11:25:57: }
+2025-09-12 11:25:57: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:25:57:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:25:57:   errno: -3008,
+2025-09-12 11:25:57:   code: 'ENOTFOUND',
+2025-09-12 11:25:57:   syscall: 'getaddrinfo',
+2025-09-12 11:25:57:   hostname: '-l'
+2025-09-12 11:25:57: }
+2025-09-12 11:25:57: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:25:57:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:25:57:   errno: -3008,
+2025-09-12 11:25:57:   code: 'ENOTFOUND',
+2025-09-12 11:25:57:   syscall: 'getaddrinfo',
+2025-09-12 11:25:57:   hostname: '-l'
+2025-09-12 11:25:57: }
+2025-09-12 11:25:57: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:25:57:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:25:57:   errno: -3008,
+2025-09-12 11:25:57:   code: 'ENOTFOUND',
+2025-09-12 11:25:57:   syscall: 'getaddrinfo',
+2025-09-12 11:25:57:   hostname: '-l'
+2025-09-12 11:25:57: }
+2025-09-12 11:25:57: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:25:57:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:25:57:   errno: -3008,
+2025-09-12 11:25:57:   code: 'ENOTFOUND',
+2025-09-12 11:25:57:   syscall: 'getaddrinfo',
+2025-09-12 11:25:57:   hostname: '-l'
+2025-09-12 11:25:57: }
+2025-09-12 11:25:57: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:25:57:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:25:57:   errno: -3008,
+2025-09-12 11:25:57:   code: 'ENOTFOUND',
+2025-09-12 11:25:57:   syscall: 'getaddrinfo',
+2025-09-12 11:25:57:   hostname: '-l'
+2025-09-12 11:25:57: }
+2025-09-12 11:25:57: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:25:57:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:25:57:   errno: -3008,
+2025-09-12 11:25:57:   code: 'ENOTFOUND',
+2025-09-12 11:25:57:   syscall: 'getaddrinfo',
+2025-09-12 11:25:57:   hostname: '-l'
+2025-09-12 11:25:57: }
+2025-09-12 11:25:57: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:25:57:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:25:57:   errno: -3008,
+2025-09-12 11:25:57:   code: 'ENOTFOUND',
+2025-09-12 11:25:57:   syscall: 'getaddrinfo',
+2025-09-12 11:25:57:   hostname: '-l'
+2025-09-12 11:25:57: }
+2025-09-12 11:25:57: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:25:57:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:25:57:   errno: -3008,
+2025-09-12 11:25:57:   code: 'ENOTFOUND',
+2025-09-12 11:25:57:   syscall: 'getaddrinfo',
+2025-09-12 11:25:57:   hostname: '-l'
+2025-09-12 11:25:57: }
+2025-09-12 11:25:58: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:25:58:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:25:58:   errno: -3008,
+2025-09-12 11:25:58:   code: 'ENOTFOUND',
+2025-09-12 11:25:58:   syscall: 'getaddrinfo',
+2025-09-12 11:25:58:   hostname: '-l'
+2025-09-12 11:25:58: }
+2025-09-12 11:25:58: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:25:58:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:25:58:   errno: -3008,
+2025-09-12 11:25:58:   code: 'ENOTFOUND',
+2025-09-12 11:25:58:   syscall: 'getaddrinfo',
+2025-09-12 11:25:58:   hostname: '-l'
+2025-09-12 11:25:58: }
+2025-09-12 11:25:58: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:25:58:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:25:58:   errno: -3008,
+2025-09-12 11:25:58:   code: 'ENOTFOUND',
+2025-09-12 11:25:58:   syscall: 'getaddrinfo',
+2025-09-12 11:25:58:   hostname: '-l'
+2025-09-12 11:25:58: }
+2025-09-12 11:25:58: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:25:58:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:25:58:   errno: -3008,
+2025-09-12 11:25:58:   code: 'ENOTFOUND',
+2025-09-12 11:25:58:   syscall: 'getaddrinfo',
+2025-09-12 11:25:58:   hostname: '-l'
+2025-09-12 11:25:58: }
+2025-09-12 11:25:58: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:25:58:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:25:58:   errno: -3008,
+2025-09-12 11:25:58:   code: 'ENOTFOUND',
+2025-09-12 11:25:58:   syscall: 'getaddrinfo',
+2025-09-12 11:25:58:   hostname: '-l'
+2025-09-12 11:25:58: }
+2025-09-12 11:25:58: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:25:58:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:25:58:   errno: -3008,
+2025-09-12 11:25:58:   code: 'ENOTFOUND',
+2025-09-12 11:25:58:   syscall: 'getaddrinfo',
+2025-09-12 11:25:58:   hostname: '-l'
+2025-09-12 11:25:58: }
+2025-09-12 11:31:11: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:31:11:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:31:11:   errno: -3008,
+2025-09-12 11:31:11:   code: 'ENOTFOUND',
+2025-09-12 11:31:11:   syscall: 'getaddrinfo',
+2025-09-12 11:31:11:   hostname: '-l'
+2025-09-12 11:31:11: }
+2025-09-12 11:31:11: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:31:11:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:31:11:   errno: -3008,
+2025-09-12 11:31:11:   code: 'ENOTFOUND',
+2025-09-12 11:31:11:   syscall: 'getaddrinfo',
+2025-09-12 11:31:11:   hostname: '-l'
+2025-09-12 11:31:11: }
+2025-09-12 11:31:12: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:31:12:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:31:12:   errno: -3008,
+2025-09-12 11:31:12:   code: 'ENOTFOUND',
+2025-09-12 11:31:12:   syscall: 'getaddrinfo',
+2025-09-12 11:31:12:   hostname: '-l'
+2025-09-12 11:31:12: }
+2025-09-12 11:31:12: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:31:12:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:31:12:   errno: -3008,
+2025-09-12 11:31:12:   code: 'ENOTFOUND',
+2025-09-12 11:31:12:   syscall: 'getaddrinfo',
+2025-09-12 11:31:12:   hostname: '-l'
+2025-09-12 11:31:12: }
+2025-09-12 11:31:12: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:31:12:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:31:12:   errno: -3008,
+2025-09-12 11:31:12:   code: 'ENOTFOUND',
+2025-09-12 11:31:12:   syscall: 'getaddrinfo',
+2025-09-12 11:31:12:   hostname: '-l'
+2025-09-12 11:31:12: }
+2025-09-12 11:31:12: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:31:12:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:31:12:   errno: -3008,
+2025-09-12 11:31:12:   code: 'ENOTFOUND',
+2025-09-12 11:31:12:   syscall: 'getaddrinfo',
+2025-09-12 11:31:12:   hostname: '-l'
+2025-09-12 11:31:12: }
+2025-09-12 11:31:12: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:31:12:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:31:12:   errno: -3008,
+2025-09-12 11:31:12:   code: 'ENOTFOUND',
+2025-09-12 11:31:12:   syscall: 'getaddrinfo',
+2025-09-12 11:31:12:   hostname: '-l'
+2025-09-12 11:31:12: }
+2025-09-12 11:31:12: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:31:12:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:31:12:   errno: -3008,
+2025-09-12 11:31:12:   code: 'ENOTFOUND',
+2025-09-12 11:31:12:   syscall: 'getaddrinfo',
+2025-09-12 11:31:12:   hostname: '-l'
+2025-09-12 11:31:12: }
+2025-09-12 11:31:12: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:31:12:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:31:12:   errno: -3008,
+2025-09-12 11:31:12:   code: 'ENOTFOUND',
+2025-09-12 11:31:12:   syscall: 'getaddrinfo',
+2025-09-12 11:31:12:   hostname: '-l'
+2025-09-12 11:31:12: }
+2025-09-12 11:31:12: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:31:12:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:31:12:   errno: -3008,
+2025-09-12 11:31:12:   code: 'ENOTFOUND',
+2025-09-12 11:31:12:   syscall: 'getaddrinfo',
+2025-09-12 11:31:12:   hostname: '-l'
+2025-09-12 11:31:12: }
+2025-09-12 11:31:12: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:31:12:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:31:12:   errno: -3008,
+2025-09-12 11:31:12:   code: 'ENOTFOUND',
+2025-09-12 11:31:12:   syscall: 'getaddrinfo',
+2025-09-12 11:31:12:   hostname: '-l'
+2025-09-12 11:31:12: }
+2025-09-12 11:31:12: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:31:12:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:31:12:   errno: -3008,
+2025-09-12 11:31:12:   code: 'ENOTFOUND',
+2025-09-12 11:31:12:   syscall: 'getaddrinfo',
+2025-09-12 11:31:12:   hostname: '-l'
+2025-09-12 11:31:12: }
+2025-09-12 11:31:13: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:31:13:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:31:13:   errno: -3008,
+2025-09-12 11:31:13:   code: 'ENOTFOUND',
+2025-09-12 11:31:13:   syscall: 'getaddrinfo',
+2025-09-12 11:31:13:   hostname: '-l'
+2025-09-12 11:31:13: }
+2025-09-12 11:31:13: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:31:13:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:31:13:   errno: -3008,
+2025-09-12 11:31:13:   code: 'ENOTFOUND',
+2025-09-12 11:31:13:   syscall: 'getaddrinfo',
+2025-09-12 11:31:13:   hostname: '-l'
+2025-09-12 11:31:13: }
+2025-09-12 11:31:13: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:31:13:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:31:13:   errno: -3008,
+2025-09-12 11:31:13:   code: 'ENOTFOUND',
+2025-09-12 11:31:13:   syscall: 'getaddrinfo',
+2025-09-12 11:31:13:   hostname: '-l'
+2025-09-12 11:31:13: }
+2025-09-12 11:31:13: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:31:13:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:31:13:   errno: -3008,
+2025-09-12 11:31:13:   code: 'ENOTFOUND',
+2025-09-12 11:31:13:   syscall: 'getaddrinfo',
+2025-09-12 11:31:13:   hostname: '-l'
+2025-09-12 11:31:13: }
+2025-09-12 11:41:53: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:41:53:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:41:53:   errno: -3008,
+2025-09-12 11:41:53:   code: 'ENOTFOUND',
+2025-09-12 11:41:53:   syscall: 'getaddrinfo',
+2025-09-12 11:41:53:   hostname: '-l'
+2025-09-12 11:41:53: }
+2025-09-12 11:41:53: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:41:53:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:41:53:   errno: -3008,
+2025-09-12 11:41:53:   code: 'ENOTFOUND',
+2025-09-12 11:41:53:   syscall: 'getaddrinfo',
+2025-09-12 11:41:53:   hostname: '-l'
+2025-09-12 11:41:53: }
+2025-09-12 11:41:53: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:41:53:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:41:53:   errno: -3008,
+2025-09-12 11:41:53:   code: 'ENOTFOUND',
+2025-09-12 11:41:53:   syscall: 'getaddrinfo',
+2025-09-12 11:41:53:   hostname: '-l'
+2025-09-12 11:41:53: }
+2025-09-12 11:41:53: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:41:53:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:41:53:   errno: -3008,
+2025-09-12 11:41:53:   code: 'ENOTFOUND',
+2025-09-12 11:41:53:   syscall: 'getaddrinfo',
+2025-09-12 11:41:53:   hostname: '-l'
+2025-09-12 11:41:53: }
+2025-09-12 11:41:53: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:41:53:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:41:53:   errno: -3008,
+2025-09-12 11:41:53:   code: 'ENOTFOUND',
+2025-09-12 11:41:53:   syscall: 'getaddrinfo',
+2025-09-12 11:41:53:   hostname: '-l'
+2025-09-12 11:41:53: }
+2025-09-12 11:41:54: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:41:54:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:41:54:   errno: -3008,
+2025-09-12 11:41:54:   code: 'ENOTFOUND',
+2025-09-12 11:41:54:   syscall: 'getaddrinfo',
+2025-09-12 11:41:54:   hostname: '-l'
+2025-09-12 11:41:54: }
+2025-09-12 11:41:54: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:41:54:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:41:54:   errno: -3008,
+2025-09-12 11:41:54:   code: 'ENOTFOUND',
+2025-09-12 11:41:54:   syscall: 'getaddrinfo',
+2025-09-12 11:41:54:   hostname: '-l'
+2025-09-12 11:41:54: }
+2025-09-12 11:41:54: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:41:54:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:41:54:   errno: -3008,
+2025-09-12 11:41:54:   code: 'ENOTFOUND',
+2025-09-12 11:41:54:   syscall: 'getaddrinfo',
+2025-09-12 11:41:54:   hostname: '-l'
+2025-09-12 11:41:54: }
+2025-09-12 11:41:54: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:41:54:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:41:54:   errno: -3008,
+2025-09-12 11:41:54:   code: 'ENOTFOUND',
+2025-09-12 11:41:54:   syscall: 'getaddrinfo',
+2025-09-12 11:41:54:   hostname: '-l'
+2025-09-12 11:41:54: }
+2025-09-12 11:41:54: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:41:54:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:41:54:   errno: -3008,
+2025-09-12 11:41:54:   code: 'ENOTFOUND',
+2025-09-12 11:41:54:   syscall: 'getaddrinfo',
+2025-09-12 11:41:54:   hostname: '-l'
+2025-09-12 11:41:54: }
+2025-09-12 11:41:54: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:41:54:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:41:54:   errno: -3008,
+2025-09-12 11:41:54:   code: 'ENOTFOUND',
+2025-09-12 11:41:54:   syscall: 'getaddrinfo',
+2025-09-12 11:41:54:   hostname: '-l'
+2025-09-12 11:41:54: }
+2025-09-12 11:41:54: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:41:54:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:41:54:   errno: -3008,
+2025-09-12 11:41:54:   code: 'ENOTFOUND',
+2025-09-12 11:41:54:   syscall: 'getaddrinfo',
+2025-09-12 11:41:54:   hostname: '-l'
+2025-09-12 11:41:54: }
+2025-09-12 11:41:54: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:41:54:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:41:54:   errno: -3008,
+2025-09-12 11:41:54:   code: 'ENOTFOUND',
+2025-09-12 11:41:54:   syscall: 'getaddrinfo',
+2025-09-12 11:41:54:   hostname: '-l'
+2025-09-12 11:41:54: }
+2025-09-12 11:41:54: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:41:54:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:41:54:   errno: -3008,
+2025-09-12 11:41:54:   code: 'ENOTFOUND',
+2025-09-12 11:41:54:   syscall: 'getaddrinfo',
+2025-09-12 11:41:54:   hostname: '-l'
+2025-09-12 11:41:54: }
+2025-09-12 11:41:54: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:41:54:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:41:54:   errno: -3008,
+2025-09-12 11:41:54:   code: 'ENOTFOUND',
+2025-09-12 11:41:54:   syscall: 'getaddrinfo',
+2025-09-12 11:41:54:   hostname: '-l'
+2025-09-12 11:41:54: }
+2025-09-12 11:41:55: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:41:55:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:41:55:   errno: -3008,
+2025-09-12 11:41:55:   code: 'ENOTFOUND',
+2025-09-12 11:41:55:   syscall: 'getaddrinfo',
+2025-09-12 11:41:55:   hostname: '-l'
+2025-09-12 11:41:55: }
+2025-09-12 11:47:34: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:47:34:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:47:34:   errno: -3008,
+2025-09-12 11:47:34:   code: 'ENOTFOUND',
+2025-09-12 11:47:34:   syscall: 'getaddrinfo',
+2025-09-12 11:47:34:   hostname: '-l'
+2025-09-12 11:47:34: }
+2025-09-12 11:47:34: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:47:34:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:47:34:   errno: -3008,
+2025-09-12 11:47:34:   code: 'ENOTFOUND',
+2025-09-12 11:47:34:   syscall: 'getaddrinfo',
+2025-09-12 11:47:34:   hostname: '-l'
+2025-09-12 11:47:34: }
+2025-09-12 11:47:34: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:47:34:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:47:34:   errno: -3008,
+2025-09-12 11:47:34:   code: 'ENOTFOUND',
+2025-09-12 11:47:34:   syscall: 'getaddrinfo',
+2025-09-12 11:47:34:   hostname: '-l'
+2025-09-12 11:47:34: }
+2025-09-12 11:47:35: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:47:35:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:47:35:   errno: -3008,
+2025-09-12 11:47:35:   code: 'ENOTFOUND',
+2025-09-12 11:47:35:   syscall: 'getaddrinfo',
+2025-09-12 11:47:35:   hostname: '-l'
+2025-09-12 11:47:35: }
+2025-09-12 11:47:35: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:47:35:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:47:35:   errno: -3008,
+2025-09-12 11:47:35:   code: 'ENOTFOUND',
+2025-09-12 11:47:35:   syscall: 'getaddrinfo',
+2025-09-12 11:47:35:   hostname: '-l'
+2025-09-12 11:47:35: }
+2025-09-12 11:47:35: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:47:35:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:47:35:   errno: -3008,
+2025-09-12 11:47:35:   code: 'ENOTFOUND',
+2025-09-12 11:47:35:   syscall: 'getaddrinfo',
+2025-09-12 11:47:35:   hostname: '-l'
+2025-09-12 11:47:35: }
+2025-09-12 11:47:35: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:47:35:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:47:35:   errno: -3008,
+2025-09-12 11:47:35:   code: 'ENOTFOUND',
+2025-09-12 11:47:35:   syscall: 'getaddrinfo',
+2025-09-12 11:47:35:   hostname: '-l'
+2025-09-12 11:47:35: }
+2025-09-12 11:47:35: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:47:35:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:47:35:   errno: -3008,
+2025-09-12 11:47:35:   code: 'ENOTFOUND',
+2025-09-12 11:47:35:   syscall: 'getaddrinfo',
+2025-09-12 11:47:35:   hostname: '-l'
+2025-09-12 11:47:35: }
+2025-09-12 11:47:35: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:47:35:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:47:35:   errno: -3008,
+2025-09-12 11:47:35:   code: 'ENOTFOUND',
+2025-09-12 11:47:35:   syscall: 'getaddrinfo',
+2025-09-12 11:47:35:   hostname: '-l'
+2025-09-12 11:47:35: }
+2025-09-12 11:47:35: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:47:35:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:47:35:   errno: -3008,
+2025-09-12 11:47:35:   code: 'ENOTFOUND',
+2025-09-12 11:47:35:   syscall: 'getaddrinfo',
+2025-09-12 11:47:35:   hostname: '-l'
+2025-09-12 11:47:35: }
+2025-09-12 11:47:35: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:47:35:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:47:35:   errno: -3008,
+2025-09-12 11:47:35:   code: 'ENOTFOUND',
+2025-09-12 11:47:35:   syscall: 'getaddrinfo',
+2025-09-12 11:47:35:   hostname: '-l'
+2025-09-12 11:47:35: }
+2025-09-12 11:47:35: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:47:35:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:47:35:   errno: -3008,
+2025-09-12 11:47:35:   code: 'ENOTFOUND',
+2025-09-12 11:47:35:   syscall: 'getaddrinfo',
+2025-09-12 11:47:35:   hostname: '-l'
+2025-09-12 11:47:35: }
+2025-09-12 11:47:35: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:47:35:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:47:35:   errno: -3008,
+2025-09-12 11:47:35:   code: 'ENOTFOUND',
+2025-09-12 11:47:35:   syscall: 'getaddrinfo',
+2025-09-12 11:47:35:   hostname: '-l'
+2025-09-12 11:47:35: }
+2025-09-12 11:47:36: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:47:36:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:47:36:   errno: -3008,
+2025-09-12 11:47:36:   code: 'ENOTFOUND',
+2025-09-12 11:47:36:   syscall: 'getaddrinfo',
+2025-09-12 11:47:36:   hostname: '-l'
+2025-09-12 11:47:36: }
+2025-09-12 11:47:36: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:47:36:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:47:36:   errno: -3008,
+2025-09-12 11:47:36:   code: 'ENOTFOUND',
+2025-09-12 11:47:36:   syscall: 'getaddrinfo',
+2025-09-12 11:47:36:   hostname: '-l'
+2025-09-12 11:47:36: }
+2025-09-12 11:47:36: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:47:36:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:47:36:   errno: -3008,
+2025-09-12 11:47:36:   code: 'ENOTFOUND',
+2025-09-12 11:47:36:   syscall: 'getaddrinfo',
+2025-09-12 11:47:36:   hostname: '-l'
+2025-09-12 11:47:36: }
+2025-09-12 11:48:41: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:48:41:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:48:41:   errno: -3008,
+2025-09-12 11:48:41:   code: 'ENOTFOUND',
+2025-09-12 11:48:41:   syscall: 'getaddrinfo',
+2025-09-12 11:48:41:   hostname: '-l'
+2025-09-12 11:48:41: }
+2025-09-12 11:48:41: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:48:41:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:48:41:   errno: -3008,
+2025-09-12 11:48:41:   code: 'ENOTFOUND',
+2025-09-12 11:48:41:   syscall: 'getaddrinfo',
+2025-09-12 11:48:41:   hostname: '-l'
+2025-09-12 11:48:41: }
+2025-09-12 11:48:41: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:48:41:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:48:41:   errno: -3008,
+2025-09-12 11:48:41:   code: 'ENOTFOUND',
+2025-09-12 11:48:41:   syscall: 'getaddrinfo',
+2025-09-12 11:48:41:   hostname: '-l'
+2025-09-12 11:48:41: }
+2025-09-12 11:48:41: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:48:41:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:48:41:   errno: -3008,
+2025-09-12 11:48:41:   code: 'ENOTFOUND',
+2025-09-12 11:48:41:   syscall: 'getaddrinfo',
+2025-09-12 11:48:41:   hostname: '-l'
+2025-09-12 11:48:41: }
+2025-09-12 11:48:41: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:48:41:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:48:41:   errno: -3008,
+2025-09-12 11:48:41:   code: 'ENOTFOUND',
+2025-09-12 11:48:41:   syscall: 'getaddrinfo',
+2025-09-12 11:48:41:   hostname: '-l'
+2025-09-12 11:48:41: }
+2025-09-12 11:48:41: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:48:41:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:48:41:   errno: -3008,
+2025-09-12 11:48:41:   code: 'ENOTFOUND',
+2025-09-12 11:48:41:   syscall: 'getaddrinfo',
+2025-09-12 11:48:41:   hostname: '-l'
+2025-09-12 11:48:41: }
+2025-09-12 11:48:41: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:48:41:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:48:41:   errno: -3008,
+2025-09-12 11:48:41:   code: 'ENOTFOUND',
+2025-09-12 11:48:41:   syscall: 'getaddrinfo',
+2025-09-12 11:48:41:   hostname: '-l'
+2025-09-12 11:48:41: }
+2025-09-12 11:48:41: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:48:41:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:48:41:   errno: -3008,
+2025-09-12 11:48:41:   code: 'ENOTFOUND',
+2025-09-12 11:48:41:   syscall: 'getaddrinfo',
+2025-09-12 11:48:41:   hostname: '-l'
+2025-09-12 11:48:41: }
+2025-09-12 11:48:41: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:48:41:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:48:41:   errno: -3008,
+2025-09-12 11:48:41:   code: 'ENOTFOUND',
+2025-09-12 11:48:41:   syscall: 'getaddrinfo',
+2025-09-12 11:48:41:   hostname: '-l'
+2025-09-12 11:48:41: }
+2025-09-12 11:48:42: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:48:42:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:48:42:   errno: -3008,
+2025-09-12 11:48:42:   code: 'ENOTFOUND',
+2025-09-12 11:48:42:   syscall: 'getaddrinfo',
+2025-09-12 11:48:42:   hostname: '-l'
+2025-09-12 11:48:42: }
+2025-09-12 11:48:42: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:48:42:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:48:42:   errno: -3008,
+2025-09-12 11:48:42:   code: 'ENOTFOUND',
+2025-09-12 11:48:42:   syscall: 'getaddrinfo',
+2025-09-12 11:48:42:   hostname: '-l'
+2025-09-12 11:48:42: }
+2025-09-12 11:48:42: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:48:42:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:48:42:   errno: -3008,
+2025-09-12 11:48:42:   code: 'ENOTFOUND',
+2025-09-12 11:48:42:   syscall: 'getaddrinfo',
+2025-09-12 11:48:42:   hostname: '-l'
+2025-09-12 11:48:42: }
+2025-09-12 11:48:42: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:48:42:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:48:42:   errno: -3008,
+2025-09-12 11:48:42:   code: 'ENOTFOUND',
+2025-09-12 11:48:42:   syscall: 'getaddrinfo',
+2025-09-12 11:48:42:   hostname: '-l'
+2025-09-12 11:48:42: }
+2025-09-12 11:48:42: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:48:42:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:48:42:   errno: -3008,
+2025-09-12 11:48:42:   code: 'ENOTFOUND',
+2025-09-12 11:48:42:   syscall: 'getaddrinfo',
+2025-09-12 11:48:42:   hostname: '-l'
+2025-09-12 11:48:42: }
+2025-09-12 11:48:42: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:48:42:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:48:42:   errno: -3008,
+2025-09-12 11:48:42:   code: 'ENOTFOUND',
+2025-09-12 11:48:42:   syscall: 'getaddrinfo',
+2025-09-12 11:48:42:   hostname: '-l'
+2025-09-12 11:48:42: }
+2025-09-12 11:48:42: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:48:42:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:48:42:   errno: -3008,
+2025-09-12 11:48:42:   code: 'ENOTFOUND',
+2025-09-12 11:48:42:   syscall: 'getaddrinfo',
+2025-09-12 11:48:42:   hostname: '-l'
+2025-09-12 11:48:42: }
+2025-09-12 11:48:52: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:48:52:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:48:52:   errno: -3008,
+2025-09-12 11:48:52:   code: 'ENOTFOUND',
+2025-09-12 11:48:52:   syscall: 'getaddrinfo',
+2025-09-12 11:48:52:   hostname: '-l'
+2025-09-12 11:48:52: }
+2025-09-12 11:48:52: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:48:52:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:48:52:   errno: -3008,
+2025-09-12 11:48:52:   code: 'ENOTFOUND',
+2025-09-12 11:48:52:   syscall: 'getaddrinfo',
+2025-09-12 11:48:52:   hostname: '-l'
+2025-09-12 11:48:52: }
+2025-09-12 11:48:52: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:48:52:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:48:52:   errno: -3008,
+2025-09-12 11:48:52:   code: 'ENOTFOUND',
+2025-09-12 11:48:52:   syscall: 'getaddrinfo',
+2025-09-12 11:48:52:   hostname: '-l'
+2025-09-12 11:48:52: }
+2025-09-12 11:48:52: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:48:52:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:48:52:   errno: -3008,
+2025-09-12 11:48:52:   code: 'ENOTFOUND',
+2025-09-12 11:48:52:   syscall: 'getaddrinfo',
+2025-09-12 11:48:52:   hostname: '-l'
+2025-09-12 11:48:52: }
+2025-09-12 11:48:52: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:48:52:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:48:52:   errno: -3008,
+2025-09-12 11:48:52:   code: 'ENOTFOUND',
+2025-09-12 11:48:52:   syscall: 'getaddrinfo',
+2025-09-12 11:48:52:   hostname: '-l'
+2025-09-12 11:48:52: }
+2025-09-12 11:48:53: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:48:53:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:48:53:   errno: -3008,
+2025-09-12 11:48:53:   code: 'ENOTFOUND',
+2025-09-12 11:48:53:   syscall: 'getaddrinfo',
+2025-09-12 11:48:53:   hostname: '-l'
+2025-09-12 11:48:53: }
+2025-09-12 11:48:53: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:48:53:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:48:53:   errno: -3008,
+2025-09-12 11:48:53:   code: 'ENOTFOUND',
+2025-09-12 11:48:53:   syscall: 'getaddrinfo',
+2025-09-12 11:48:53:   hostname: '-l'
+2025-09-12 11:48:53: }
+2025-09-12 11:48:53: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:48:53:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:48:53:   errno: -3008,
+2025-09-12 11:48:53:   code: 'ENOTFOUND',
+2025-09-12 11:48:53:   syscall: 'getaddrinfo',
+2025-09-12 11:48:53:   hostname: '-l'
+2025-09-12 11:48:53: }
+2025-09-12 11:48:53: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:48:53:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:48:53:   errno: -3008,
+2025-09-12 11:48:53:   code: 'ENOTFOUND',
+2025-09-12 11:48:53:   syscall: 'getaddrinfo',
+2025-09-12 11:48:53:   hostname: '-l'
+2025-09-12 11:48:53: }
+2025-09-12 11:48:53: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:48:53:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:48:53:   errno: -3008,
+2025-09-12 11:48:53:   code: 'ENOTFOUND',
+2025-09-12 11:48:53:   syscall: 'getaddrinfo',
+2025-09-12 11:48:53:   hostname: '-l'
+2025-09-12 11:48:53: }
+2025-09-12 11:48:53: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:48:53:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:48:53:   errno: -3008,
+2025-09-12 11:48:53:   code: 'ENOTFOUND',
+2025-09-12 11:48:53:   syscall: 'getaddrinfo',
+2025-09-12 11:48:53:   hostname: '-l'
+2025-09-12 11:48:53: }
+2025-09-12 11:48:53: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:48:53:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:48:53:   errno: -3008,
+2025-09-12 11:48:53:   code: 'ENOTFOUND',
+2025-09-12 11:48:53:   syscall: 'getaddrinfo',
+2025-09-12 11:48:53:   hostname: '-l'
+2025-09-12 11:48:53: }
+2025-09-12 11:48:53: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:48:53:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:48:53:   errno: -3008,
+2025-09-12 11:48:53:   code: 'ENOTFOUND',
+2025-09-12 11:48:53:   syscall: 'getaddrinfo',
+2025-09-12 11:48:53:   hostname: '-l'
+2025-09-12 11:48:53: }
+2025-09-12 11:48:53: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:48:53:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:48:53:   errno: -3008,
+2025-09-12 11:48:53:   code: 'ENOTFOUND',
+2025-09-12 11:48:53:   syscall: 'getaddrinfo',
+2025-09-12 11:48:53:   hostname: '-l'
+2025-09-12 11:48:53: }
+2025-09-12 11:48:53: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:48:53:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:48:53:   errno: -3008,
+2025-09-12 11:48:53:   code: 'ENOTFOUND',
+2025-09-12 11:48:53:   syscall: 'getaddrinfo',
+2025-09-12 11:48:53:   hostname: '-l'
+2025-09-12 11:48:53: }
+2025-09-12 11:48:54: Error: getaddrinfo ENOTFOUND -l
+2025-09-12 11:48:54:     at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26) {
+2025-09-12 11:48:54:   errno: -3008,
+2025-09-12 11:48:54:   code: 'ENOTFOUND',
+2025-09-12 11:48:54:   syscall: 'getaddrinfo',
+2025-09-12 11:48:54:   hostname: '-l'
+2025-09-12 11:48:54: }
+2025-09-12 11:58:40: (node:21389) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2025-09-12 11:58:40: (Use `node --trace-deprecation ...` to show where the warning was created)
+2025-09-12 11:58:40: (node:21389) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2025-09-12 14:55:17: (node:25899) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2025-09-12 14:55:17: (Use `node --trace-deprecation ...` to show where the warning was created)
+2025-09-12 14:55:17: (node:25899) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2025-09-12 15:17:57: ERROR in src/index.tsx:4:17
+2025-09-12 15:17:57: TS2307: Cannot find module './App' or its corresponding type declarations.
+2025-09-12 15:17:57:     2 | import ReactDOM from 'react-dom/client'
+2025-09-12 15:17:57:     3 | import './index.css'
+2025-09-12 15:17:57:   > 4 | import App from './App'
+2025-09-12 15:17:57:       |                 ^^^^^^^
+2025-09-12 15:17:57:     5 |
+2025-09-12 15:17:57:     6 | const root = ReactDOM.createRoot(
+2025-09-12 15:17:57:     7 |   document.getElementById('root') as HTMLElement
+2025-09-12 15:17:57: 
+2025-09-12 15:18:16: ERROR in src/index.tsx:4:17
+2025-09-12 15:18:16: TS2307: Cannot find module './App' or its corresponding type declarations.
+2025-09-12 15:18:16:     2 | import ReactDOM from 'react-dom/client'
+2025-09-12 15:18:16:     3 | import './index.css'
+2025-09-12 15:18:16:   > 4 | import App from './App'
+2025-09-12 15:18:16:       |                 ^^^^^^^
+2025-09-12 15:18:16:     5 |
+2025-09-12 15:18:16:     6 | const root = ReactDOM.createRoot(
+2025-09-12 15:18:16:     7 |   document.getElementById('root') as HTMLElement
+2025-09-12 15:18:16: 
+2025-09-12 15:18:17: ERROR in src/index.tsx:4:17
+2025-09-12 15:18:17: TS2307: Cannot find module './App' or its corresponding type declarations.
+2025-09-12 15:18:17:     2 | import ReactDOM from 'react-dom/client'
+2025-09-12 15:18:17:     3 | import './index.css'
+2025-09-12 15:18:17:   > 4 | import App from './App'
+2025-09-12 15:18:17:       |                 ^^^^^^^
+2025-09-12 15:18:17:     5 |
+2025-09-12 15:18:17:     6 | const root = ReactDOM.createRoot(
+2025-09-12 15:18:17:     7 |   document.getElementById('root') as HTMLElement
+2025-09-12 15:18:17: 
+2025-09-12 15:18:18: ERROR in src/index.tsx:4:17
+2025-09-12 15:18:18: TS2307: Cannot find module './App' or its corresponding type declarations.
+2025-09-12 15:18:18:     2 | import ReactDOM from 'react-dom/client'
+2025-09-12 15:18:18:     3 | import './index.css'
+2025-09-12 15:18:18:   > 4 | import App from './App'
+2025-09-12 15:18:18:       |                 ^^^^^^^
+2025-09-12 15:18:18:     5 |
+2025-09-12 15:18:18:     6 | const root = ReactDOM.createRoot(
+2025-09-12 15:18:18:     7 |   document.getElementById('root') as HTMLElement
+2025-09-12 15:18:18: 
+2025-09-12 15:18:46: ERROR in src/index.tsx:4:17
+2025-09-12 15:18:46: TS2307: Cannot find module './App' or its corresponding type declarations.
+2025-09-12 15:18:46:     2 | import ReactDOM from 'react-dom/client'
+2025-09-12 15:18:46:     3 | import './index.css'
+2025-09-12 15:18:46:   > 4 | import App from './App'
+2025-09-12 15:18:46:       |                 ^^^^^^^
+2025-09-12 15:18:46:     5 |
+2025-09-12 15:18:46:     6 | const root = ReactDOM.createRoot(
+2025-09-12 15:18:46:     7 |   document.getElementById('root') as HTMLElement
+2025-09-12 15:18:46: 
+2025-09-12 15:18:51: ERROR in src/index.tsx:4:17
+2025-09-12 15:18:51: TS2307: Cannot find module './App' or its corresponding type declarations.
+2025-09-12 15:18:51:     2 | import ReactDOM from 'react-dom/client'
+2025-09-12 15:18:51:     3 | import './index.css'
+2025-09-12 15:18:51:   > 4 | import App from './App'
+2025-09-12 15:18:51:       |                 ^^^^^^^
+2025-09-12 15:18:51:     5 |
+2025-09-12 15:18:51:     6 | const root = ReactDOM.createRoot(
+2025-09-12 15:18:51:     7 |   document.getElementById('root') as HTMLElement
+2025-09-12 15:18:51: 
+2025-09-12 15:18:51: ERROR in src/pages/Dashboard.tsx
+2025-09-12 15:18:51: TS1208: 'Dashboard.tsx' cannot be compiled under '--isolatedModules' because it is considered a global script file. Add an import, export, or an empty 'export {}' statement to make it a module.
+2025-09-12 15:18:51: 
+2025-09-12 15:18:52: ERROR in src/index.tsx:4:17
+2025-09-12 15:18:52: TS2307: Cannot find module './App' or its corresponding type declarations.
+2025-09-12 15:18:52:     2 | import ReactDOM from 'react-dom/client'
+2025-09-12 15:18:52:     3 | import './index.css'
+2025-09-12 15:18:52:   > 4 | import App from './App'
+2025-09-12 15:18:52:       |                 ^^^^^^^
+2025-09-12 15:18:52:     5 |
+2025-09-12 15:18:52:     6 | const root = ReactDOM.createRoot(
+2025-09-12 15:18:52:     7 |   document.getElementById('root') as HTMLElement
+2025-09-12 15:18:52: 
+2025-09-12 15:18:52: ERROR in src/pages/Dashboard.tsx
+2025-09-12 15:18:52: TS1005: '</' expected.
+2025-09-12 15:18:52: 
+2025-09-12 15:18:52: ERROR in src/pages/Dashboard.tsx:195:6
+2025-09-12 15:18:52: TS17008: JSX element 'div' has no corresponding closing tag.
+2025-09-12 15:18:52:     193 |
+2025-09-12 15:18:52:     194 |   return (
+2025-09-12 15:18:52:   > 195 |     <div className="min-h-screen bg-gray-50">
+2025-09-12 15:18:52:         |      ^^^
+2025-09-12 15:18:52:     196 |              {/* Header */}
+2025-09-12 15:18:52:     197 |        <header className="bg-white shadow-soft border-b border-gray-100">
+2025-09-12 15:18:52:     198 |          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+2025-09-12 15:18:52: 
+2025-09-12 15:18:52: ERROR in src/pages/Dashboard.tsx:237:8
+2025-09-12 15:18:52: TS17008: JSX element 'main' has no corresponding closing tag.
+2025-09-12 15:18:52:     235 |
+2025-09-12 15:18:52:     236 |       {/* Main Content */}
+2025-09-12 15:18:52:   > 237 |       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
+2025-09-12 15:18:52:         |        ^^^^
+2025-09-12 15:18:52:     238 |                  {/* Refresh Controls - Hidden on mobile */}
+2025-09-12 15:18:52:     239 |          <div className="hidden sm:block">
+2025-09-12 15:18:52:     240 |            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4 sm:mb-6 space-y-4 lg:space-y-0">
+2025-09-12 15:18:52: 
+2025-09-12 15:18:52: ERROR in src/pages/Dashboard.tsx:390:10
+2025-09-12 15:18:52: TS17008: JSX element 'div' has no corresponding closing tag.
+2025-09-12 15:18:52:     388 |
+2025-09-12 15:18:52:     389 |         {/* Tab Content */}
+2025-09-12 15:18:52:   > 390 |         <div className="space-y-6 sm:space-y-8">
+2025-09-12 15:18:52:         |          ^^^
+2025-09-12 15:18:52:     391 |           {activeTab === 'overview' && (
+2025-09-12 15:18:52:     392 |             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
+2025-09-12 15:18:52:     393 |               <div className="card p-4 sm:p-6">
+2025-09-12 15:18:52: 
+2025-09-12 15:18:54: ERROR in src/index.tsx:4:17
+2025-09-12 15:18:54: TS2307: Cannot find module './App' or its corresponding type declarations.
+2025-09-12 15:18:54:     2 | import ReactDOM from 'react-dom/client'
+2025-09-12 15:18:54:     3 | import './index.css'
+2025-09-12 15:18:54:   > 4 | import App from './App'
+2025-09-12 15:18:54:       |                 ^^^^^^^
+2025-09-12 15:18:54:     5 |
+2025-09-12 15:18:54:     6 | const root = ReactDOM.createRoot(
+2025-09-12 15:18:54:     7 |   document.getElementById('root') as HTMLElement
+2025-09-12 15:18:54: 
+2025-09-12 15:18:54: ERROR in src/index.tsx:4:17
+2025-09-12 15:18:54: TS2307: Cannot find module './App' or its corresponding type declarations.
+2025-09-12 15:18:54:     2 | import ReactDOM from 'react-dom/client'
+2025-09-12 15:18:54:     3 | import './index.css'
+2025-09-12 15:18:54:   > 4 | import App from './App'
+2025-09-12 15:18:54:       |                 ^^^^^^^
+2025-09-12 15:18:54:     5 |
+2025-09-12 15:18:54:     6 | const root = ReactDOM.createRoot(
+2025-09-12 15:18:54:     7 |   document.getElementById('root') as HTMLElement
+2025-09-12 15:18:54: 
+2025-09-12 15:19:33: ERROR in src/components/AIAssistant.tsx:3:37
+2025-09-12 15:19:33: TS2307: Cannot find module '../config/ai-assistant' or its corresponding type declarations.
+2025-09-12 15:19:33:     1 | import React, { useState, useRef, useEffect } from 'react'
+2025-09-12 15:19:33:     2 | import { MessageCircle, X, Send, MessageCircle as ChatIcon } from 'lucide-react'
+2025-09-12 15:19:33:   > 3 | import { AI_ASSISTANT_CONFIG } from '../config/ai-assistant'
+2025-09-12 15:19:33:       |                                     ^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-12 15:19:33:     4 |
+2025-09-12 15:19:33:     5 | interface Message {
+2025-09-12 15:19:33:     6 |   id: string
+2025-09-12 15:19:33: 
+2025-09-12 15:19:33: ERROR in src/index.tsx:4:17
+2025-09-12 15:19:33: TS2307: Cannot find module './App' or its corresponding type declarations.
+2025-09-12 15:19:33:     2 | import ReactDOM from 'react-dom/client'
+2025-09-12 15:19:33:     3 | import './index.css'
+2025-09-12 15:19:33:   > 4 | import App from './App'
+2025-09-12 15:19:33:       |                 ^^^^^^^
+2025-09-12 15:19:33:     5 |
+2025-09-12 15:19:33:     6 | const root = ReactDOM.createRoot(
+2025-09-12 15:19:33:     7 |   document.getElementById('root') as HTMLElement
+2025-09-12 15:19:33: 
+2025-09-12 15:19:39: ERROR in src/components/AIAssistant.tsx:3:37
+2025-09-12 15:19:39: TS2307: Cannot find module '../config/ai-assistant' or its corresponding type declarations.
+2025-09-12 15:19:39:     1 | import React, { useState, useRef, useEffect } from 'react'
+2025-09-12 15:19:39:     2 | import { MessageCircle, X, Send, MessageCircle as ChatIcon } from 'lucide-react'
+2025-09-12 15:19:39:   > 3 | import { AI_ASSISTANT_CONFIG } from '../config/ai-assistant'
+2025-09-12 15:19:39:       |                                     ^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-12 15:19:39:     4 |
+2025-09-12 15:19:39:     5 | interface Message {
+2025-09-12 15:19:39:     6 |   id: string
+2025-09-12 15:19:39: 
+2025-09-12 15:19:39: ERROR in src/index.tsx:4:17
+2025-09-12 15:19:39: TS2307: Cannot find module './App' or its corresponding type declarations.
+2025-09-12 15:19:39:     2 | import ReactDOM from 'react-dom/client'
+2025-09-12 15:19:39:     3 | import './index.css'
+2025-09-12 15:19:39:   > 4 | import App from './App'
+2025-09-12 15:19:39:       |                 ^^^^^^^
+2025-09-12 15:19:39:     5 |
+2025-09-12 15:19:39:     6 | const root = ReactDOM.createRoot(
+2025-09-12 15:19:39:     7 |   document.getElementById('root') as HTMLElement
+2025-09-12 15:19:39: 
+2025-09-12 15:19:39: ERROR in src/components/AIAssistant.tsx:3:37
+2025-09-12 15:19:39: TS2307: Cannot find module '../config/ai-assistant' or its corresponding type declarations.
+2025-09-12 15:19:39:     1 | import React, { useState, useRef, useEffect } from 'react'
+2025-09-12 15:19:39:     2 | import { MessageCircle, X, Send, MessageCircle as ChatIcon } from 'lucide-react'
+2025-09-12 15:19:39:   > 3 | import { AI_ASSISTANT_CONFIG } from '../config/ai-assistant'
+2025-09-12 15:19:39:       |                                     ^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-12 15:19:39:     4 |
+2025-09-12 15:19:39:     5 | interface Message {
+2025-09-12 15:19:39:     6 |   id: string
+2025-09-12 15:19:39: 
+2025-09-12 15:19:39: ERROR in src/index.tsx:4:17
+2025-09-12 15:19:39: TS2307: Cannot find module './App' or its corresponding type declarations.
+2025-09-12 15:19:39:     2 | import ReactDOM from 'react-dom/client'
+2025-09-12 15:19:39:     3 | import './index.css'
+2025-09-12 15:19:39:   > 4 | import App from './App'
+2025-09-12 15:19:39:       |                 ^^^^^^^
+2025-09-12 15:19:39:     5 |
+2025-09-12 15:19:39:     6 | const root = ReactDOM.createRoot(
+2025-09-12 15:19:39:     7 |   document.getElementById('root') as HTMLElement
+2025-09-12 15:19:39: 
+2025-09-12 15:19:41: ERROR in src/components/AIAssistant.tsx:3:37
+2025-09-12 15:19:41: TS2307: Cannot find module '../config/ai-assistant' or its corresponding type declarations.
+2025-09-12 15:19:41:     1 | import React, { useState, useRef, useEffect } from 'react'
+2025-09-12 15:19:41:     2 | import { MessageCircle, X, Send, MessageCircle as ChatIcon } from 'lucide-react'
+2025-09-12 15:19:41:   > 3 | import { AI_ASSISTANT_CONFIG } from '../config/ai-assistant'
+2025-09-12 15:19:41:       |                                     ^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-12 15:19:41:     4 |
+2025-09-12 15:19:41:     5 | interface Message {
+2025-09-12 15:19:41:     6 |   id: string
+2025-09-12 15:19:41: 
+2025-09-12 15:19:41: ERROR in src/index.tsx:4:17
+2025-09-12 15:19:41: TS2307: Cannot find module './App' or its corresponding type declarations.
+2025-09-12 15:19:41:     2 | import ReactDOM from 'react-dom/client'
+2025-09-12 15:19:41:     3 | import './index.css'
+2025-09-12 15:19:41:   > 4 | import App from './App'
+2025-09-12 15:19:41:       |                 ^^^^^^^
+2025-09-12 15:19:41:     5 |
+2025-09-12 15:19:41:     6 | const root = ReactDOM.createRoot(
+2025-09-12 15:19:41:     7 |   document.getElementById('root') as HTMLElement
+2025-09-12 15:19:41: 
+2025-09-12 15:20:11: ERROR in src/index.tsx:4:17
+2025-09-12 15:20:11: TS2307: Cannot find module './App' or its corresponding type declarations.
+2025-09-12 15:20:11:     2 | import ReactDOM from 'react-dom/client'
+2025-09-12 15:20:11:     3 | import './index.css'
+2025-09-12 15:20:11:   > 4 | import App from './App'
+2025-09-12 15:20:11:       |                 ^^^^^^^
+2025-09-12 15:20:11:     5 |
+2025-09-12 15:20:11:     6 | const root = ReactDOM.createRoot(
+2025-09-12 15:20:11:     7 |   document.getElementById('root') as HTMLElement
+2025-09-12 15:20:11: 
+2025-09-12 15:20:24: ERROR in src/components/AIAssistant.tsx
+2025-09-12 15:20:24: TS1208: 'AIAssistant.tsx' cannot be compiled under '--isolatedModules' because it is considered a global script file. Add an import, export, or an empty 'export {}' statement to make it a module.
+2025-09-12 15:20:24: 
+2025-09-12 15:20:24: ERROR in src/index.tsx:4:17
+2025-09-12 15:20:24: TS2307: Cannot find module './App' or its corresponding type declarations.
+2025-09-12 15:20:24:     2 | import ReactDOM from 'react-dom/client'
+2025-09-12 15:20:24:     3 | import './index.css'
+2025-09-12 15:20:24:   > 4 | import App from './App'
+2025-09-12 15:20:24:       |                 ^^^^^^^
+2025-09-12 15:20:24:     5 |
+2025-09-12 15:20:24:     6 | const root = ReactDOM.createRoot(
+2025-09-12 15:20:24:     7 |   document.getElementById('root') as HTMLElement
+2025-09-12 15:20:24: 
+2025-09-12 15:20:24: ERROR in src/components/AIAssistant.tsx:3:37
+2025-09-12 15:20:24: TS2307: Cannot find module '../config/ai-assistant' or its corresponding type declarations.
+2025-09-12 15:20:24:     1 | import React, { useState, useRef, useEffect } from 'react'
+2025-09-12 15:20:24:     2 | import { MessageCircle, X, Send, MessageCircle as ChatIcon } from 'lucide-react'
+2025-09-12 15:20:24:   > 3 | import { AI_ASSISTANT_CONFIG } from '../config/ai-assistant'
+2025-09-12 15:20:24:       |                                     ^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-12 15:20:24:     4 |
+2025-09-12 15:20:24:     5 | interface Message {
+2025-09-12 15:20:24:     6 |   id: string
+2025-09-12 15:20:24: 
+2025-09-12 15:20:24: ERROR in src/index.tsx:4:17
+2025-09-12 15:20:24: TS2307: Cannot find module './App' or its corresponding type declarations.
+2025-09-12 15:20:24:     2 | import ReactDOM from 'react-dom/client'
+2025-09-12 15:20:24:     3 | import './index.css'
+2025-09-12 15:20:24:   > 4 | import App from './App'
+2025-09-12 15:20:24:       |                 ^^^^^^^
+2025-09-12 15:20:24:     5 |
+2025-09-12 15:20:24:     6 | const root = ReactDOM.createRoot(
+2025-09-12 15:20:24:     7 |   document.getElementById('root') as HTMLElement
+2025-09-12 15:20:24: 
+2025-09-12 15:20:26: ERROR in src/components/AIAssistant.tsx:3:37
+2025-09-12 15:20:26: TS2307: Cannot find module '../config/ai-assistant' or its corresponding type declarations.
+2025-09-12 15:20:26:     1 | import React, { useState, useRef, useEffect } from 'react'
+2025-09-12 15:20:26:     2 | import { MessageCircle, X, Send, MessageCircle as ChatIcon } from 'lucide-react'
+2025-09-12 15:20:26:   > 3 | import { AI_ASSISTANT_CONFIG } from '../config/ai-assistant'
+2025-09-12 15:20:26:       |                                     ^^^^^^^^^^^^^^^^^^^^^^^^
+2025-09-12 15:20:26:     4 |
+2025-09-12 15:20:26:     5 | interface Message {
+2025-09-12 15:20:26:     6 |   id: string
+2025-09-12 15:20:26: 
+2025-09-12 15:20:26: ERROR in src/index.tsx:4:17
+2025-09-12 15:20:26: TS2307: Cannot find module './App' or its corresponding type declarations.
+2025-09-12 15:20:26:     2 | import ReactDOM from 'react-dom/client'
+2025-09-12 15:20:26:     3 | import './index.css'
+2025-09-12 15:20:26:   > 4 | import App from './App'
+2025-09-12 15:20:26:       |                 ^^^^^^^
+2025-09-12 15:20:26:     5 |
+2025-09-12 15:20:26:     6 | const root = ReactDOM.createRoot(
+2025-09-12 15:20:26:     7 |   document.getElementById('root') as HTMLElement
+2025-09-12 15:20:26: 
+2025-09-12 15:23:34: (node:26554) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2025-09-12 15:23:34: (Use `node --trace-deprecation ...` to show where the warning was created)
+2025-09-12 15:23:34: (node:26554) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
