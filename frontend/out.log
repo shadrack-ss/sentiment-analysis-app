@@ -19388,3 +19388,654 @@
 2025-09-12 23:09:00: Compiled successfully!
 2025-09-12 23:09:00: webpack compiled successfully
 2025-09-12 23:09:00: No issues found.
+2025-09-13 13:44:39: Compiling...
+2025-09-13 13:44:42: Failed to compile.
+2025-09-13 13:44:42: 
+2025-09-13 13:44:42: Module not found: Error: Can't resolve './pages/Login' in '/home/ubuntu/projects/sentiment-analysis-app/frontend/src'
+2025-09-13 13:44:42: ERROR in ./src/App.tsx 9:0-34
+2025-09-13 13:44:42: Module not found: Error: Can't resolve './pages/Login' in '/home/ubuntu/projects/sentiment-analysis-app/frontend/src'
+2025-09-13 13:44:42: 
+2025-09-13 13:44:42: webpack compiled with 1 error
+2025-09-13 13:44:42: Files successfully emitted, waiting for typecheck results...
+2025-09-13 13:44:42: Issues checking in progress...
+2025-09-13 13:45:00: Compiling...
+2025-09-13 13:45:03: Failed to compile.
+2025-09-13 13:45:03: 
+2025-09-13 13:45:03: Module not found: Error: Can't resolve './pages/Login' in '/home/ubuntu/projects/sentiment-analysis-app/frontend/src'
+2025-09-13 13:45:03: WARNING in [eslint] 
+2025-09-13 13:45:03: src/pages/Dashboard.tsx
+2025-09-13 13:45:03:   Line 8:10:    'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-13 13:45:03:   Line 8:17:    'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-13 13:45:03:   Line 8:32:    'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-13 13:45:03:   Line 54:6:    React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-13 13:45:03:   Line 193:33:  Unnecessary escape character: \'                                                                                                                 no-useless-escape
+2025-09-13 13:45:03: 
+2025-09-13 13:45:03: ERROR in ./src/App.tsx 9:0-34
+2025-09-13 13:45:03: Module not found: Error: Can't resolve './pages/Login' in '/home/ubuntu/projects/sentiment-analysis-app/frontend/src'
+2025-09-13 13:45:03: 
+2025-09-13 13:45:03: webpack compiled with 1 error and 1 warning
+2025-09-13 13:45:03: Compiling...
+2025-09-13 13:45:05: Compiled with warnings.
+2025-09-13 13:45:05: 
+2025-09-13 13:45:05: [eslint] 
+2025-09-13 13:45:05: src/pages/Dashboard.tsx
+2025-09-13 13:45:05:   Line 8:10:    'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-13 13:45:05:   Line 8:17:    'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-13 13:45:05:   Line 8:32:    'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-13 13:45:05:   Line 54:6:    React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-13 13:45:05:   Line 193:33:  Unnecessary escape character: \'                                                                                                                 no-useless-escape
+2025-09-13 13:45:05: 
+2025-09-13 13:45:05: Search for the keywords to learn more about each warning.
+2025-09-13 13:45:05: To ignore, add // eslint-disable-next-line to the line before.
+2025-09-13 13:45:05: 
+2025-09-13 13:45:05: WARNING in [eslint] 
+2025-09-13 13:45:05: src/pages/Dashboard.tsx
+2025-09-13 13:45:05:   Line 8:10:    'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-13 13:45:05:   Line 8:17:    'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-13 13:45:05:   Line 8:32:    'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-13 13:45:05:   Line 54:6:    React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-13 13:45:05:   Line 193:33:  Unnecessary escape character: \'                                                                                                                 no-useless-escape
+2025-09-13 13:45:05: 
+2025-09-13 13:45:05: webpack compiled with 1 warning
+2025-09-13 13:54:05: 
+2025-09-13 13:54:05: > uganda-sentiment-dashboard@1.0.0 start
+2025-09-13 13:54:05: > react-scripts start
+2025-09-13 13:54:05: 
+2025-09-13 13:54:08: Starting the development server...
+2025-09-13 13:54:08: 
+2025-09-13 13:54:12: Compiled successfully!
+2025-09-13 13:54:12: 
+2025-09-13 13:54:12: You can now view uganda-sentiment-dashboard in the browser.
+2025-09-13 13:54:12: 
+2025-09-13 13:54:12:   http://localhost:3000
+2025-09-13 13:54:12: 
+2025-09-13 13:54:12: Note that the development build is not optimized.
+2025-09-13 13:54:12: To create a production build, use npm run build.
+2025-09-13 13:54:12: 
+2025-09-13 13:54:12: webpack compiled successfully
+2025-09-13 13:54:12: Files successfully emitted, waiting for typecheck results...
+2025-09-13 13:54:12: Issues checking in progress...
+2025-09-13 13:54:13: No issues found.
+2025-09-13 14:13:59: 
+2025-09-13 14:13:59: > uganda-sentiment-dashboard@1.0.0 start
+2025-09-13 14:13:59: > react-scripts start
+2025-09-13 14:13:59: 
+2025-09-13 14:14:00: Starting the development server...
+2025-09-13 14:14:00: 
+2025-09-13 14:14:04: Compiled successfully!
+2025-09-13 14:14:04: 
+2025-09-13 14:14:04: You can now view uganda-sentiment-dashboard in the browser.
+2025-09-13 14:14:04: 
+2025-09-13 14:14:04:   http://localhost:3000
+2025-09-13 14:14:04: 
+2025-09-13 14:14:04: Note that the development build is not optimized.
+2025-09-13 14:14:04: To create a production build, use npm run build.
+2025-09-13 14:14:04: 
+2025-09-13 14:14:04: webpack compiled successfully
+2025-09-13 14:14:04: Files successfully emitted, waiting for typecheck results...
+2025-09-13 14:14:04: Issues checking in progress...
+2025-09-13 14:14:04: No issues found.
+2025-09-14 06:41:04: Compiling...
+2025-09-14 06:41:09: Failed to compile.
+2025-09-14 06:41:09: 
+2025-09-14 06:41:09: Module not found: Error: Can't resolve './pages/Dashboard' in '/home/ubuntu/projects/sentiment-analysis-app/frontend/src'
+2025-09-14 06:41:09: ERROR in ./src/App.tsx 10:0-42
+2025-09-14 06:41:09: Module not found: Error: Can't resolve './pages/Dashboard' in '/home/ubuntu/projects/sentiment-analysis-app/frontend/src'
+2025-09-14 06:41:09: 
+2025-09-14 06:41:09: webpack compiled with 1 error
+2025-09-14 06:41:19: Compiling...
+2025-09-14 06:41:22: Compiled with warnings.
+2025-09-14 06:41:22: 
+2025-09-14 06:41:22: [eslint] 
+2025-09-14 06:41:22: src/pages/Dashboard.tsx
+2025-09-14 06:41:22:   Line 8:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-14 06:41:22:   Line 8:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-14 06:41:22:   Line 8:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-14 06:41:22:   Line 53:6:  React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-14 06:41:22: 
+2025-09-14 06:41:22: Search for the keywords to learn more about each warning.
+2025-09-14 06:41:22: To ignore, add // eslint-disable-next-line to the line before.
+2025-09-14 06:41:22: 
+2025-09-14 06:41:22: WARNING in [eslint] 
+2025-09-14 06:41:22: src/pages/Dashboard.tsx
+2025-09-14 06:41:22:   Line 8:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-14 06:41:22:   Line 8:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-14 06:41:22:   Line 8:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-14 06:41:22:   Line 53:6:  React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-14 06:41:22: 
+2025-09-14 06:41:22: webpack compiled with 1 warning
+2025-09-14 06:41:22: Compiling...
+2025-09-14 06:41:24: Compiled with warnings.
+2025-09-14 06:41:24: 
+2025-09-14 06:41:24: [eslint] 
+2025-09-14 06:41:24: src/pages/Dashboard.tsx
+2025-09-14 06:41:24:   Line 8:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-14 06:41:24:   Line 8:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-14 06:41:24:   Line 8:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-14 06:41:24:   Line 53:6:  React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-14 06:41:24: 
+2025-09-14 06:41:24: Search for the keywords to learn more about each warning.
+2025-09-14 06:41:24: To ignore, add // eslint-disable-next-line to the line before.
+2025-09-14 06:41:24: 
+2025-09-14 06:41:24: WARNING in [eslint] 
+2025-09-14 06:41:24: src/pages/Dashboard.tsx
+2025-09-14 06:41:24:   Line 8:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-14 06:41:24:   Line 8:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-14 06:41:24:   Line 8:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-14 06:41:24:   Line 53:6:  React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-14 06:41:24: 
+2025-09-14 06:41:24: webpack compiled with 1 warning
+2025-09-14 06:46:40: 
+2025-09-14 06:46:40: > uganda-sentiment-dashboard@1.0.0 start
+2025-09-14 06:46:40: > react-scripts start
+2025-09-14 06:46:40: 
+2025-09-14 06:46:43: Starting the development server...
+2025-09-14 06:46:43: 
+2025-09-14 06:46:47: Compiled successfully!
+2025-09-14 06:46:47: 
+2025-09-14 06:46:47: You can now view uganda-sentiment-dashboard in the browser.
+2025-09-14 06:46:47: 
+2025-09-14 06:46:47:   http://localhost:3000
+2025-09-14 06:46:47: 
+2025-09-14 06:46:47: Note that the development build is not optimized.
+2025-09-14 06:46:47: To create a production build, use npm run build.
+2025-09-14 06:46:47: 
+2025-09-14 06:46:47: webpack compiled successfully
+2025-09-14 06:46:47: Files successfully emitted, waiting for typecheck results...
+2025-09-14 06:46:47: Issues checking in progress...
+2025-09-14 06:46:47: No issues found.
+2025-09-14 07:02:58: Compiling...
+2025-09-14 07:02:59: Failed to compile.
+2025-09-14 07:02:59: 
+2025-09-14 07:02:59: Module not found: Error: Can't resolve './pages/Dashboard' in '/home/ubuntu/projects/sentiment-analysis-app/frontend/src'
+2025-09-14 07:02:59: ERROR in ./src/App.tsx 10:0-42
+2025-09-14 07:02:59: Module not found: Error: Can't resolve './pages/Dashboard' in '/home/ubuntu/projects/sentiment-analysis-app/frontend/src'
+2025-09-14 07:02:59: 
+2025-09-14 07:02:59: webpack compiled with 1 error
+2025-09-14 07:03:11: Compiling...
+2025-09-14 07:03:12: Failed to compile.
+2025-09-14 07:03:12: 
+2025-09-14 07:03:12: [eslint] 
+2025-09-14 07:03:12: src/pages/Dashboard.tsx
+2025-09-14 07:03:12: Syntax error: ',' expected (94:20)
+2025-09-14 07:03:12: ERROR in [eslint] 
+2025-09-14 07:03:12: src/pages/Dashboard.tsx
+2025-09-14 07:03:12:   Line 94:20:  Parsing error: ',' expected
+2025-09-14 07:03:12: 
+2025-09-14 07:03:12: webpack compiled with 1 error
+2025-09-14 07:03:13: Compiling...
+2025-09-14 07:03:13: Failed to compile.
+2025-09-14 07:03:13: 
+2025-09-14 07:03:13: [eslint] 
+2025-09-14 07:03:13: src/pages/Dashboard.tsx
+2025-09-14 07:03:13: Syntax error: ',' expected (94:20)
+2025-09-14 07:03:13: ERROR in ./src/pages/Dashboard.tsx
+2025-09-14 07:03:13: Module build failed (from ./node_modules/babel-loader/lib/index.js):
+2025-09-14 07:03:13: SyntaxError: /home/ubuntu/projects/sentiment-analysis-app/frontend/src/pages/Dashboard.tsx: Missing semicolon. (94:19)
+2025-09-14 07:03:13: 
+2025-09-14 07:03:13:   92 |
+2025-09-14 07:03:13:   93 |   const formatTimeUntilNext = () => {
+2025-09-14 07:03:13: > 94 |     const now = New Date()
+2025-09-14 07:03:13:      |                    ^
+2025-09-14 07:03:13:   95 |     const diff = nextRefresh.getTime() - now.getTime()
+2025-09-14 07:03:13:   96 |     
+2025-09-14 07:03:13:   97 |     if (diff <= 0) return 'Refreshing...'
+2025-09-14 07:03:13:     at constructor (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:367:19)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.raise (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:6630:19)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.semicolon (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:6926:10)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseVarStatement (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:13236:10)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseVarStatement (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:9498:31)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseStatementContent (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:12856:23)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseStatementContent (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:9532:18)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseStatementLike (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:12772:17)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseStatementListItem (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:12752:17)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:13321:61)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseBlockBody (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:13314:10)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseBlock (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:13302:10)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseFunctionBody (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:12106:24)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseArrowExpression (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:12081:10)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseParenAndDistinguishExpression (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:11691:12)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseExprAtom (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:11331:23)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseExprAtom (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:4797:20)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseExprSubscripts (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:11081:23)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseUpdate (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:11066:21)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseMaybeUnary (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:11046:23)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseMaybeUnary (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:9857:18)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10899:61)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseExprOps (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10904:23)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseMaybeConditional (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10881:23)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseMaybeAssign (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10831:21)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseMaybeAssign (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:9806:20)
+2025-09-14 07:03:13:     at /home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10800:39
+2025-09-14 07:03:13:     at TypeScriptParserMixin.allowInAnd (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:12427:16)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseMaybeAssignAllowIn (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10800:17)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseVar (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:13389:91)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseVarStatement (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:13235:10)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseVarStatement (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:9498:31)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseStatementContent (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:12856:23)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseStatementContent (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:9532:18)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseStatementLike (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:12772:17)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseStatementListItem (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:12752:17)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:13321:61)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseBlockBody (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:13314:10)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseBlock (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:13302:10)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseFunctionBody (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:12106:24)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseArrowExpression (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:12081:10)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseParenAndDistinguishExpression (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:11691:12)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseExprAtom (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:11331:23)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseExprAtom (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:4797:20)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseExprSubscripts (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:11081:23)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseUpdate (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:11066:21)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseMaybeUnary (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:11046:23)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseMaybeUnary (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:9857:18)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10899:61)
+2025-09-14 07:03:13:     at TypeScriptParserMixin.parseExprOps (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10904:23)
+2025-09-14 07:03:13: 
+2025-09-14 07:03:13: ERROR in [eslint] 
+2025-09-14 07:03:13: src/pages/Dashboard.tsx
+2025-09-14 07:03:13:   Line 94:20:  Parsing error: ',' expected
+2025-09-14 07:03:13: 
+2025-09-14 07:03:13: webpack compiled with 2 errors
+2025-09-14 07:03:15: Compiling...
+2025-09-14 07:03:15: Failed to compile.
+2025-09-14 07:03:15: 
+2025-09-14 07:03:15: [eslint] 
+2025-09-14 07:03:15: src/pages/Dashboard.tsx
+2025-09-14 07:03:15: Syntax error: ',' expected (94:20)
+2025-09-14 07:03:15: ERROR in ./src/pages/Dashboard.tsx
+2025-09-14 07:03:15: Module build failed (from ./node_modules/babel-loader/lib/index.js):
+2025-09-14 07:03:15: SyntaxError: /home/ubuntu/projects/sentiment-analysis-app/frontend/src/pages/Dashboard.tsx: Missing semicolon. (94:19)
+2025-09-14 07:03:15: 
+2025-09-14 07:03:15:   92 |
+2025-09-14 07:03:15:   93 |   const formatTimeUntilNext = () => {
+2025-09-14 07:03:15: > 94 |     const now = New Date()
+2025-09-14 07:03:15:      |                    ^
+2025-09-14 07:03:15:   95 |     const diff = nextRefresh.getTime() - now.getTime()
+2025-09-14 07:03:15:   96 |     
+2025-09-14 07:03:15:   97 |     if (diff <= 0) return 'Refreshing...'
+2025-09-14 07:03:15:     at constructor (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:367:19)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.raise (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:6630:19)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.semicolon (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:6926:10)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseVarStatement (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:13236:10)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseVarStatement (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:9498:31)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseStatementContent (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:12856:23)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseStatementContent (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:9532:18)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseStatementLike (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:12772:17)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseStatementListItem (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:12752:17)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:13321:61)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseBlockBody (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:13314:10)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseBlock (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:13302:10)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseFunctionBody (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:12106:24)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseArrowExpression (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:12081:10)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseParenAndDistinguishExpression (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:11691:12)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseExprAtom (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:11331:23)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseExprAtom (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:4797:20)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseExprSubscripts (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:11081:23)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseUpdate (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:11066:21)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseMaybeUnary (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:11046:23)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseMaybeUnary (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:9857:18)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10899:61)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseExprOps (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10904:23)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseMaybeConditional (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10881:23)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseMaybeAssign (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10831:21)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseMaybeAssign (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:9806:20)
+2025-09-14 07:03:15:     at /home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10800:39
+2025-09-14 07:03:15:     at TypeScriptParserMixin.allowInAnd (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:12427:16)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseMaybeAssignAllowIn (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10800:17)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseVar (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:13389:91)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseVarStatement (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:13235:10)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseVarStatement (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:9498:31)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseStatementContent (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:12856:23)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseStatementContent (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:9532:18)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseStatementLike (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:12772:17)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseStatementListItem (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:12752:17)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseBlockOrModuleBlockBody (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:13321:61)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseBlockBody (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:13314:10)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseBlock (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:13302:10)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseFunctionBody (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:12106:24)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseArrowExpression (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:12081:10)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseParenAndDistinguishExpression (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:11691:12)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseExprAtom (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:11331:23)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseExprAtom (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:4797:20)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseExprSubscripts (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:11081:23)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseUpdate (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:11066:21)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseMaybeUnary (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:11046:23)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseMaybeUnary (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:9857:18)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10899:61)
+2025-09-14 07:03:15:     at TypeScriptParserMixin.parseExprOps (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10904:23)
+2025-09-14 07:03:15: 
+2025-09-14 07:03:15: ERROR in [eslint] 
+2025-09-14 07:03:15: src/pages/Dashboard.tsx
+2025-09-14 07:03:15:   Line 94:20:  Parsing error: ',' expected
+2025-09-14 07:03:15: 
+2025-09-14 07:03:15: webpack compiled with 2 errors
+2025-09-14 07:13:22: Compiling...
+2025-09-14 07:13:23: Failed to compile.
+2025-09-14 07:13:23: 
+2025-09-14 07:13:23: [eslint] 
+2025-09-14 07:13:23: src/pages/Dashboard.tsx
+2025-09-14 07:13:23: Syntax error: ',' expected (94:20)
+2025-09-14 07:13:23: ERROR in ./src/App.tsx 10:0-42
+2025-09-14 07:13:23: Module not found: Error: Can't resolve './pages/Dashboard' in '/home/ubuntu/projects/sentiment-analysis-app/frontend/src'
+2025-09-14 07:13:23: 
+2025-09-14 07:13:23: ERROR in [eslint] 
+2025-09-14 07:13:23: src/pages/Dashboard.tsx
+2025-09-14 07:13:23:   Line 94:20:  Parsing error: ',' expected
+2025-09-14 07:13:23: 
+2025-09-14 07:13:23: webpack compiled with 2 errors
+2025-09-14 07:13:41: Compiling...
+2025-09-14 07:13:41: Compiled successfully!
+2025-09-14 07:13:41: webpack compiled successfully
+2025-09-14 07:13:41: Compiling...
+2025-09-14 07:13:42: Failed to compile.
+2025-09-14 07:13:42: 
+2025-09-14 07:13:42: [eslint] 
+2025-09-14 07:13:42: src/pages/Dashboard.tsx
+2025-09-14 07:13:42: Syntax error: JSX element 'h3' has no corresponding closing tag (416:15)
+2025-09-14 07:13:42: ERROR in ./src/pages/Dashboard.tsx
+2025-09-14 07:13:42: Module build failed (from ./node_modules/babel-loader/lib/index.js):
+2025-09-14 07:13:42: SyntaxError: /home/ubuntu/projects/sentiment-analysis-app/frontend/src/pages/Dashboard.tsx: Unterminated JSX contents. (416:71)
+2025-09-14 07:13:42: 
+2025-09-14 07:13:42:   414 |           {activeTab === 'tweets' && (
+2025-09-14 07:13:42:   415 |             <div className="card p-4 sm:p-6">
+2025-09-14 07:13:42: > 416 |               <h3 className="text-lg font-semibold text-gray-900 mb-4">
+2025-09-14 07:13:42:       |                                                                        ^
+2025-09-14 07:13:42:   417 |
+2025-09-14 07:13:42:     at constructor (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:367:19)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.raise (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:6630:19)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.jsxReadToken (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:4481:20)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.getTokenFromCode (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:4807:12)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.getTokenFromCode (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10009:11)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.nextToken (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:5813:10)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.next (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:5723:10)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.eat (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:5727:12)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.expect (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:6929:15)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:4704:10)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.jsxParseOpeningElementAfterName (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10067:18)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.jsxParseOpeningElementAt (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:4695:17)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.jsxParseElementAt (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:4719:33)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.jsxParseElementAt (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:4731:32)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.jsxParseElement (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:4782:17)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.parseExprAtom (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:4792:19)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.parseExprSubscripts (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:11081:23)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.parseUpdate (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:11066:21)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.parseMaybeUnary (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:11046:23)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.parseMaybeUnary (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:9857:18)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10899:61)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.parseExprOps (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10904:23)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.parseMaybeConditional (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10881:23)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.parseMaybeAssign (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10831:21)
+2025-09-14 07:13:42:     at /home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:9795:39
+2025-09-14 07:13:42:     at TypeScriptParserMixin.tryParse (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:6938:20)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.parseMaybeAssign (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:9795:18)
+2025-09-14 07:13:42:     at /home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10800:39
+2025-09-14 07:13:42:     at TypeScriptParserMixin.allowInAnd (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:12432:12)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.parseMaybeAssignAllowIn (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10800:17)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.parseMaybeAssignAllowInOrVoidPattern (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:12499:17)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.parseParenAndDistinguishExpression (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:11679:28)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.parseExprAtom (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:11331:23)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.parseExprAtom (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:4797:20)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.parseExprSubscripts (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:11081:23)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.parseUpdate (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:11066:21)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.parseMaybeUnary (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:11046:23)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.parseMaybeUnary (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:9857:18)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.parseMaybeUnaryOrPrivate (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10899:61)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.parseExprOpBaseRightExpr (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10986:34)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.parseExprOpRightExpr (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10981:21)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.parseExprOp (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10947:27)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.parseExprOp (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:9394:18)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.parseExprOp (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10953:21)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.parseExprOp (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:9394:18)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.parseExprOps (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10908:17)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.parseMaybeConditional (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10881:23)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.parseMaybeAssign (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10831:21)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.parseMaybeAssign (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:9806:20)
+2025-09-14 07:13:42:     at TypeScriptParserMixin.parseExpressionBase (/home/ubuntu/projects/sentiment-analysis-app/frontend/node_modules/@babel/parser/lib/index.js:10784:23)
+2025-09-14 07:13:42: 
+2025-09-14 07:13:42: ERROR in [eslint] 
+2025-09-14 07:13:42: src/pages/Dashboard.tsx
+2025-09-14 07:13:42:   Line 416:15:  Parsing error: JSX element 'h3' has no corresponding closing tag
+2025-09-14 07:13:42: 
+2025-09-14 07:13:42: webpack compiled with 2 errors
+2025-09-14 07:13:42: Compiling...
+2025-09-14 07:13:44: Compiled with warnings.
+2025-09-14 07:13:44: 
+2025-09-14 07:13:44: [eslint] 
+2025-09-14 07:13:44: src/pages/Dashboard.tsx
+2025-09-14 07:13:44:   Line 8:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-14 07:13:44:   Line 8:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-14 07:13:44:   Line 8:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-14 07:13:44:   Line 53:6:  React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-14 07:13:44: 
+2025-09-14 07:13:44: Search for the keywords to learn more about each warning.
+2025-09-14 07:13:44: To ignore, add // eslint-disable-next-line to the line before.
+2025-09-14 07:13:44: 
+2025-09-14 07:13:44: WARNING in [eslint] 
+2025-09-14 07:13:44: src/pages/Dashboard.tsx
+2025-09-14 07:13:44:   Line 8:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-14 07:13:44:   Line 8:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-14 07:13:44:   Line 8:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-14 07:13:44:   Line 53:6:  React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-14 07:13:44: 
+2025-09-14 07:13:44: webpack compiled with 1 warning
+2025-09-14 07:13:44: Compiling...
+2025-09-14 07:13:44: Compiled with warnings.
+2025-09-14 07:13:44: 
+2025-09-14 07:13:44: [eslint] 
+2025-09-14 07:13:44: src/pages/Dashboard.tsx
+2025-09-14 07:13:44:   Line 8:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-14 07:13:44:   Line 8:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-14 07:13:44:   Line 8:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-14 07:13:44:   Line 53:6:  React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-14 07:13:44: 
+2025-09-14 07:13:44: Search for the keywords to learn more about each warning.
+2025-09-14 07:13:44: To ignore, add // eslint-disable-next-line to the line before.
+2025-09-14 07:13:44: 
+2025-09-14 07:13:44: WARNING in [eslint] 
+2025-09-14 07:13:44: src/pages/Dashboard.tsx
+2025-09-14 07:13:44:   Line 8:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-14 07:13:44:   Line 8:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-14 07:13:44:   Line 8:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-14 07:13:44:   Line 53:6:  React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-14 07:13:44: 
+2025-09-14 07:13:44: webpack compiled with 1 warning
+2025-09-14 07:17:05: 
+2025-09-14 07:17:05: > uganda-sentiment-dashboard@1.0.0 start
+2025-09-14 07:17:05: > react-scripts start
+2025-09-14 07:17:05: 
+2025-09-14 07:17:07: Starting the development server...
+2025-09-14 07:17:07: 
+2025-09-14 07:17:10: Compiled successfully!
+2025-09-14 07:17:10: 
+2025-09-14 07:17:10: You can now view uganda-sentiment-dashboard in the browser.
+2025-09-14 07:17:10: 
+2025-09-14 07:17:10:   http://localhost:3000
+2025-09-14 07:17:10: 
+2025-09-14 07:17:10: Note that the development build is not optimized.
+2025-09-14 07:17:10: To create a production build, use npm run build.
+2025-09-14 07:17:10: 
+2025-09-14 07:17:10: webpack compiled successfully
+2025-09-14 07:17:10: Files successfully emitted, waiting for typecheck results...
+2025-09-14 07:17:10: Issues checking in progress...
+2025-09-14 07:17:11: No issues found.
+2025-09-14 07:29:20: Compiling...
+2025-09-14 07:29:21: Failed to compile.
+2025-09-14 07:29:21: 
+2025-09-14 07:29:21: Module not found: Error: Can't resolve './pages/Dashboard' in '/home/ubuntu/projects/sentiment-analysis-app/frontend/src'
+2025-09-14 07:29:21: ERROR in ./src/App.tsx 10:0-42
+2025-09-14 07:29:21: Module not found: Error: Can't resolve './pages/Dashboard' in '/home/ubuntu/projects/sentiment-analysis-app/frontend/src'
+2025-09-14 07:29:21: 
+2025-09-14 07:29:21: webpack compiled with 1 error
+2025-09-14 07:29:38: Compiling...
+2025-09-14 07:29:40: Failed to compile.
+2025-09-14 07:29:40: 
+2025-09-14 07:29:40: [eslint] 
+2025-09-14 07:29:40: src/pages/Dashboard.tsx
+2025-09-14 07:29:40: Syntax error: JSX element 'h3' has no corresponding closing tag (416:15)
+2025-09-14 07:29:40: ERROR in [eslint] 
+2025-09-14 07:29:40: src/pages/Dashboard.tsx
+2025-09-14 07:29:40:   Line 416:15:  Parsing error: JSX element 'h3' has no corresponding closing tag
+2025-09-14 07:29:40: 
+2025-09-14 07:29:40: webpack compiled with 1 error
+2025-09-14 07:29:40: Compiling...
+2025-09-14 07:29:41: Compiled with warnings.
+2025-09-14 07:29:41: 
+2025-09-14 07:29:41: [eslint] 
+2025-09-14 07:29:41: src/pages/Dashboard.tsx
+2025-09-14 07:29:41:   Line 8:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-14 07:29:41:   Line 8:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-14 07:29:41:   Line 8:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-14 07:29:41:   Line 53:6:  React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-14 07:29:41: 
+2025-09-14 07:29:41: Search for the keywords to learn more about each warning.
+2025-09-14 07:29:41: To ignore, add // eslint-disable-next-line to the line before.
+2025-09-14 07:29:41: 
+2025-09-14 07:29:41: WARNING in [eslint] 
+2025-09-14 07:29:41: src/pages/Dashboard.tsx
+2025-09-14 07:29:41:   Line 8:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-14 07:29:41:   Line 8:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-14 07:29:41:   Line 8:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-14 07:29:41:   Line 53:6:  React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-14 07:29:41: 
+2025-09-14 07:29:41: webpack compiled with 1 warning
+2025-09-14 07:29:42: Compiling...
+2025-09-14 07:29:42: Compiled with warnings.
+2025-09-14 07:29:42: 
+2025-09-14 07:29:42: [eslint] 
+2025-09-14 07:29:42: src/pages/Dashboard.tsx
+2025-09-14 07:29:42:   Line 8:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-14 07:29:42:   Line 8:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-14 07:29:42:   Line 8:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-14 07:29:42:   Line 53:6:  React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-14 07:29:42: 
+2025-09-14 07:29:42: Search for the keywords to learn more about each warning.
+2025-09-14 07:29:42: To ignore, add // eslint-disable-next-line to the line before.
+2025-09-14 07:29:42: 
+2025-09-14 07:29:42: WARNING in [eslint] 
+2025-09-14 07:29:42: src/pages/Dashboard.tsx
+2025-09-14 07:29:42:   Line 8:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-14 07:29:42:   Line 8:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-14 07:29:42:   Line 8:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-14 07:29:42:   Line 53:6:  React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-14 07:29:42: 
+2025-09-14 07:29:42: webpack compiled with 1 warning
+2025-09-14 07:32:18: 
+2025-09-14 07:32:18: > uganda-sentiment-dashboard@1.0.0 start
+2025-09-14 07:32:18: > react-scripts start
+2025-09-14 07:32:18: 
+2025-09-14 07:32:20: Starting the development server...
+2025-09-14 07:32:20: 
+2025-09-14 07:32:23: Compiled successfully!
+2025-09-14 07:32:23: 
+2025-09-14 07:32:23: You can now view uganda-sentiment-dashboard in the browser.
+2025-09-14 07:32:23: 
+2025-09-14 07:32:23:   http://localhost:3000
+2025-09-14 07:32:23: 
+2025-09-14 07:32:23: Note that the development build is not optimized.
+2025-09-14 07:32:23: To create a production build, use npm run build.
+2025-09-14 07:32:23: 
+2025-09-14 07:32:23: webpack compiled successfully
+2025-09-14 07:32:23: Files successfully emitted, waiting for typecheck results...
+2025-09-14 07:32:23: Issues checking in progress...
+2025-09-14 07:32:24: No issues found.
+2025-09-14 07:46:34: Compiling...
+2025-09-14 07:46:35: Failed to compile.
+2025-09-14 07:46:35: 
+2025-09-14 07:46:35: Module not found: Error: Can't resolve './pages/Dashboard' in '/home/ubuntu/projects/sentiment-analysis-app/frontend/src'
+2025-09-14 07:46:35: ERROR in ./src/App.tsx 10:0-42
+2025-09-14 07:46:35: Module not found: Error: Can't resolve './pages/Dashboard' in '/home/ubuntu/projects/sentiment-analysis-app/frontend/src'
+2025-09-14 07:46:35: 
+2025-09-14 07:46:35: webpack compiled with 1 error
+2025-09-14 07:46:46: Compiling...
+2025-09-14 07:46:48: Failed to compile.
+2025-09-14 07:46:48: 
+2025-09-14 07:46:48: [eslint] 
+2025-09-14 07:46:48: src/pages/Dashboard.tsx
+2025-09-14 07:46:48: Syntax error: Unterminated string literal (416:54)
+2025-09-14 07:46:48: ERROR in [eslint] 
+2025-09-14 07:46:48: src/pages/Dashboard.tsx
+2025-09-14 07:46:48:   Line 416:54:  Parsing error: Unterminated string literal
+2025-09-14 07:46:48: 
+2025-09-14 07:46:48: webpack compiled with 1 error
+2025-09-14 07:46:48: Compiling...
+2025-09-14 07:46:49: Compiled with warnings.
+2025-09-14 07:46:49: 
+2025-09-14 07:46:49: [eslint] 
+2025-09-14 07:46:49: src/pages/Dashboard.tsx
+2025-09-14 07:46:49:   Line 8:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-14 07:46:49:   Line 8:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-14 07:46:49:   Line 8:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-14 07:46:49:   Line 53:6:  React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-14 07:46:49: 
+2025-09-14 07:46:49: Search for the keywords to learn more about each warning.
+2025-09-14 07:46:49: To ignore, add // eslint-disable-next-line to the line before.
+2025-09-14 07:46:49: 
+2025-09-14 07:46:49: WARNING in [eslint] 
+2025-09-14 07:46:49: src/pages/Dashboard.tsx
+2025-09-14 07:46:49:   Line 8:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-14 07:46:49:   Line 8:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-14 07:46:49:   Line 8:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-14 07:46:49:   Line 53:6:  React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-14 07:46:49: 
+2025-09-14 07:46:49: webpack compiled with 1 warning
+2025-09-14 07:46:49: Compiling...
+2025-09-14 07:46:50: Compiled with warnings.
+2025-09-14 07:46:50: 
+2025-09-14 07:46:50: [eslint] 
+2025-09-14 07:46:50: src/pages/Dashboard.tsx
+2025-09-14 07:46:50:   Line 8:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-14 07:46:50:   Line 8:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-14 07:46:50:   Line 8:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-14 07:46:50:   Line 53:6:  React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-14 07:46:50: 
+2025-09-14 07:46:50: Search for the keywords to learn more about each warning.
+2025-09-14 07:46:50: To ignore, add // eslint-disable-next-line to the line before.
+2025-09-14 07:46:50: 
+2025-09-14 07:46:50: WARNING in [eslint] 
+2025-09-14 07:46:50: src/pages/Dashboard.tsx
+2025-09-14 07:46:50:   Line 8:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-14 07:46:50:   Line 8:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-14 07:46:50:   Line 8:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-14 07:46:50:   Line 53:6:  React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-14 07:46:50: 
+2025-09-14 07:46:50: webpack compiled with 1 warning
+2025-09-14 07:46:50: Compiling...
+2025-09-14 07:46:50: Compiled with warnings.
+2025-09-14 07:46:50: 
+2025-09-14 07:46:50: [eslint] 
+2025-09-14 07:46:50: src/pages/Dashboard.tsx
+2025-09-14 07:46:50:   Line 8:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-14 07:46:50:   Line 8:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-14 07:46:50:   Line 8:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-14 07:46:50:   Line 53:6:  React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-14 07:46:50: 
+2025-09-14 07:46:50: Search for the keywords to learn more about each warning.
+2025-09-14 07:46:50: To ignore, add // eslint-disable-next-line to the line before.
+2025-09-14 07:46:50: 
+2025-09-14 07:46:50: WARNING in [eslint] 
+2025-09-14 07:46:50: src/pages/Dashboard.tsx
+2025-09-14 07:46:50:   Line 8:10:  'Tweet' is defined but never used                                                                                                                @typescript-eslint/no-unused-vars
+2025-09-14 07:46:50:   Line 8:17:  'SentimentData' is defined but never used                                                                                                        @typescript-eslint/no-unused-vars
+2025-09-14 07:46:50:   Line 8:32:  'SentimentDistribution' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+2025-09-14 07:46:50:   Line 53:6:  React Hook useEffect has missing dependencies: 'fetchDashboardStats' and 'startAutoRefresh'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+2025-09-14 07:46:50: 
+2025-09-14 07:46:50: webpack compiled with 1 warning
+2025-09-14 07:50:25: 
+2025-09-14 07:50:25: > uganda-sentiment-dashboard@1.0.0 start
+2025-09-14 07:50:25: > react-scripts start
+2025-09-14 07:50:25: 
+2025-09-14 07:50:27: Starting the development server...
+2025-09-14 07:50:27: 
+2025-09-14 07:50:30: Compiled successfully!
+2025-09-14 07:50:30: 
+2025-09-14 07:50:30: You can now view uganda-sentiment-dashboard in the browser.
+2025-09-14 07:50:30: 
+2025-09-14 07:50:30:   http://localhost:3000
+2025-09-14 07:50:30: 
+2025-09-14 07:50:30: Note that the development build is not optimized.
+2025-09-14 07:50:30: To create a production build, use npm run build.
+2025-09-14 07:50:30: 
+2025-09-14 07:50:30: webpack compiled successfully
+2025-09-14 07:50:31: Files successfully emitted, waiting for typecheck results...
+2025-09-14 07:50:31: Issues checking in progress...
+2025-09-14 07:50:31: No issues found.

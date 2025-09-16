@@ -12524,3 +12524,274 @@
 2025-09-12 21:41:48: (node:4200) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
 2025-09-12 21:41:48: (Use `node --trace-deprecation ...` to show where the warning was created)
 2025-09-12 21:41:48: (node:4200) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2025-09-13 13:44:43: ERROR in src/App.tsx:4:19
+2025-09-13 13:44:43: TS2307: Cannot find module './pages/Login' or its corresponding type declarations.
+2025-09-13 13:44:43:     2 | import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom'
+2025-09-13 13:44:43:     3 | import { AuthProvider, useAuth } from './contexts/AuthContext'
+2025-09-13 13:44:43:   > 4 | import Login from './pages/Login'
+2025-09-13 13:44:43:       |                   ^^^^^^^^^^^^^^^
+2025-09-13 13:44:43:     5 | import Dashboard from './pages/Dashboard'
+2025-09-13 13:44:43:     6 | import '@n8n/chat/style.css'
+2025-09-13 13:44:43:     7 | import { createChat } from '@n8n/chat'
+2025-09-13 13:44:43: 
+2025-09-13 13:45:03: ERROR in src/App.tsx:4:19
+2025-09-13 13:45:03: TS2307: Cannot find module './pages/Login' or its corresponding type declarations.
+2025-09-13 13:45:03:     2 | import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom'
+2025-09-13 13:45:03:     3 | import { AuthProvider, useAuth } from './contexts/AuthContext'
+2025-09-13 13:45:03:   > 4 | import Login from './pages/Login'
+2025-09-13 13:45:03:       |                   ^^^^^^^^^^^^^^^
+2025-09-13 13:45:03:     5 | import Dashboard from './pages/Dashboard'
+2025-09-13 13:45:03:     6 | import '@n8n/chat/style.css'
+2025-09-13 13:45:03:     7 | import { createChat } from '@n8n/chat'
+2025-09-13 13:45:03: 
+2025-09-13 13:45:03: ERROR in src/App.tsx:5:23
+2025-09-13 13:45:03: TS2306: File '/home/ubuntu/projects/sentiment-analysis-app/frontend/src/pages/Dashboard.tsx' is not a module.
+2025-09-13 13:45:03:     3 | import { AuthProvider, useAuth } from './contexts/AuthContext'
+2025-09-13 13:45:03:     4 | import Login from './pages/Login'
+2025-09-13 13:45:03:   > 5 | import Dashboard from './pages/Dashboard'
+2025-09-13 13:45:03:       |                       ^^^^^^^^^^^^^^^^^^^
+2025-09-13 13:45:03:     6 | import '@n8n/chat/style.css'
+2025-09-13 13:45:03:     7 | import { createChat } from '@n8n/chat'
+2025-09-13 13:45:03:     8 | import { AI_ASSISTANT_CONFIG } from './config/ai-assistant'
+2025-09-13 13:45:03: 
+2025-09-13 13:45:03: ERROR in src/pages/Dashboard.tsx
+2025-09-13 13:45:03: TS1208: 'Dashboard.tsx' cannot be compiled under '--isolatedModules' because it is considered a global script file. Add an import, export, or an empty 'export {}' statement to make it a module.
+2025-09-13 13:45:03: 
+2025-09-13 13:45:05: ERROR in src/App.tsx:4:19
+2025-09-13 13:45:05: TS2307: Cannot find module './pages/Login' or its corresponding type declarations.
+2025-09-13 13:45:05:     2 | import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom'
+2025-09-13 13:45:05:     3 | import { AuthProvider, useAuth } from './contexts/AuthContext'
+2025-09-13 13:45:05:   > 4 | import Login from './pages/Login'
+2025-09-13 13:45:05:       |                   ^^^^^^^^^^^^^^^
+2025-09-13 13:45:05:     5 | import Dashboard from './pages/Dashboard'
+2025-09-13 13:45:05:     6 | import '@n8n/chat/style.css'
+2025-09-13 13:45:05:     7 | import { createChat } from '@n8n/chat'
+2025-09-13 13:45:05: 
+2025-09-13 13:54:07: (node:14555) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2025-09-13 13:54:07: (Use `node --trace-deprecation ...` to show where the warning was created)
+2025-09-13 13:54:07: (node:14555) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2025-09-13 14:14:00: (node:15219) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2025-09-13 14:14:00: (Use `node --trace-deprecation ...` to show where the warning was created)
+2025-09-13 14:14:00: (node:15219) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2025-09-14 06:41:09: ERROR in src/App.tsx:5:23
+2025-09-14 06:41:09: TS2307: Cannot find module './pages/Dashboard' or its corresponding type declarations.
+2025-09-14 06:41:09:     3 | import { AuthProvider, useAuth } from './contexts/AuthContext'
+2025-09-14 06:41:09:     4 | import Login from './pages/Login'
+2025-09-14 06:41:09:   > 5 | import Dashboard from './pages/Dashboard'
+2025-09-14 06:41:09:       |                       ^^^^^^^^^^^^^^^^^^^
+2025-09-14 06:41:09:     6 | import '@n8n/chat/style.css'
+2025-09-14 06:41:09:     7 | import { createChat } from '@n8n/chat'
+2025-09-14 06:41:09:     8 | import { AI_ASSISTANT_CONFIG } from './config/ai-assistant'
+2025-09-14 06:41:09: 
+2025-09-14 06:41:22: ERROR in src/App.tsx:5:23
+2025-09-14 06:41:22: TS2307: Cannot find module './pages/Dashboard' or its corresponding type declarations.
+2025-09-14 06:41:22:     3 | import { AuthProvider, useAuth } from './contexts/AuthContext'
+2025-09-14 06:41:22:     4 | import Login from './pages/Login'
+2025-09-14 06:41:22:   > 5 | import Dashboard from './pages/Dashboard'
+2025-09-14 06:41:22:       |                       ^^^^^^^^^^^^^^^^^^^
+2025-09-14 06:41:22:     6 | import '@n8n/chat/style.css'
+2025-09-14 06:41:22:     7 | import { createChat } from '@n8n/chat'
+2025-09-14 06:41:22:     8 | import { AI_ASSISTANT_CONFIG } from './config/ai-assistant'
+2025-09-14 06:41:22: 
+2025-09-14 06:41:24: ERROR in src/App.tsx:5:23
+2025-09-14 06:41:24: TS2307: Cannot find module './pages/Dashboard' or its corresponding type declarations.
+2025-09-14 06:41:24:     3 | import { AuthProvider, useAuth } from './contexts/AuthContext'
+2025-09-14 06:41:24:     4 | import Login from './pages/Login'
+2025-09-14 06:41:24:   > 5 | import Dashboard from './pages/Dashboard'
+2025-09-14 06:41:24:       |                       ^^^^^^^^^^^^^^^^^^^
+2025-09-14 06:41:24:     6 | import '@n8n/chat/style.css'
+2025-09-14 06:41:24:     7 | import { createChat } from '@n8n/chat'
+2025-09-14 06:41:24:     8 | import { AI_ASSISTANT_CONFIG } from './config/ai-assistant'
+2025-09-14 06:41:24: 
+2025-09-14 06:46:42: (node:23964) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2025-09-14 06:46:42: (Use `node --trace-deprecation ...` to show where the warning was created)
+2025-09-14 06:46:42: (node:23964) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2025-09-14 07:02:59: ERROR in src/App.tsx:5:23
+2025-09-14 07:02:59: TS2307: Cannot find module './pages/Dashboard' or its corresponding type declarations.
+2025-09-14 07:02:59:     3 | import { AuthProvider, useAuth } from './contexts/AuthContext'
+2025-09-14 07:02:59:     4 | import Login from './pages/Login'
+2025-09-14 07:02:59:   > 5 | import Dashboard from './pages/Dashboard'
+2025-09-14 07:02:59:       |                       ^^^^^^^^^^^^^^^^^^^
+2025-09-14 07:02:59:     6 | import '@n8n/chat/style.css'
+2025-09-14 07:02:59:     7 | import { createChat } from '@n8n/chat'
+2025-09-14 07:02:59:     8 | import { AI_ASSISTANT_CONFIG } from './config/ai-assistant'
+2025-09-14 07:02:59: 
+2025-09-14 07:03:13: ERROR in src/App.tsx:5:23
+2025-09-14 07:03:13: TS2307: Cannot find module './pages/Dashboard' or its corresponding type declarations.
+2025-09-14 07:03:13:     3 | import { AuthProvider, useAuth } from './contexts/AuthContext'
+2025-09-14 07:03:13:     4 | import Login from './pages/Login'
+2025-09-14 07:03:13:   > 5 | import Dashboard from './pages/Dashboard'
+2025-09-14 07:03:13:       |                       ^^^^^^^^^^^^^^^^^^^
+2025-09-14 07:03:13:     6 | import '@n8n/chat/style.css'
+2025-09-14 07:03:13:     7 | import { createChat } from '@n8n/chat'
+2025-09-14 07:03:13:     8 | import { AI_ASSISTANT_CONFIG } from './config/ai-assistant'
+2025-09-14 07:03:13: 
+2025-09-14 07:03:13: ERROR in src/App.tsx:5:23
+2025-09-14 07:03:13: TS2307: Cannot find module './pages/Dashboard' or its corresponding type declarations.
+2025-09-14 07:03:13:     3 | import { AuthProvider, useAuth } from './contexts/AuthContext'
+2025-09-14 07:03:13:     4 | import Login from './pages/Login'
+2025-09-14 07:03:13:   > 5 | import Dashboard from './pages/Dashboard'
+2025-09-14 07:03:13:       |                       ^^^^^^^^^^^^^^^^^^^
+2025-09-14 07:03:13:     6 | import '@n8n/chat/style.css'
+2025-09-14 07:03:13:     7 | import { createChat } from '@n8n/chat'
+2025-09-14 07:03:13:     8 | import { AI_ASSISTANT_CONFIG } from './config/ai-assistant'
+2025-09-14 07:03:13: 
+2025-09-14 07:03:15: ERROR in src/App.tsx:5:23
+2025-09-14 07:03:15: TS2307: Cannot find module './pages/Dashboard' or its corresponding type declarations.
+2025-09-14 07:03:15:     3 | import { AuthProvider, useAuth } from './contexts/AuthContext'
+2025-09-14 07:03:15:     4 | import Login from './pages/Login'
+2025-09-14 07:03:15:   > 5 | import Dashboard from './pages/Dashboard'
+2025-09-14 07:03:15:       |                       ^^^^^^^^^^^^^^^^^^^
+2025-09-14 07:03:15:     6 | import '@n8n/chat/style.css'
+2025-09-14 07:03:15:     7 | import { createChat } from '@n8n/chat'
+2025-09-14 07:03:15:     8 | import { AI_ASSISTANT_CONFIG } from './config/ai-assistant'
+2025-09-14 07:03:15: 
+2025-09-14 07:13:23: ERROR in src/App.tsx:5:23
+2025-09-14 07:13:23: TS2307: Cannot find module './pages/Dashboard' or its corresponding type declarations.
+2025-09-14 07:13:23:     3 | import { AuthProvider, useAuth } from './contexts/AuthContext'
+2025-09-14 07:13:23:     4 | import Login from './pages/Login'
+2025-09-14 07:13:23:   > 5 | import Dashboard from './pages/Dashboard'
+2025-09-14 07:13:23:       |                       ^^^^^^^^^^^^^^^^^^^
+2025-09-14 07:13:23:     6 | import '@n8n/chat/style.css'
+2025-09-14 07:13:23:     7 | import { createChat } from '@n8n/chat'
+2025-09-14 07:13:23:     8 | import { AI_ASSISTANT_CONFIG } from './config/ai-assistant'
+2025-09-14 07:13:23: 
+2025-09-14 07:13:41: ERROR in src/App.tsx:5:23
+2025-09-14 07:13:41: TS2307: Cannot find module './pages/Dashboard' or its corresponding type declarations.
+2025-09-14 07:13:41:     3 | import { AuthProvider, useAuth } from './contexts/AuthContext'
+2025-09-14 07:13:41:     4 | import Login from './pages/Login'
+2025-09-14 07:13:41:   > 5 | import Dashboard from './pages/Dashboard'
+2025-09-14 07:13:41:       |                       ^^^^^^^^^^^^^^^^^^^
+2025-09-14 07:13:41:     6 | import '@n8n/chat/style.css'
+2025-09-14 07:13:41:     7 | import { createChat } from '@n8n/chat'
+2025-09-14 07:13:41:     8 | import { AI_ASSISTANT_CONFIG } from './config/ai-assistant'
+2025-09-14 07:13:41: 
+2025-09-14 07:13:42: ERROR in src/App.tsx:5:23
+2025-09-14 07:13:42: TS2307: Cannot find module './pages/Dashboard' or its corresponding type declarations.
+2025-09-14 07:13:42:     3 | import { AuthProvider, useAuth } from './contexts/AuthContext'
+2025-09-14 07:13:42:     4 | import Login from './pages/Login'
+2025-09-14 07:13:42:   > 5 | import Dashboard from './pages/Dashboard'
+2025-09-14 07:13:42:       |                       ^^^^^^^^^^^^^^^^^^^
+2025-09-14 07:13:42:     6 | import '@n8n/chat/style.css'
+2025-09-14 07:13:42:     7 | import { createChat } from '@n8n/chat'
+2025-09-14 07:13:42:     8 | import { AI_ASSISTANT_CONFIG } from './config/ai-assistant'
+2025-09-14 07:13:42: 
+2025-09-14 07:13:44: ERROR in src/App.tsx:5:23
+2025-09-14 07:13:44: TS2307: Cannot find module './pages/Dashboard' or its corresponding type declarations.
+2025-09-14 07:13:44:     3 | import { AuthProvider, useAuth } from './contexts/AuthContext'
+2025-09-14 07:13:44:     4 | import Login from './pages/Login'
+2025-09-14 07:13:44:   > 5 | import Dashboard from './pages/Dashboard'
+2025-09-14 07:13:44:       |                       ^^^^^^^^^^^^^^^^^^^
+2025-09-14 07:13:44:     6 | import '@n8n/chat/style.css'
+2025-09-14 07:13:44:     7 | import { createChat } from '@n8n/chat'
+2025-09-14 07:13:44:     8 | import { AI_ASSISTANT_CONFIG } from './config/ai-assistant'
+2025-09-14 07:13:44: 
+2025-09-14 07:13:44: ERROR in src/App.tsx:5:23
+2025-09-14 07:13:44: TS2307: Cannot find module './pages/Dashboard' or its corresponding type declarations.
+2025-09-14 07:13:44:     3 | import { AuthProvider, useAuth } from './contexts/AuthContext'
+2025-09-14 07:13:44:     4 | import Login from './pages/Login'
+2025-09-14 07:13:44:   > 5 | import Dashboard from './pages/Dashboard'
+2025-09-14 07:13:44:       |                       ^^^^^^^^^^^^^^^^^^^
+2025-09-14 07:13:44:     6 | import '@n8n/chat/style.css'
+2025-09-14 07:13:44:     7 | import { createChat } from '@n8n/chat'
+2025-09-14 07:13:44:     8 | import { AI_ASSISTANT_CONFIG } from './config/ai-assistant'
+2025-09-14 07:13:44: 
+2025-09-14 07:17:07: (node:24791) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2025-09-14 07:17:07: (Use `node --trace-deprecation ...` to show where the warning was created)
+2025-09-14 07:17:07: (node:24791) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2025-09-14 07:29:21: ERROR in src/App.tsx:5:23
+2025-09-14 07:29:21: TS2307: Cannot find module './pages/Dashboard' or its corresponding type declarations.
+2025-09-14 07:29:21:     3 | import { AuthProvider, useAuth } from './contexts/AuthContext'
+2025-09-14 07:29:21:     4 | import Login from './pages/Login'
+2025-09-14 07:29:21:   > 5 | import Dashboard from './pages/Dashboard'
+2025-09-14 07:29:21:       |                       ^^^^^^^^^^^^^^^^^^^
+2025-09-14 07:29:21:     6 | import '@n8n/chat/style.css'
+2025-09-14 07:29:21:     7 | import { createChat } from '@n8n/chat'
+2025-09-14 07:29:21:     8 | import { AI_ASSISTANT_CONFIG } from './config/ai-assistant'
+2025-09-14 07:29:21: 
+2025-09-14 07:29:40: ERROR in src/App.tsx:5:23
+2025-09-14 07:29:40: TS2307: Cannot find module './pages/Dashboard' or its corresponding type declarations.
+2025-09-14 07:29:40:     3 | import { AuthProvider, useAuth } from './contexts/AuthContext'
+2025-09-14 07:29:40:     4 | import Login from './pages/Login'
+2025-09-14 07:29:40:   > 5 | import Dashboard from './pages/Dashboard'
+2025-09-14 07:29:40:       |                       ^^^^^^^^^^^^^^^^^^^
+2025-09-14 07:29:40:     6 | import '@n8n/chat/style.css'
+2025-09-14 07:29:40:     7 | import { createChat } from '@n8n/chat'
+2025-09-14 07:29:40:     8 | import { AI_ASSISTANT_CONFIG } from './config/ai-assistant'
+2025-09-14 07:29:40: 
+2025-09-14 07:29:41: ERROR in src/App.tsx:5:23
+2025-09-14 07:29:41: TS2307: Cannot find module './pages/Dashboard' or its corresponding type declarations.
+2025-09-14 07:29:41:     3 | import { AuthProvider, useAuth } from './contexts/AuthContext'
+2025-09-14 07:29:41:     4 | import Login from './pages/Login'
+2025-09-14 07:29:41:   > 5 | import Dashboard from './pages/Dashboard'
+2025-09-14 07:29:41:       |                       ^^^^^^^^^^^^^^^^^^^
+2025-09-14 07:29:41:     6 | import '@n8n/chat/style.css'
+2025-09-14 07:29:41:     7 | import { createChat } from '@n8n/chat'
+2025-09-14 07:29:41:     8 | import { AI_ASSISTANT_CONFIG } from './config/ai-assistant'
+2025-09-14 07:29:41: 
+2025-09-14 07:29:42: ERROR in src/App.tsx:5:23
+2025-09-14 07:29:42: TS2307: Cannot find module './pages/Dashboard' or its corresponding type declarations.
+2025-09-14 07:29:42:     3 | import { AuthProvider, useAuth } from './contexts/AuthContext'
+2025-09-14 07:29:42:     4 | import Login from './pages/Login'
+2025-09-14 07:29:42:   > 5 | import Dashboard from './pages/Dashboard'
+2025-09-14 07:29:42:       |                       ^^^^^^^^^^^^^^^^^^^
+2025-09-14 07:29:42:     6 | import '@n8n/chat/style.css'
+2025-09-14 07:29:42:     7 | import { createChat } from '@n8n/chat'
+2025-09-14 07:29:42:     8 | import { AI_ASSISTANT_CONFIG } from './config/ai-assistant'
+2025-09-14 07:29:42: 
+2025-09-14 07:32:19: (node:25228) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2025-09-14 07:32:19: (Use `node --trace-deprecation ...` to show where the warning was created)
+2025-09-14 07:32:19: (node:25228) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2025-09-14 07:46:35: ERROR in src/App.tsx:5:23
+2025-09-14 07:46:35: TS2307: Cannot find module './pages/Dashboard' or its corresponding type declarations.
+2025-09-14 07:46:35:     3 | import { AuthProvider, useAuth } from './contexts/AuthContext'
+2025-09-14 07:46:35:     4 | import Login from './pages/Login'
+2025-09-14 07:46:35:   > 5 | import Dashboard from './pages/Dashboard'
+2025-09-14 07:46:35:       |                       ^^^^^^^^^^^^^^^^^^^
+2025-09-14 07:46:35:     6 | import '@n8n/chat/style.css'
+2025-09-14 07:46:35:     7 | import { createChat } from '@n8n/chat'
+2025-09-14 07:46:35:     8 | import { AI_ASSISTANT_CONFIG } from './config/ai-assistant'
+2025-09-14 07:46:35: 
+2025-09-14 07:46:48: ERROR in src/App.tsx:5:23
+2025-09-14 07:46:48: TS2307: Cannot find module './pages/Dashboard' or its corresponding type declarations.
+2025-09-14 07:46:48:     3 | import { AuthProvider, useAuth } from './contexts/AuthContext'
+2025-09-14 07:46:48:     4 | import Login from './pages/Login'
+2025-09-14 07:46:48:   > 5 | import Dashboard from './pages/Dashboard'
+2025-09-14 07:46:48:       |                       ^^^^^^^^^^^^^^^^^^^
+2025-09-14 07:46:48:     6 | import '@n8n/chat/style.css'
+2025-09-14 07:46:48:     7 | import { createChat } from '@n8n/chat'
+2025-09-14 07:46:48:     8 | import { AI_ASSISTANT_CONFIG } from './config/ai-assistant'
+2025-09-14 07:46:48: 
+2025-09-14 07:46:49: ERROR in src/App.tsx:5:23
+2025-09-14 07:46:49: TS2307: Cannot find module './pages/Dashboard' or its corresponding type declarations.
+2025-09-14 07:46:49:     3 | import { AuthProvider, useAuth } from './contexts/AuthContext'
+2025-09-14 07:46:49:     4 | import Login from './pages/Login'
+2025-09-14 07:46:49:   > 5 | import Dashboard from './pages/Dashboard'
+2025-09-14 07:46:49:       |                       ^^^^^^^^^^^^^^^^^^^
+2025-09-14 07:46:49:     6 | import '@n8n/chat/style.css'
+2025-09-14 07:46:49:     7 | import { createChat } from '@n8n/chat'
+2025-09-14 07:46:49:     8 | import { AI_ASSISTANT_CONFIG } from './config/ai-assistant'
+2025-09-14 07:46:49: 
+2025-09-14 07:46:50: ERROR in src/App.tsx:5:23
+2025-09-14 07:46:50: TS2307: Cannot find module './pages/Dashboard' or its corresponding type declarations.
+2025-09-14 07:46:50:     3 | import { AuthProvider, useAuth } from './contexts/AuthContext'
+2025-09-14 07:46:50:     4 | import Login from './pages/Login'
+2025-09-14 07:46:50:   > 5 | import Dashboard from './pages/Dashboard'
+2025-09-14 07:46:50:       |                       ^^^^^^^^^^^^^^^^^^^
+2025-09-14 07:46:50:     6 | import '@n8n/chat/style.css'
+2025-09-14 07:46:50:     7 | import { createChat } from '@n8n/chat'
+2025-09-14 07:46:50:     8 | import { AI_ASSISTANT_CONFIG } from './config/ai-assistant'
+2025-09-14 07:46:50: 
+2025-09-14 07:46:50: ERROR in src/App.tsx:5:23
+2025-09-14 07:46:50: TS2307: Cannot find module './pages/Dashboard' or its corresponding type declarations.
+2025-09-14 07:46:50:     3 | import { AuthProvider, useAuth } from './contexts/AuthContext'
+2025-09-14 07:46:50:     4 | import Login from './pages/Login'
+2025-09-14 07:46:50:   > 5 | import Dashboard from './pages/Dashboard'
+2025-09-14 07:46:50:       |                       ^^^^^^^^^^^^^^^^^^^
+2025-09-14 07:46:50:     6 | import '@n8n/chat/style.css'
+2025-09-14 07:46:50:     7 | import { createChat } from '@n8n/chat'
+2025-09-14 07:46:50:     8 | import { AI_ASSISTANT_CONFIG } from './config/ai-assistant'
+2025-09-14 07:46:50: 
+2025-09-14 07:50:27: (node:25763) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+2025-09-14 07:50:27: (Use `node --trace-deprecation ...` to show where the warning was created)
+2025-09-14 07:50:27: (node:25763) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.

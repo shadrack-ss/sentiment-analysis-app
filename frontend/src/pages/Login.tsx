@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
-import { Mail, Lock, Eye, EyeOff, TrendingUp } from 'lucide-react'
-// import AIAssistant from '../components/AIAssistant'
+import { Mail, Lock, Eye, EyeOff } from 'lucide-react'
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('')
@@ -38,13 +37,11 @@ const Login: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 to-blue-50 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-yellow-50 px-4">
       <div className="max-w-md w-full space-y-8">
         {/* Header */}
         <div className="text-center">
-          <div className="mx-auto h-16 w-16 bg-primary-600 rounded-2xl flex items-center justify-center mb-4">
-            <TrendingUp className="h-8 w-8 text-white" />
-          </div>
+          <img src="/logo.png" alt="Logo" className="mx-auto h-16 w-16 rounded-md mb-4" />
           <h2 className="text-3xl font-bold text-gray-900">
             {isSignUp ? 'Create Account' : 'Welcome Back'}
           </h2>
@@ -149,12 +146,8 @@ const Login: React.FC = () => {
         {/* Footer */}
         <div className="text-center text-sm text-gray-500">
           <p>Uganda Political Sentiment Analysis Dashboard</p>
-          <p className="mt-1">Powered by Supabase & React</p>
         </div>
       </div>
-
-      {/* AI Assistant - Fixed position overlay (now provided by @n8n/chat) */}
-      {/* <AIAssistant /> */}
     </div>
   )
 }
