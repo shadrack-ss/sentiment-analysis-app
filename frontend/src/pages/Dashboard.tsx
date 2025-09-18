@@ -187,7 +187,8 @@ const Dashboard: React.FC = () => {
     { id: 'overview', label: 'Overview', icon: TrendingUp },
     { id: 'tweets', label: 'Tweets', icon: BarChart3 },
     { id: 'custom-search', label: 'Custom Search', icon: Search },
-    { id: 'youtube', label: 'YouTube', icon: MonitorPlay }
+    { id: 'youtube', label: 'YouTube', icon: MonitorPlay },
+    { id: 'send-sms', label: 'Send SMS', icon: Users }
   ]
 
   return (
@@ -240,6 +241,7 @@ const Dashboard: React.FC = () => {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
+        {/* Send SMS Card moved to its own tab */}
         {/* Refresh Controls - Hidden on mobile */}
         <div className="hidden sm:block">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4 sm:mb-6 space-y-4 lg:space-y-0">
@@ -393,6 +395,11 @@ const Dashboard: React.FC = () => {
 
         {/* Tab Content */}
         <div className="space-y-6 sm:space-y-8">
+          {activeTab === 'send-sms' && (
+            <div className="card p-4 sm:p-6">
+              <SendSmsCard />
+            </div>
+          )}
           {activeTab === 'overview' && (
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
               <div className="card p-4 sm:p-6">
@@ -705,6 +712,100 @@ const VideoCard: React.FC<VideoCardProps> = ({ video }) => {
       >
         Watch on YouTube
       </a>
+    </div>
+  );
+};
+
+interface SendSmsResponse {
+  success?: boolean;
+  message?: string;
+  error?: string;
+}
+
+const SendSmsCard: React.FC = () => {
+  const [message, setMessage] = useState('');
+  // Remove targetSegment state
+  const [sendTime, setSendTime] = useState('immediate');
+  const [loading, setLoading] = useState(false);
+  const [feedback, setFeedback] = useState<null | { type: 'success' | 'error'; text: string }>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setFeedback(null);
+    try {
+      const response = await fetch('http://n8n.nrmcampaign.com:5678/webhook/voter-mobilization-sms', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          type: 'manual',
+          message,
+          target_segment: 'all_voters', // Always send all_voters
+          send_time: sendTime,
+        }),
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data: SendSmsResponse = await response.json();
+      setFeedback({ type: 'success', text: data.message || 'Message sent successfully!' });
+      setMessage('');
+    } catch (error: any) {
+      setFeedback({ type: 'error', text: error.message || 'Failed to send message.' });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="card p-4 sm:p-6">
+      <h3 className="text-lg font-semibold text-gray-900 mb-4">Send Voter Mobilization SMS</h3>
+      <form className="flex flex-col space-y-4" onSubmit={handleSubmit}>
+        <textarea
+          className="input-field min-h-[80px]"
+          placeholder="Write your SMS message here..."
+          value={message}
+          onChange={e => setMessage(e.target.value)}
+          required
+          maxLength={160}
+        />
+        {/* Remove target segment dropdown */}
+        <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col">
+            <label className="text-sm text-gray-700 mb-1">Send Time</label>
+            <select
+              className="input-field"
+              value={sendTime}
+              onChange={e => setSendTime(e.target.value)}
+              required
+            >
+              <option value="immediate">Immediate</option>
+              <option value="scheduled">Scheduled (future feature)</option>
+            </select>
+          </div>
+        </div>
+        <button
+          type="submit"
+          className="btn-primary bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold py-2 px-4 rounded-lg flex items-center justify-center"
+          disabled={loading || !message.trim()}
+        >
+          {loading ? (
+            <svg className="animate-spin h-5 w-5 text-gray-900 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+          ) : null}
+          Send SMS
+        </button>
+        {feedback && (
+          <div className={`mt-2 text-sm ${feedback.type === 'success' ? 'text-success-700' : 'text-danger-700'}`}>
+            {feedback.text}
+          </div>
+        )}
+      </form>
+      <div className="text-xs text-gray-500 mt-2">Max 160 characters. Message will be sent to all voters.</div>
     </div>
   );
 };
