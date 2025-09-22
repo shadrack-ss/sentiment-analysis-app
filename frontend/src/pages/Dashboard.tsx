@@ -221,12 +221,13 @@ const Dashboard: React.FC = () => {
 
             {/* Right Section */}
             <div className="flex items-center space-x-2">
-              <span className="text-sm font-medium text-gray-900">{user?.email}</span>
+              <span className="hidden sm:inline text-sm font-medium text-gray-900">{user?.email}</span>
               <button
                 onClick={handleSignOut}
                 className="p-2 text-gray-900 hover:bg-yellow-300 rounded-md text-sm font-medium"
+                aria-label="Sign out"
               >
-                Sign out
+                <LogOut className="h-5 w-5" />
               </button>
             </div>
           </div>
