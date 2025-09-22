@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { useAuth } from '../contexts/AuthContext'
-import { LogOut, Search, TrendingUp, Users, BarChart3, MonitorPlay, RefreshCw, Clock } from 'lucide-react'
-import SentimentTimeline from '../components/SentimentTimeline'
-import SentimentPieChart from '../components/SentimentPieChart'
-import TweetsTable from '../components/TweetsTable'
-import { supabase } from '../lib/supabase'
-import { Tweet, SentimentData, SentimentDistribution } from '../lib/supabase'
-import '@n8n/chat/style.css'
-import { AI_ASSISTANT_CONFIG } from '../config/ai-assistant'
+import React, { useState, useEffect, useRef } from 'react';
+import { useAuth } from '../contexts/AuthContext';
+import { LogOut, Search, TrendingUp, Users, BarChart3, MonitorPlay, RefreshCw, Clock, Menu } from 'lucide-react';
+import SentimentTimeline from '../components/SentimentTimeline';
+import SentimentPieChart from '../components/SentimentPieChart';
+import TweetsTable from '../components/TweetsTable';
+import { supabase } from '../lib/supabase';
+import { Tweet, SentimentData, SentimentDistribution } from '../lib/supabase';
+import '@n8n/chat/style.css';
+import { AI_ASSISTANT_CONFIG } from '../config/ai-assistant';
 
 interface AgentTweetResponse {
   "Tweet by": string;
@@ -22,232 +22,263 @@ interface AgentTweetResponse {
 }
 
 const Dashboard: React.FC = () => {
-  const { user, signOut } = useAuth()
-  const [activeTab, setActiveTab] = useState('overview')
-  const [loading, setLoading] = useState(true)
-  const [lastRefresh, setLastRefresh] = useState<Date>(new Date())
-  const [nextRefresh, setNextRefresh] = useState<Date>(new Date())
-  const [autoRefreshEnabled, setAutoRefreshEnabled] = useState(true)
-  const [refreshInterval, setRefreshInterval] = useState(300000) // 5 minutes default
-  const refreshIntervalRef = useRef<NodeJS.Timeout | null>(null)
+  const { user, signOut } = useAuth();
+  const [activeTab, setActiveTab] = useState('overview');
+  const [loading, setLoading] = useState(true);
+  const [lastRefresh, setLastRefresh] = useState<Date>(new Date());
+  const [nextRefresh, setNextRefresh] = useState<Date>(new Date());
+  const [autoRefreshEnabled, setAutoRefreshEnabled] = useState(true);
+  const [refreshInterval, setRefreshInterval] = useState(300000); // 5 minutes default
+  const refreshIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const [stats, setStats] = useState({
     totalTweets: 0,
     totalUsers: 0,
     averageSentiment: 0,
-    factChecked: 0
-  })
+    factChecked: 0,
+  });
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
-    fetchDashboardStats()
-    
-    // Set up auto-refresh
+    fetchDashboardStats();
+
     if (autoRefreshEnabled) {
-      startAutoRefresh()
+      startAutoRefresh();
     }
 
     return () => {
       if (refreshIntervalRef.current) {
-        clearInterval(refreshIntervalRef.current)
+        clearInterval(refreshIntervalRef.current);
       }
-    }
-  }, [autoRefreshEnabled, refreshInterval])
+    };
+  }, [autoRefreshEnabled, refreshInterval]);
 
   const startAutoRefresh = () => {
     if (refreshIntervalRef.current) {
-      clearInterval(refreshIntervalRef.current)
+      clearInterval(refreshIntervalRef.current);
     }
-    
+
     if (autoRefreshEnabled) {
       refreshIntervalRef.current = setInterval(() => {
-        fetchDashboardStats()
-      }, refreshInterval)
-      
-      // Calculate next refresh time
-      const next = new Date(Date.now() + refreshInterval)
-      setNextRefresh(next)
+        fetchDashboardStats();
+      }, refreshInterval);
+
+      const next = new Date(Date.now() + refreshInterval);
+      setNextRefresh(next);
     }
-  }
+  };
 
   const stopAutoRefresh = () => {
     if (refreshIntervalRef.current) {
-      clearInterval(refreshIntervalRef.current)
-      refreshIntervalRef.current = null
+      clearInterval(refreshIntervalRef.current);
+      refreshIntervalRef.current = null;
     }
-  }
+  };
 
   const handleAutoRefreshToggle = () => {
-    const newState = !autoRefreshEnabled
-    setAutoRefreshEnabled(newState)
-    
+    const newState = !autoRefreshEnabled;
+    setAutoRefreshEnabled(newState);
+
     if (newState) {
-      startAutoRefresh()
+      startAutoRefresh();
     } else {
-      stopAutoRefresh()
+      stopAutoRefresh();
     }
-  }
+  };
 
   const handleManualRefresh = async () => {
-    await fetchDashboardStats()
-  }
+    await fetchDashboardStats();
+  };
 
   const formatTimeUntilNext = () => {
-    const now = new Date()
-    const diff = nextRefresh.getTime() - now.getTime()
-    
-    if (diff <= 0) return 'Refreshing...'
-    
-    const minutes = Math.floor(diff / 60000)
-    const seconds = Math.floor((diff % 60000) / 1000)
-    
-    return `${minutes}:${seconds.toString().padStart(2, '0')}`
-  }
+    const now = new Date();
+    const diff = nextRefresh.getTime() - now.getTime();
+
+    if (diff <= 0) return 'Refreshing...';
+
+    const minutes = Math.floor(diff / 60000);
+    const seconds = Math.floor((diff % 60000) / 1000);
+
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  };
 
   const fetchDashboardStats = async () => {
     try {
-      setLoading(true)
-      
-      // Get total tweets count
+      setLoading(true);
+
       const { count: tweetsCount } = await supabase
         .from('nrm_tweets_kb')
-        .select('*', { count: 'exact', head: true })
+        .select('*', { count: 'exact', head: true });
 
-      // Get unique users count
       const { count: usersCount } = await supabase
         .from('nrm_tweets_kb')
-        .select('username', { count: 'exact', head: true })
+        .select('username', { count: 'exact', head: true });
 
-      // Get fact-checked tweets count
       const { count: factCheckedCount } = await supabase
         .from('nrm_tweets_kb')
         .select('*', { count: 'exact', head: true })
-        .eq('fact_checked', true)
+        .eq('fact_checked', true);
 
-      // Get average sentiment (sentiment_score is now categorical)
       const { data: sentimentData } = await supabase
         .from('nrm_tweets_kb')
         .select('sentiment_score')
         .not('sentiment_score', 'is', null)
-        .not('sentiment_score', 'eq', '')
+        .not('sentiment_score', 'eq', '');
 
-      const avgSentiment = sentimentData && sentimentData.length > 0
-        ? sentimentData.reduce((sum, item) => {
-            // Convert categorical sentiment to numeric values for calculations
-            let score = 0
-            if (item.sentiment_score === 'Positive') {
-              score = 1
-            } else if (item.sentiment_score === 'Negative') {
-              score = -1
-            } else if (item.sentiment_score === 'Neutral') {
-              score = 0
-            }
-            return sum + score
-          }, 0) / sentimentData.length
-        : 0
+      const avgSentiment =
+        sentimentData && sentimentData.length > 0
+          ? sentimentData.reduce((sum, item) => {
+              let score = 0;
+              if (item.sentiment_score === 'Positive') {
+                score = 1;
+              } else if (item.sentiment_score === 'Negative') {
+                score = -1;
+              } else if (item.sentiment_score === 'Neutral') {
+                score = 0;
+              }
+              return sum + score;
+            }, 0) / sentimentData.length
+          : 0;
 
       setStats({
         totalTweets: tweetsCount || 0,
         totalUsers: usersCount || 0,
         averageSentiment: Math.round(avgSentiment * 100) / 100,
-        factChecked: factCheckedCount || 0
-      })
-      
-      setLastRefresh(new Date())
-      
-      // Update next refresh time
+        factChecked: factCheckedCount || 0,
+      });
+
+      setLastRefresh(new Date());
+
       if (autoRefreshEnabled) {
-        const next = new Date(Date.now() + refreshInterval)
-        setNextRefresh(next)
+        const next = new Date(Date.now() + refreshInterval);
+        setNextRefresh(next);
       }
     } catch (error) {
-      console.error('Error fetching dashboard stats:', error)
+      console.error('Error fetching dashboard stats:', error);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
-  // Update countdown timer every second
   useEffect(() => {
     const timer = setInterval(() => {
       if (autoRefreshEnabled) {
-        // Force re-render to update countdown
-        setNextRefresh(prev => new Date(prev.getTime()))
+        setNextRefresh((prev) => new Date(prev.getTime()));
       }
-    }, 1000)
+    }, 1000);
 
-    return () => clearInterval(timer)
-  }, [autoRefreshEnabled])
-
-  // Chat is initialized and managed at App root
+    return () => clearInterval(timer);
+  }, [autoRefreshEnabled]);
 
   const handleSignOut = async () => {
-    await signOut()
-  }
+    await signOut();
+  };
 
   const tabs = [
     { id: 'overview', label: 'Overview', icon: TrendingUp },
     { id: 'tweets', label: 'Tweets', icon: BarChart3 },
     { id: 'custom-search', label: 'Custom Search', icon: Search },
     { id: 'youtube', label: 'YouTube', icon: MonitorPlay },
-    { id: 'send-sms', label: 'Send SMS', icon: Users }
-  ]
+    { id: 'send-sms', label: 'Send SMS', icon: Users },
+  ];
 
   return (
-    <div className="min-h-screen bg-yellow-50">
-      {/* Header */}
-      <header className="bg-yellow-400 shadow-soft border-b border-yellow-500">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16 py-4 sm:py-0">
-            <div className="flex items-center">
-              <img
-                src="/logo.png"
-                alt="Logo"
-                className="h-8 w-8 mr-3"
-                onError={() => console.error('Failed to load logo.png')}
-              />
-              <TrendingUp className="h-8 w-8 text-gray-900 mr-3" />
-              <h1 className="text-xl sm:text-2xl font-bold text-gray-900">
-                Sentiment Dashboard
-              </h1>
-            </div>
-            
-            {/* Mobile: Just logout icon, Desktop: Full logout button with email */}
-            <div className="flex items-center space-x-4">
-              {/* Email - hidden on mobile */}
-              <span className="hidden sm:block text-sm text-gray-900">
-                {user?.email}
-              </span>
-              
-              {/* Mobile: Icon only, Desktop: Full button */}
+    <div className="min-h-screen bg-yellow-50 flex flex-col">
+      {/* Responsive Topbar */}
+      <nav className="bg-yellow-400 shadow-md">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4">
+          <div className="flex items-center justify-between h-16">
+            {/* Left Section */}
+            <div className="flex items-center space-x-2 sm:space-x-4">
               <button
-                onClick={handleSignOut}
-                className="sm:hidden p-2 text-gray-900 hover:text-gray-700 hover:bg-yellow-500 rounded-lg transition-colors duration-200"
-                title="Sign Out"
+                className="lg:hidden p-2 rounded-md text-gray-900 hover:bg-yellow-300"
+                onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+                aria-expanded={isSidebarOpen}
+                aria-label="Toggle navigation"
               >
-                <LogOut className="h-5 w-5" />
+                <Menu className="h-6 w-6" />
               </button>
-              
-              {/* Desktop: Full button */}
+
+              <div className="flex items-center">
+                <img
+                  src="/logo.png"
+                  alt="Logo"
+                  className="h-6 w-6 sm:h-8 sm:w-8 mr-2"
+                  onError={(e) => {
+                    console.error('Logo failed to load, using fallback text');
+                    (e.target as HTMLImageElement).style.display = 'none';
+                  }}
+                />
+                <span className="text-base sm:text-lg font-bold text-gray-900">
+                  <span className="hidden sm:inline">Sentiment Dashboard</span>
+                  <span className="sm:hidden">Dashboard</span>
+                </span>
+              </div>
+            </div>
+
+            {/* Right Section */}
+            <div className="flex items-center space-x-2">
+              <span className="text-sm font-medium text-gray-900">{user?.email}</span>
               <button
                 onClick={handleSignOut}
-                className="hidden sm:flex btn-secondary items-center space-x-2 bg-yellow-500 text-gray-900 hover:bg-yellow-600"
+                className="p-2 text-gray-900 hover:bg-yellow-300 rounded-md text-sm font-medium"
               >
-                <LogOut className="h-4 w-4" />
-                <span>Sign Out</span>
+                Sign out
               </button>
             </div>
           </div>
         </div>
-      </header>
+      </nav>
 
-      {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
-        {/* Send SMS Card moved to its own tab */}
-        {/* Refresh Controls - Hidden on mobile */}
-        <div className="hidden sm:block">
+      {/* Main Layout */}
+      <div className="flex flex-1">
+        {/* Sidebar */}
+        <aside
+          className={`fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-lg transform ${
+            isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+          } transition-transform duration-300 ease-in-out lg:static lg:translate-x-0`}
+        >
+          <div className="flex flex-col h-full">
+            <div className="flex items-center justify-between p-4 border-b border-yellow-200">
+              <div className="flex items-center">
+                <img src="/logo.png" alt="Logo" className="h-8 w-8 mr-3" onError={() => console.error('Failed to load logo.png')} />
+                <h1 className="text-lg font-bold text-gray-900">Sentiment Dashboard</h1>
+              </div>
+              <button className="lg:hidden p-2 text-gray-900 hover:text-gray-700" onClick={() => setIsSidebarOpen(false)}>
+                <Menu className="h-6 w-6" />
+              </button>
+            </div>
+            <nav className="flex-1 p-4 space-y-2">
+              {tabs.map((tab) => {
+                const Icon = tab.icon;
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => {
+                      setActiveTab(tab.id);
+                      setIsSidebarOpen(false);
+                    }}
+                    className={`flex items-center space-x-2 w-full px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
+                      activeTab === tab.id ? 'bg-yellow-100 text-yellow-700' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                    }`}
+                  >
+                    <Icon className="h-4 w-4" />
+                    <span>{tab.label}</span>
+                  </button>
+                );
+              })}
+            </nav>
+          </div>
+        </aside>
+
+        {/* Overlay for mobile */}
+        {isSidebarOpen && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden" onClick={() => setIsSidebarOpen(false)} />
+        )}
+
+        {/* Main Content */}
+        <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4 sm:mb-6 space-y-4 lg:space-y-0">
-            <h3 className="text-lg font-semibold text-gray-900">
-              Refresh Controls
-            </h3>
+            <h3 className="text-lg font-semibold text-gray-900">Refresh Controls</h3>
             <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
               <div className="flex items-center space-x-2">
                 <label className="text-sm text-gray-600">Interval:</label>
@@ -266,21 +297,32 @@ const Dashboard: React.FC = () => {
               </div>
               <button
                 onClick={handleManualRefresh}
-                className="btn-primary flex items-center space-x-2 w-full sm:w-auto justify-center bg-yellow-400 hover:bg-yellow-500"
+                className="flex items-center space-x-2 w-full sm:w-auto justify-center bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold py-2 px-4 rounded-lg"
                 disabled={loading}
               >
                 {loading && (
-                  <svg className="animate-spin h-5 w-5 text-gray-900" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <svg
+                    className="animate-spin h-5 w-5 text-gray-900"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
                   </svg>
                 )}
                 <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} />
-                <span>Refresh Now</span>
+                <span className="hidden sm:inline">Refresh Now</span>
+                <span className="sm:hidden">Refresh</span>
               </button>
               <div className="flex items-center space-x-2 text-sm text-gray-600">
                 <Clock className="h-4 w-4" />
-                <span>Next refresh: {formatTimeUntilNext()}</span>
+                <span className="hidden sm:inline">Next refresh: {formatTimeUntilNext()}</span>
+                <span className="sm:hidden">Next: {formatTimeUntilNext()}</span>
               </div>
               <label className="flex items-center cursor-pointer">
                 <input
@@ -290,225 +332,186 @@ const Dashboard: React.FC = () => {
                   onChange={handleAutoRefreshToggle}
                 />
                 <div className="relative">
-                  <div className={`block w-10 h-6 rounded-full transition-colors duration-300 ${
-                    autoRefreshEnabled ? 'bg-yellow-400' : 'bg-gray-300'
-                  }`}></div>
-                  <div className={`dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform duration-300 ${
-                    autoRefreshEnabled ? 'translate-x-4' : ''
-                  }`}></div>
+                  <div
+                    className={`block w-10 h-6 rounded-full transition-colors duration-300 ${
+                      autoRefreshEnabled ? 'bg-yellow-400' : 'bg-gray-300'
+                    }`}
+                  ></div>
+                  <div
+                    className={`dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform duration-300 ${
+                      autoRefreshEnabled ? 'translate-x-4' : ''
+                    }`}
+                  ></div>
                 </div>
                 <span className="ml-2 text-sm">Auto-refresh</span>
               </label>
             </div>
           </div>
-        </div>
-        
-        {/* Status Bar - Hidden on mobile */}
-        <div className="hidden sm:block mb-4 p-3 sm:p-3 bg-yellow-100 border border-yellow-200 rounded-lg">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-sm text-yellow-800 space-y-1 sm:space-y-0">
-            <span>Last updated: {lastRefresh.toLocaleTimeString()}</span>
-            <span>Auto-refresh: {autoRefreshEnabled ? 'ON' : 'OFF'}</span>
-          </div>
-        </div>
 
-        {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8">
-          <div className="card p-4 sm:p-6">
-            <div className="flex items-center">
-              <div className="p-2 bg-yellow-100 rounded-xl">
-                <TrendingUp className="h-6 w-6 text-yellow-400" />
-              </div>
-              <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">Total Tweets</p>
-                <p className="text-2xl font-bold text-gray-900">
-                  {loading ? '...' : stats.totalTweets.toLocaleString()}
-                </p>
-              </div>
+          <div className="mb-4 p-3 bg-yellow-100 border border-yellow-200 rounded-lg">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-sm text-yellow-800 space-y-1 sm:space-y-0">
+              <span>Last updated: {lastRefresh.toLocaleTimeString()}</span>
+              <span>Auto-refresh: {autoRefreshEnabled ? 'ON' : 'OFF'}</span>
             </div>
           </div>
 
-          <div className="card p-4 sm:p-6">
-            <div className="flex items-center">
-              <div className="p-2 bg-success-100 rounded-xl">
-                <Users className="h-6 w-6 text-success-600" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8">
+            <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
+              <div className="flex items-center">
+                <div className="p-2 bg-yellow-100 rounded-xl">
+                  <TrendingUp className="h-6 w-6 text-yellow-400" />
+                </div>
+                <div className="ml-4">
+                  <p className="text-sm font-medium text-gray-600">Total Tweets</p>
+                  <p className="text-2xl font-bold text-gray-900">{loading ? '...' : stats.totalTweets.toLocaleString()}</p>
+                </div>
               </div>
-              <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">Unique Users</p>
-                <p className="text-2xl font-bold text-gray-900">
-                  {loading ? '...' : stats.totalUsers.toLocaleString()}
-                </p>
+            </div>
+
+            <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
+              <div className="flex items-center">
+                <div className="p-2 bg-green-100 rounded-xl">
+                  <Users className="h-6 w-6 text-green-600" />
+                </div>
+                <div className="ml-4">
+                  <p className="text-sm font-medium text-gray-600">Unique Users</p>
+                  <p className="text-2xl font-bold text-gray-900">{loading ? '...' : stats.totalUsers.toLocaleString()}</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
+              <div className="flex items-center">
+                <div className="p-2 bg-yellow-100 rounded-xl">
+                  <BarChart3 className="h-6 w-6 text-yellow-600" />
+                </div>
+                <div className="ml-4">
+                  <p className="text-sm font-medium text-gray-600">Avg Sentiment</p>
+                  <p className="text-2xl font-bold text-gray-900">{loading ? '...' : stats.averageSentiment}</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
+              <div className="flex items-center">
+                <div className="p-2 bg-red-100 rounded-xl">
+                  <TrendingUp className="h-6 w-6 text-red-600" />
+                </div>
+                <div className="ml-4">
+                  <p className="text-sm font-medium text-gray-600">Fact-checked Tweets</p>
+                  <p className="text-2xl font-bold text-gray-900">{loading ? '...' : stats.factChecked.toLocaleString()}</p>
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="card p-4 sm:p-6">
-            <div className="flex items-center">
-              <div className="p-2 bg-warning-100 rounded-xl">
-                <BarChart3 className="h-6 w-6 text-warning-600" />
+          <div className="space-y-6 sm:space-y-8">
+            {activeTab === 'send-sms' && (
+              <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
+                <SendSmsCard />
               </div>
-              <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">Avg Sentiment</p>
-                <p className="text-2xl font-bold text-gray-900">
-                  {loading ? '...' : stats.averageSentiment}
-                </p>
+            )}
+            {activeTab === 'overview' && (
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
+                <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Sentiment Timeline</h3>
+                  <SentimentTimeline />
+                </div>
+
+                <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Sentiment Distribution</h3>
+                  <SentimentPieChart />
+                </div>
               </div>
-            </div>
+            )}
+
+            {activeTab === 'tweets' && (
+              <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Tweets Analysis</h3>
+                <TweetsTable />
+              </div>
+            )}
+
+            {activeTab === 'custom-search' && (
+              <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Custom Search</h3>
+                <CustomSearchTab />
+              </div>
+            )}
+            {activeTab === 'youtube' && (
+              <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">YouTube Search</h3>
+                <YouTubeSearchTab />
+              </div>
+            )}
           </div>
-
-          <div className="card p-4 sm:p-6">
-            <div className="flex items-center">
-              <div className="p-2 bg-danger-100 rounded-xl">
-                <TrendingUp className="h-6 w-6 text-danger-600" />
-              </div>
-              <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">Fact-checked Tweets</p>
-                <p className="text-2xl font-bold text-gray-900">
-                  {loading ? '...' : stats.factChecked.toLocaleString()}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Navigation Tabs */}
-        <div className="mb-6 sm:mb-8">
-          <nav className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-1 bg-white p-2 sm:p-1 rounded-2xl shadow-soft">
-            {tabs.map((tab) => {
-              const Icon = tab.icon
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center justify-center sm:justify-start space-x-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 w-full sm:w-auto ${
-                    activeTab === tab.id
-                      ? 'bg-yellow-100 text-yellow-700'
-                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
-                  }`}
-                >
-                  <Icon className="h-4 w-4" />
-                  <span>{tab.label}</span>
-                </button>
-              )
-            })}
-          </nav>
-        </div>
-
-        {/* Tab Content */}
-        <div className="space-y-6 sm:space-y-8">
-          {activeTab === 'send-sms' && (
-            <div className="card p-4 sm:p-6">
-              <SendSmsCard />
-            </div>
-          )}
-          {activeTab === 'overview' && (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
-              <div className="card p-4 sm:p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                  Sentiment Timeline
-                </h3>
-                <SentimentTimeline />
-              </div>
-              
-              <div className="card p-4 sm:p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                  Sentiment Distribution
-                </h3>
-                <SentimentPieChart />
-              </div>
-            </div>
-          )}
-
-          {activeTab === 'tweets' && (
-            <div className="card p-4 sm:p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                Tweets Analysis
-              </h3>
-              <TweetsTable />
-            </div>
-          )}
-
-          {activeTab === 'custom-search' && (
-            <div className="card p-4 sm:p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                Custom Search
-              </h3>
-              <CustomSearchTab />
-            </div>
-          )}
-          {activeTab === 'youtube' && (
-            <div className="card p-4 sm:p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                YouTube Search
-              </h3>
-              <YouTubeSearchTab />
-            </div>
-          )}
-        </div>
-      </main>
-
-      {/* AI Assistant - Fixed position overlay (now provided by @n8n/chat) */}
-      {/* <AIAssistant /> */}
+        </main>
+      </div>
     </div>
-  )
-}
+  );
+};
 
 const CustomSearchTab: React.FC = () => {
-  const [searchQuery, setSearchQuery] = useState('')
-  const [webhookResponse, setWebhookResponse] = useState<AgentTweetResponse[] | null>(null)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+  const [searchQuery, setSearchQuery] = useState('');
+  const [webhookResponse, setWebhookResponse] = useState<AgentTweetResponse[] | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSearch = async () => {
-    setLoading(true)
-    setError(null)
-    setWebhookResponse(null)
+    setLoading(true);
+    setError(null);
+    setWebhookResponse(null);
     try {
       const response = await fetch(`${AI_ASSISTANT_CONFIG.customSearchWebhookUrl}?message=${encodeURIComponent(searchQuery)}`, {
         method: 'GET',
         headers: {
-          'Accept': 'application/json',
+          Accept: 'application/json',
         },
-      })
+      });
 
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const data: AgentTweetResponse[] = await response.json()
-      setWebhookResponse(data)
+      const data: AgentTweetResponse[] = await response.json();
+      setWebhookResponse(data);
     } catch (e: any) {
-      setError(e.message)
+      setError(e.message);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <div className="flex flex-col space-y-4">
       <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
         <input
           type="text"
-          className="input-field flex-grow"
+          className="form-control flex-grow border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-400"
           placeholder="Enter your search query..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
-        <button 
-          onClick={handleSearch} 
-          className="btn-primary flex items-center justify-center space-x-2 w-full sm:w-auto bg-yellow-400 hover:bg-yellow-500"
+        <button
+          onClick={handleSearch}
+          className="btn btn-primary flex items-center justify-center space-x-2 w-full sm:w-auto bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold py-2 px-4 rounded-lg"
           disabled={loading}
         >
           {loading && (
             <svg className="animate-spin h-5 w-5 text-gray-900" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
             </svg>
           )}
           <Search className="h-4 w-4" />
           <span>Search</span>
         </button>
       </div>
-      {error && <p className="text-danger-600">Error: {error}</p>}
+      {error && <p className="text-danger">Error: {error}</p>}
       {webhookResponse && (
         <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {webhookResponse.map((tweet, index) => (
@@ -517,8 +520,8 @@ const CustomSearchTab: React.FC = () => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
 interface TweetCardProps {
   tweet: AgentTweetResponse;
@@ -539,22 +542,20 @@ const TweetCard: React.FC<TweetCardProps> = ({ tweet }) => {
   };
 
   return (
-    <div className="card p-4 flex flex-col space-y-3">
+    <div className="card p-4 flex flex-col space-y-3 bg-white shadow rounded-lg">
       <div className="flex justify-between items-center">
-        <span className="font-semibold text-yellow-700">@{tweet["Profile User Name"]}</span>
-        <span className={`px-3 py-1 rounded-full text-xs font-medium ${getSentimentColor(tweet.Sentiment)}`}>
-          {tweet.Sentiment}
-        </span>
+        <span className="font-semibold text-yellow-700">@{tweet['Profile User Name']}</span>
+        <span className={`px-3 py-1 rounded-full text-xs font-medium ${getSentimentColor(tweet.Sentiment)}`}>{tweet.Sentiment}</span>
       </div>
-      <p className="text-gray-800 text-sm flex-grow">{tweet["Text Content"]}</p>
+      <p className="text-gray-800 text-sm flex-grow">{tweet['Text Content']}</p>
       <div className="flex justify-between items-center text-xs text-gray-500">
-        <span>Likes: {tweet["Like Count"]}</span>
-        <span>Replies: {tweet["Reply Count"]}</span>
+        <span>Likes: {tweet['Like Count']}</span>
+        <span>Replies: {tweet['Reply Count']}</span>
         <span>Date: {new Date(tweet.Date).toLocaleDateString()}</span>
       </div>
-      {tweet["Tweet URL"] && (
-        <a 
-          href={tweet["Tweet URL"]}
+      {tweet['Tweet URL'] && (
+        <a
+          href={tweet['Tweet URL']}
           target="_blank"
           rel="noopener noreferrer"
           className="text-yellow-700 hover:underline text-sm self-start"
@@ -569,8 +570,8 @@ const TweetCard: React.FC<TweetCardProps> = ({ tweet }) => {
 interface YouTubeVideo {
   Title: string;
   Channel: string;
-  "Video URL": string;
-  "Publish Date": string;
+  'Video URL': string;
+  'Publish Date': string;
   Description: string;
   Sentiment: string;
 }
@@ -583,62 +584,66 @@ interface YouTubeAgentResponse {
 }
 
 const YouTubeSearchTab: React.FC = () => {
-  const [searchQuery, setSearchQuery] = useState('')
-  const [youtubeResponse, setYoutubeResponse] = useState<YouTubeAgentResponse | null>(null)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+  const [searchQuery, setSearchQuery] = useState('');
+  const [youtubeResponse, setYoutubeResponse] = useState<YouTubeAgentResponse | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSearch = async () => {
-    setLoading(true)
-    setError(null)
-    setYoutubeResponse(null)
+    setLoading(true);
+    setError(null);
+    setYoutubeResponse(null);
     try {
       const response = await fetch(`${AI_ASSISTANT_CONFIG.youtubeWebhookUrl}?message=${encodeURIComponent(searchQuery)}`, {
         method: 'GET',
         headers: {
-          'Accept': 'application/json',
+          Accept: 'application/json',
         },
-      })
+      });
 
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const data: YouTubeVideo[] = await response.json()
-      setYoutubeResponse({ videos: data })
+      const data: YouTubeVideo[] = await response.json();
+      setYoutubeResponse({ videos: data });
     } catch (e: any) {
-      setError(e.message)
+      setError(e.message);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
     <div className="flex flex-col space-y-4">
       <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
         <input
           type="text"
-          className="input-field flex-grow"
+          className="form-control flex-grow border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-400"
           placeholder="Search YouTube videos..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
-        <button 
-          onClick={handleSearch} 
-          className="btn-primary flex items-center justify-center space-x-2 w-full sm:w-auto bg-yellow-400 hover:bg-yellow-500"
+        <button
+          onClick={handleSearch}
+          className="btn btn-primary flex items-center justify-center space-x-2 w-full sm:w-auto bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold py-2 px-4 rounded-lg"
           disabled={loading}
         >
           {loading && (
             <svg className="animate-spin h-5 w-5 text-gray-900" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
             </svg>
           )}
           <Search className="h-4 w-4" />
           <span>Search</span>
         </button>
       </div>
-      {error && <p className="text-danger-600">Error: {error}</p>}
+      {error && <p className="text-danger">Error: {error}</p>}
       {youtubeResponse && youtubeResponse.videos && youtubeResponse.videos.length > 0 && (
         <div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {youtubeResponse.videos.map((video, index) => (
@@ -650,8 +655,8 @@ const YouTubeSearchTab: React.FC = () => {
         <p className="text-gray-600">No videos found</p>
       )}
     </div>
-  )
-}
+  );
+};
 
 interface VideoCardProps {
   video: YouTubeVideo;
@@ -676,11 +681,11 @@ const VideoCard: React.FC<VideoCardProps> = ({ video }) => {
     return match ? match[1] : null;
   };
 
-  const videoId = getVideoId(video["Video URL"]);
+  const videoId = getVideoId(video['Video URL']);
   const embedUrl = videoId ? `https://www.youtube.com/embed/${videoId}` : null;
 
   return (
-    <div className="card p-4 flex flex-col space-y-3">
+    <div className="card p-4 flex flex-col space-y-3 bg-white shadow rounded-lg">
       {embedUrl && (
         <div className="w-full h-48 mb-3">
           <iframe
@@ -695,17 +700,15 @@ const VideoCard: React.FC<VideoCardProps> = ({ video }) => {
       )}
       <div className="flex justify-between items-start mb-2">
         <h4 className="font-semibold text-yellow-700 text-lg line-clamp-2 flex-grow mr-2">{video.Title}</h4>
-        <span className={`px-2 py-1 rounded-full text-xs font-medium ${getSentimentColor(video.Sentiment)}`}>
-          {video.Sentiment}
-        </span>
+        <span className={`px-2 py-1 rounded-full text-xs font-medium ${getSentimentColor(video.Sentiment)}`}>{video.Sentiment}</span>
       </div>
       <p className="text-gray-600 text-sm">Channel: {video.Channel}</p>
       <p className="text-gray-800 text-sm flex-grow line-clamp-3">{video.Description}</p>
       <div className="flex justify-between items-center text-xs text-gray-500">
-        <span>Published: {video["Publish Date"]}</span>
+        <span>Published: {video['Publish Date']}</span>
       </div>
-      <a 
-        href={video["Video URL"]}
+      <a
+        href={video['Video URL']}
         target="_blank"
         rel="noopener noreferrer"
         className="text-yellow-700 hover:underline text-sm self-start"
@@ -724,7 +727,6 @@ interface SendSmsResponse {
 
 const SendSmsCard: React.FC = () => {
   const [message, setMessage] = useState('');
-  // Remove targetSegment state
   const [sendTime, setSendTime] = useState('immediate');
   const [loading, setLoading] = useState(false);
   const [feedback, setFeedback] = useState<null | { type: 'success' | 'error'; text: string }>(null);
@@ -742,7 +744,7 @@ const SendSmsCard: React.FC = () => {
         body: JSON.stringify({
           type: 'manual',
           message,
-          target_segment: 'all_voters', // Always send all_voters
+          target_segment: 'all_voters',
           send_time: sendTime,
         }),
       });
@@ -760,49 +762,53 @@ const SendSmsCard: React.FC = () => {
   };
 
   return (
-    <div className="card p-4 sm:p-6">
+    <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
       <h3 className="text-lg font-semibold text-gray-900 mb-4">Send Voter Mobilization SMS</h3>
       <form className="flex flex-col space-y-4" onSubmit={handleSubmit}>
         <textarea
-          className="input-field min-h-[80px]"
+          className="form-control min-h-[80px] border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-400"
           placeholder="Write your SMS message here..."
           value={message}
-          onChange={e => setMessage(e.target.value)}
+          onChange={(e) => setMessage(e.target.value)}
           required
           maxLength={160}
         />
-        {/* Remove target segment dropdown */}
-        <div className="flex flex-col sm:flex-row gap-4">
-          <div className="flex flex-col">
-            <label className="text-sm text-gray-700 mb-1">Send Time</label>
-            <select
-              className="input-field"
-              value={sendTime}
-              onChange={e => setSendTime(e.target.value)}
-              required
-            >
-              <option value="immediate">Immediate</option>
-              <option value="scheduled">Scheduled (future feature)</option>
-            </select>
-          </div>
+        <div className="flex flex-col">
+          <label className="text-sm text-gray-700 mb-1">Send Time</label>
+          <select
+            className="form-control border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            value={sendTime}
+            onChange={(e) => setSendTime(e.target.value)}
+            required
+          >
+            <option value="immediate">Immediate</option>
+            <option value="scheduled">Scheduled (future feature)</option>
+          </select>
         </div>
         <button
           type="submit"
-          className="btn-primary bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold py-2 px-4 rounded-lg flex items-center justify-center"
+          className="btn btn-primary bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold py-2 px-4 rounded-lg flex items-center justify-center"
           disabled={loading || !message.trim()}
         >
           {loading ? (
-            <svg className="animate-spin h-5 w-5 text-gray-900 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <svg
+              className="animate-spin h-5 w-5 text-gray-900 mr-2"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
             </svg>
           ) : null}
           Send SMS
         </button>
         {feedback && (
-          <div className={`mt-2 text-sm ${feedback.type === 'success' ? 'text-success-700' : 'text-danger-700'}`}>
-            {feedback.text}
-          </div>
+          <div className={`mt-2 text-sm ${feedback.type === 'success' ? 'text-success' : 'text-danger'}`}>{feedback.text}</div>
         )}
       </form>
       <div className="text-xs text-gray-500 mt-2">Max 160 characters. Message will be sent to all voters.</div>
@@ -810,4 +816,4 @@ const SendSmsCard: React.FC = () => {
   );
 };
 
-export default Dashboard
+export default Dashboard;
