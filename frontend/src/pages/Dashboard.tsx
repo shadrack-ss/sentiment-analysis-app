@@ -37,6 +37,7 @@ const Dashboard: React.FC = () => {
     factChecked: 0,
   });
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
   useEffect(() => {
     fetchDashboardStats();
@@ -233,19 +234,36 @@ const Dashboard: React.FC = () => {
       <div className="flex flex-1">
         {/* Sidebar */}
         <aside
-          className={`fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-lg transform ${
+          className={`fixed inset-y-0 left-0 z-50 bg-white shadow-lg transform transition-transform duration-300 ease-in-out lg:static ${
             isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-          } transition-transform duration-300 ease-in-out lg:static lg:translate-x-0`}
+          } ${isSidebarCollapsed ? 'w-20' : 'w-64'} lg:translate-x-0`}
         >
           <div className="flex flex-col h-full">
             <div className="flex items-center justify-between p-4 border-b border-yellow-200">
               <div className="flex items-center">
-                <img src="/logo.png" alt="Logo" className="h-8 w-8 mr-3" onError={() => console.error('Failed to load logo.png')} />
-                <h1 className="text-lg font-bold text-gray-900">Sentiment Dashboard</h1>
+                {(!isSidebarCollapsed || typeof window !== 'undefined' && window.innerWidth < 1024) && (
+                  <img src="/logo.png" alt="Logo" className={`h-8 w-8 mr-3 transition-all duration-300 ${isSidebarCollapsed ? 'mr-0' : 'mr-3'}`} onError={() => console.error('Failed to load logo.png')} />
+                )}
+                {!isSidebarCollapsed && <h1 className="text-lg font-bold text-gray-900">Sentiment Dashboard</h1>}
               </div>
-              <button className="lg:hidden p-2 text-gray-900 hover:text-gray-700" onClick={() => setIsSidebarOpen(false)}>
-                <Menu className="h-6 w-6" />
-              </button>
+              <div className="flex items-center space-x-2">
+                {/* Collapse/Expand button for desktop */}
+                <button
+                  className="hidden lg:inline-flex p-2 text-gray-900 hover:text-gray-700"
+                  onClick={() => setIsSidebarCollapsed((prev) => !prev)}
+                  aria-label={isSidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+                >
+                  {isSidebarCollapsed ? (
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                  ) : (
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+                  )}
+                </button>
+                {/* Close button for mobile */}
+                <button className="lg:hidden p-2 text-gray-900 hover:text-gray-700" onClick={() => setIsSidebarOpen(false)}>
+                  <Menu className="h-6 w-6" />
+                </button>
+              </div>
             </div>
             <nav className="flex-1 p-4 space-y-2">
               {tabs.map((tab) => {
@@ -259,10 +277,10 @@ const Dashboard: React.FC = () => {
                     }}
                     className={`flex items-center space-x-2 w-full px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
                       activeTab === tab.id ? 'bg-yellow-100 text-yellow-700' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
-                    }`}
+                    } ${isSidebarCollapsed ? 'justify-center px-2' : ''}`}
                   >
                     <Icon className="h-4 w-4" />
-                    <span>{tab.label}</span>
+                    {!isSidebarCollapsed && <span>{tab.label}</span>}
                   </button>
                 );
               })}
