@@ -299,7 +299,8 @@ const Dashboard: React.FC = () => {
 
         {/* Main Content */}
         <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4 sm:mb-6 space-y-4 lg:space-y-0">
+          {/* Refresh Controls - hidden on mobile */}
+          <div className="hidden sm:flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4 sm:mb-6 space-y-4 lg:space-y-0">
             <h3 className="text-lg font-semibold text-gray-900">Refresh Controls</h3>
             <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
               <div className="flex items-center space-x-2">
@@ -369,8 +370,8 @@ const Dashboard: React.FC = () => {
               </label>
             </div>
           </div>
-
-          <div className="mb-4 p-3 bg-yellow-100 border border-yellow-200 rounded-lg">
+          {/* Last updated info - hidden on mobile */}
+          <div className="hidden sm:block mb-4 p-3 bg-yellow-100 border border-yellow-200 rounded-lg">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-sm text-yellow-800 space-y-1 sm:space-y-0">
               <span>Last updated: {lastRefresh.toLocaleTimeString()}</span>
               <span>Auto-refresh: {autoRefreshEnabled ? 'ON' : 'OFF'}</span>
