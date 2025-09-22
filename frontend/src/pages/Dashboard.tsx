@@ -110,9 +110,12 @@ const Dashboard: React.FC = () => {
         .from('nrm_tweets_kb')
         .select('*', { count: 'exact', head: true });
 
-      const { count: usersCount } = await supabase
+      // Count unique users correctly
+      const { data: userRows } = await supabase
         .from('nrm_tweets_kb')
-        .select('username', { count: 'exact', head: true });
+        .select('username');
+      const uniqueUsernames = userRows ? new Set(userRows.map(row => row.username)) : new Set();
+      const usersCount = uniqueUsernames.size;
 
       const { count: factCheckedCount } = await supabase
         .from('nrm_tweets_kb')
