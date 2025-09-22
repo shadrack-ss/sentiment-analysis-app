@@ -188,7 +188,7 @@ const Dashboard: React.FC = () => {
   return (
     <div className="min-h-screen bg-yellow-50 flex flex-col">
       {/* Responsive Topbar */}
-      <nav className="bg-yellow-400 shadow-md">
+      <nav className="bg-yellow-400 shadow-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-2 sm:px-4">
           <div className="flex items-center justify-between h-16">
             {/* Left Section */}
