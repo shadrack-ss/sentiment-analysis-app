@@ -232,8 +232,8 @@ const TweetsTable: React.FC = () => {
         <span>Page {currentPage} of {totalPages}</span>
       </div>
 
-      {/* Table */}
-      <div className="overflow-x-auto">
+      {/* Table (Desktop/Tablet) */}
+      <div className="overflow-x-auto hidden md:block">
         <table className="w-full">
           <thead>
             <tr className="border-b border-gray-200">
@@ -303,6 +303,41 @@ const TweetsTable: React.FC = () => {
             ))}
           </tbody>
         </table>
+      </div>
+
+      {/* Card View (Mobile) */}
+      <div className="block md:hidden space-y-4">
+        {tweets.map((tweet) => (
+          <div key={tweet.id} className="card p-4 flex flex-col space-y-3 bg-white shadow rounded-lg">
+            <div className="flex justify-between items-center">
+              <span className="font-semibold text-yellow-700 flex items-center">
+                <User className="h-4 w-4 text-gray-400 mr-1" />
+                @{tweet.username}
+              </span>
+              <span className={`px-3 py-1 rounded-full text-xs font-medium ${getSentimentColor(tweet.sentiment_score || undefined)}`}>{getSentimentLabel(tweet.sentiment_score || undefined)}</span>
+            </div>
+            <p className="text-gray-800 text-sm flex-grow line-clamp-3">{tweet.text}</p>
+            <div className="flex justify-between items-center text-xs text-gray-500">
+              <span>❤️ {tweet.like_count}</span>
+              <span>🔄 {tweet.retweet_count}</span>
+              <span>💬 {tweet.reply_count}</span>
+            </div>
+            <div className="flex justify-between items-center text-xs text-gray-500">
+              <span>{format(new Date(tweet.created_at), 'MMM dd, yyyy')}</span>
+              {tweet.url && (
+                <a
+                  href={tweet.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary-600 hover:text-primary-700 text-xs font-medium flex items-center"
+                >
+                  <ExternalLink className="h-3 w-3 mr-1" />
+                  View Tweet
+                </a>
+              )}
+            </div>
+          </div>
+        ))}
       </div>
 
       {/* Pagination */}

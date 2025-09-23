@@ -188,7 +188,7 @@ const Dashboard: React.FC = () => {
   return (
     <div className="min-h-screen bg-yellow-50 flex flex-col">
       {/* Responsive Topbar */}
-      <nav className="bg-yellow-400 shadow-md sticky top-0 z-50">
+      <nav className="bg-yellow-400 shadow-md sticky top-0 z-50 lg:static">
         <div className="max-w-7xl mx-auto px-2 sm:px-4">
           <div className="flex items-center justify-between h-16">
             {/* Left Section */}
@@ -238,9 +238,10 @@ const Dashboard: React.FC = () => {
       <div className="flex flex-1">
         {/* Sidebar */}
         <aside
-          className={`fixed inset-y-0 left-0 z-50 bg-white shadow-lg transform transition-transform duration-300 ease-in-out lg:static ${
-            isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-          } ${isSidebarCollapsed ? 'w-20' : 'w-64'} lg:translate-x-0`}
+          className={`fixed inset-y-0 left-0 z-50 bg-white shadow-lg transform transition-transform duration-300 ease-in-out lg:static lg:z-auto ${{
+            true: isSidebarOpen ? 'translate-x-0' : '-translate-x-full',
+            false: ''
+          }[String(window.innerWidth < 1024)]} ${isSidebarCollapsed ? 'w-20' : 'w-64'} lg:translate-x-0`}
         >
           <div className="flex flex-col h-full">
             <div className="flex items-center justify-between p-4 border-b border-yellow-200">
