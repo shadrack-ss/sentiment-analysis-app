@@ -45,6 +45,7 @@ const Dashboard: React.FC = () => {
   const [csvError, setCsvError] = useState<string | null>(null);
   const [csvUploading, setCsvUploading] = useState(false);
   const [csvSuccess, setCsvSuccess] = useState<string | null>(null);
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   const voterTemplateHeaders = [
     'phone_number',
@@ -191,7 +192,16 @@ const Dashboard: React.FC = () => {
   }, [autoRefreshEnabled]);
 
   const handleSignOut = async () => {
+    setShowLogoutModal(true);
+  };
+
+  const confirmSignOut = async () => {
+    setShowLogoutModal(false);
     await signOut();
+  };
+
+  const cancelSignOut = () => {
+    setShowLogoutModal(false);
   };
 
   const handleDownloadTemplate = () => {
@@ -602,6 +612,34 @@ const Dashboard: React.FC = () => {
               {csvUploading ? 'Uploading...' : 'Upload to Supabase'}
             </button>
             <div className="text-xs text-gray-500 mt-2">Required columns: {voterTemplateHeaders.join(', ')}</div>
+          </div>
+        </div>
+      )}
+
+      {showLogoutModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
+          <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative">
+            <button className="absolute top-2 right-2 text-gray-400 hover:text-gray-700" onClick={cancelSignOut}>
+              <X className="h-5 w-5" />
+            </button>
+            <h2 className="text-lg font-semibold mb-4 flex items-center">
+              <LogOut className="h-5 w-5 mr-2 text-yellow-500" />Confirm Logout
+            </h2>
+            <p className="mb-6 text-gray-700">Are you sure you want to logout?</p>
+            <div className="flex justify-end space-x-3">
+              <button
+                className="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium"
+                onClick={cancelSignOut}
+              >
+                Cancel
+              </button>
+              <button
+                className="px-4 py-2 rounded bg-yellow-500 hover:bg-yellow-600 text-white font-semibold"
+                onClick={confirmSignOut}
+              >
+                Logout
+              </button>
+            </div>
           </div>
         </div>
       )}
