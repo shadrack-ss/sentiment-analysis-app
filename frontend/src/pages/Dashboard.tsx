@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../contexts/AuthContext';
-import { LogOut, Search, TrendingUp, Users, BarChart3, MonitorPlay, RefreshCw, Clock, Menu } from 'lucide-react';
+import { LogOut, Search, TrendingUp, Users, BarChart3, MonitorPlay, RefreshCw, Clock, Menu, Download, Upload, X } from 'lucide-react';
 import SentimentTimeline from '../components/SentimentTimeline';
 import SentimentPieChart from '../components/SentimentPieChart';
 import TweetsTable from '../components/TweetsTable';
@@ -8,6 +8,8 @@ import { supabase } from '../lib/supabase';
 import { Tweet, SentimentData, SentimentDistribution } from '../lib/supabase';
 import '@n8n/chat/style.css';
 import { AI_ASSISTANT_CONFIG } from '../config/ai-assistant';
+import Papa, { ParseResult, ParseError } from 'papaparse';
+
 
 interface AgentTweetResponse {
   "Tweet by": string;
@@ -38,6 +40,21 @@ const Dashboard: React.FC = () => {
   });
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const [showBulkUploadModal, setShowBulkUploadModal] = useState(false);
+  const [csvData, setCsvData] = useState<any[]>([]);
+  const [csvError, setCsvError] = useState<string | null>(null);
+  const [csvUploading, setCsvUploading] = useState(false);
+  const [csvSuccess, setCsvSuccess] = useState<string | null>(null);
+
+  const voterTemplateHeaders = [
+    'phone_number',
+    'first_name',
+    'last_name',
+    'voter_segment',
+    'opt_in_sms',
+    'polling_location',
+    'last_sms_sent',
+  ];
 
   useEffect(() => {
     fetchDashboardStats();
@@ -177,12 +194,85 @@ const Dashboard: React.FC = () => {
     await signOut();
   };
 
+  const handleDownloadTemplate = () => {
+    const csv = voterTemplateHeaders.join(',') + '\n';
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'voter_template.csv';
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const handleCsvFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCsvError(null);
+    setCsvSuccess(null);
+    const file = e.target.files?.[0];
+    if (!file) return;
+    // @ts-expect-error: TypeScript sometimes misinterprets Papa.parse overloads for File objects
+    Papa.parse(file as Papa.LocalFile, {
+      header: true,
+      skipEmptyLines: true,
+      complete: (results: ParseResult<any>) => {
+        if (results.errors.length) {
+          setCsvError('CSV parsing error: ' + results.errors[0].message);
+          setCsvData([]);
+          return;
+        }
+        // Validate headers
+        const headers = results.meta.fields || [];
+        const missing = voterTemplateHeaders.filter(h => !headers.includes(h));
+        if (missing.length) {
+          setCsvError('Missing columns: ' + missing.join(', '));
+          setCsvData([]);
+          return;
+        }
+        setCsvData(results.data as any[]);
+      },
+      error: (err: ParseError) => {
+        setCsvError('CSV parsing error: ' + err.message);
+        setCsvData([]);
+      },
+    });
+  };
+
+  const handleCsvUpload = async () => {
+    setCsvUploading(true);
+    setCsvError(null);
+    setCsvSuccess(null);
+    try {
+      // Remove empty rows and cast opt_in_sms to boolean
+      const cleaned = csvData.map(row => ({
+        ...row,
+        opt_in_sms: row.opt_in_sms === 'true' || row.opt_in_sms === true,
+        last_sms_sent: row.last_sms_sent || null,
+      })).filter(row => row.phone_number);
+      if (!cleaned.length) {
+        setCsvError('No valid rows to upload.');
+        setCsvUploading(false);
+        return;
+      }
+      const { error } = await supabase.from('voters').insert(cleaned);
+      if (error) {
+        setCsvError(error.message);
+      } else {
+        setCsvSuccess('Successfully uploaded ' + cleaned.length + ' voters!');
+        setCsvData([]);
+      }
+    } catch (err: any) {
+      setCsvError('Upload failed: ' + err.message);
+    }
+    setCsvUploading(false);
+  };
+
   const tabs = [
     { id: 'overview', label: 'Overview', icon: TrendingUp },
     { id: 'tweets', label: 'Tweets', icon: BarChart3 },
     { id: 'custom-search', label: 'Custom Search', icon: Search },
     { id: 'youtube', label: 'YouTube', icon: MonitorPlay },
     { id: 'send-sms', label: 'Send SMS', icon: Users },
+    { id: 'bulk-upload', label: 'Bulk Voter Upload', icon: Upload }, // NEW
   ];
 
   return (
@@ -273,6 +363,18 @@ const Dashboard: React.FC = () => {
             <nav className="flex-1 p-4 space-y-2">
               {tabs.map((tab) => {
                 const Icon = tab.icon;
+                if (tab.id === 'bulk-upload') {
+                  return (
+                    <button
+                      key={tab.id}
+                      onClick={() => setShowBulkUploadModal(true)}
+                      className={`flex items-center space-x-2 w-full px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 text-gray-600 hover:text-gray-900 hover:bg-gray-100 ${isSidebarCollapsed ? 'justify-center px-2' : ''}`}
+                    >
+                      <Icon className="h-4 w-4" />
+                      {!isSidebarCollapsed && <span>{tab.label}</span>}
+                    </button>
+                  );
+                }
                 return (
                   <button
                     key={tab.id}
@@ -280,9 +382,7 @@ const Dashboard: React.FC = () => {
                       setActiveTab(tab.id);
                       setIsSidebarOpen(false);
                     }}
-                    className={`flex items-center space-x-2 w-full px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
-                      activeTab === tab.id ? 'bg-yellow-100 text-yellow-700' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
-                    } ${isSidebarCollapsed ? 'justify-center px-2' : ''}`}
+                    className={`flex items-center space-x-2 w-full px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${activeTab === tab.id ? 'bg-yellow-100 text-yellow-700' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'} ${isSidebarCollapsed ? 'justify-center px-2' : ''}`}
                   >
                     <Icon className="h-4 w-4" />
                     {!isSidebarCollapsed && <span>{tab.label}</span>}
@@ -471,6 +571,40 @@ const Dashboard: React.FC = () => {
           </div>
         </main>
       </div>
+
+      {/* Bulk Upload Modal */}
+      {showBulkUploadModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
+          <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md relative">
+            <button className="absolute top-2 right-2 text-gray-400 hover:text-gray-700" onClick={() => setShowBulkUploadModal(false)}>
+              <X className="h-5 w-5" />
+            </button>
+            <h2 className="text-lg font-semibold mb-4 flex items-center"><Upload className="h-5 w-5 mr-2" />Bulk Voter Upload</h2>
+            <button
+              className="flex items-center mb-4 px-3 py-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 rounded transition"
+              onClick={handleDownloadTemplate}
+            >
+              <Download className="h-4 w-4 mr-2" />Download CSV Template
+            </button>
+            <input
+              type="file"
+              accept=".csv"
+              className="mb-4"
+              onChange={handleCsvFileChange}
+            />
+            {csvError && <div className="text-red-600 text-sm mb-2">{csvError}</div>}
+            {csvSuccess && <div className="text-green-600 text-sm mb-2">{csvSuccess}</div>}
+            <button
+              className="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded disabled:opacity-50"
+              onClick={handleCsvUpload}
+              disabled={!csvData.length || csvUploading}
+            >
+              {csvUploading ? 'Uploading...' : 'Upload to Supabase'}
+            </button>
+            <div className="text-xs text-gray-500 mt-2">Required columns: {voterTemplateHeaders.join(', ')}</div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
