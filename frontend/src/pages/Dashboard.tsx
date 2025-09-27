@@ -370,6 +370,25 @@ const Dashboard: React.FC = () => {
             <nav className="flex-1 p-4 space-y-2">
               {tabs.map((tab) => {
                 const Icon = tab.icon;
+                // Custom icon overlays for distinction
+                const renderIconWithLetter = (letter: string) => (
+                  <span style={{ position: 'relative', display: 'inline-block' }}>
+                    <Icon className="h-4 w-4" />
+                    <span style={{
+                      position: 'absolute',
+                      top: '-6px',
+                      right: '-6px',
+                      background: '#facc15', // yellow-400
+                      color: '#1f2937', // gray-800
+                      fontSize: '0.6rem',
+                      fontWeight: 'bold',
+                      borderRadius: '50%',
+                      padding: '0 3px',
+                      lineHeight: 1,
+                      border: '1px solid #fff',
+                    }}>{letter}</span>
+                  </span>
+                );
                 if (tab.id === 'bulk-upload') {
                   return (
                     <button
@@ -377,9 +396,23 @@ const Dashboard: React.FC = () => {
                       onClick={() => setShowBulkUploadModal(true)}
                       className={`flex items-center space-x-2 w-full px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 text-gray-600 hover:text-gray-900 hover:bg-gray-100 ${isSidebarCollapsed ? 'justify-center px-2' : ''}`}
                     >
-                      <Icon className="h-4 w-4" />
+                      {renderIconWithLetter('V')}
                       {!isSidebarCollapsed && <span>{tab.label}</span>}
                     </button>
+                  );
+                }
+                if (tab.external && tab.id === 'upload-docs') {
+                  return (
+                    <a
+                      key={tab.id}
+                      href={tab.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`flex items-center space-x-2 w-full px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 text-gray-600 hover:text-gray-900 hover:bg-gray-100 ${isSidebarCollapsed ? 'justify-center px-2' : ''}`}
+                    >
+                      {renderIconWithLetter('D')}
+                      {!isSidebarCollapsed && <span>{tab.label}</span>}
+                    </a>
                   );
                 }
                 if (tab.external) {
