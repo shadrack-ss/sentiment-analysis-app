@@ -51,10 +51,6 @@ const Dashboard: React.FC = () => {
     'phone_number',
     'first_name',
     'last_name',
-    'voter_segment',
-    'opt_in_sms',
-    'polling_location',
-    'last_sms_sent',
   ];
 
   useEffect(() => {
@@ -282,7 +278,8 @@ const Dashboard: React.FC = () => {
     { id: 'custom-search', label: 'Custom Search', icon: Search },
     { id: 'youtube', label: 'YouTube', icon: MonitorPlay },
     { id: 'send-sms', label: 'Send SMS', icon: Users },
-    { id: 'bulk-upload', label: 'Bulk Voter Upload', icon: Upload }, // NEW
+    { id: 'bulk-upload', label: 'Upload Voters', icon: Upload }, // NEW
+    { id: 'upload-docs', label: 'Upload Documents', icon: Upload, external: true, url: 'https://n8n.nrmcampaign.com/form/22b59e82-ac8c-4f58-b264-1f2e0b77f549' }, // External link
   ];
 
   return (
@@ -383,6 +380,20 @@ const Dashboard: React.FC = () => {
                       <Icon className="h-4 w-4" />
                       {!isSidebarCollapsed && <span>{tab.label}</span>}
                     </button>
+                  );
+                }
+                if (tab.external) {
+                  return (
+                    <a
+                      key={tab.id}
+                      href={tab.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`flex items-center space-x-2 w-full px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 text-gray-600 hover:text-gray-900 hover:bg-gray-100 ${isSidebarCollapsed ? 'justify-center px-2' : ''}`}
+                    >
+                      <Icon className="h-4 w-4" />
+                      {!isSidebarCollapsed && <span>{tab.label}</span>}
+                    </a>
                   );
                 }
                 return (
@@ -589,7 +600,7 @@ const Dashboard: React.FC = () => {
             <button className="absolute top-2 right-2 text-gray-400 hover:text-gray-700" onClick={() => setShowBulkUploadModal(false)}>
               <X className="h-5 w-5" />
             </button>
-            <h2 className="text-lg font-semibold mb-4 flex items-center"><Upload className="h-5 w-5 mr-2" />Bulk Voter Upload</h2>
+            <h2 className="text-lg font-semibold mb-4 flex items-center"><Upload className="h-5 w-5 mr-2" />Upload Voter List (Excel)</h2>
             <button
               className="flex items-center mb-4 px-3 py-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 rounded transition"
               onClick={handleDownloadTemplate}
