@@ -134,7 +134,7 @@ const Dashboard: React.FC = () => {
       const { count: factCheckedCount } = await supabase
         .from('nrm_tweets_kb')
         .select('*', { count: 'exact', head: true })
-        .eq('fact_checked', true);
+        .eq('correction_posted', true);
 
       const { data: sentimentData } = await supabase
         .from('nrm_tweets_kb')
@@ -576,7 +576,7 @@ const Dashboard: React.FC = () => {
                   <TrendingUp className="h-6 w-6 text-red-600" />
                 </div>
                 <div className="ml-4">
-                  <p className="text-sm font-medium text-gray-600">Fact-checked Tweets</p>
+                  <p className="text-sm font-medium text-gray-600">Corrected Tweets</p>
                   <p className="text-2xl font-bold text-gray-900">{loading ? '...' : stats.factChecked.toLocaleString()}</p>
                 </div>
               </div>
