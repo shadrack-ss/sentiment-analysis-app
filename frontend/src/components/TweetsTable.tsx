@@ -17,6 +17,7 @@ const TweetsTable: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
   const [itemsPerPage] = useState(20)
+  const [expandedTweets, setExpandedTweets] = useState<Set<number>>(new Set())
 
   useEffect(() => {
     fetchTweets()
@@ -109,6 +110,29 @@ const TweetsTable: React.FC = () => {
   const getSentimentLabel = (sentiment?: string) => {
     if (!sentiment) return 'N/A'
     return sentiment
+  }
+
+  const toggleTweetExpansion = (tweetId: number) => {
+    const newExpanded = new Set(expandedTweets)
+    if (newExpanded.has(tweetId)) {
+      newExpanded.delete(tweetId)
+    } else {
+      newExpanded.add(tweetId)
+    }
+    setExpandedTweets(newExpanded)
+  }
+
+  const isTweetExpanded = (tweetId: number) => {
+    return expandedTweets.has(tweetId)
+  }
+
+  const shouldShowExpandButton = (text: string) => {
+    return text.length > 150 // Show expand button if tweet is longer than 150 characters
+  }
+
+  const getTruncatedText = (text: string, maxLength: number = 150) => {
+    if (text.length <= maxLength) return text
+    return text.substring(0, maxLength) + '...'
   }
 
   const handleSearch = (e: React.FormEvent) => {
@@ -216,6 +240,19 @@ const TweetsTable: React.FC = () => {
         <div className="flex gap-2">
           <button type="submit" className="btn-primary">Apply</button>
           <button type="button" onClick={clearFilters} className="btn-secondary">Clear</button>
+          <button 
+            type="button" 
+            onClick={() => {
+              if (expandedTweets.size === tweets.length) {
+                setExpandedTweets(new Set())
+              } else {
+                setExpandedTweets(new Set(tweets.map(tweet => tweet.id)))
+              }
+            }}
+            className="px-4 py-2 text-sm font-medium text-blue-600 hover:text-blue-700 border border-blue-300 rounded-lg hover:bg-blue-50"
+          >
+            {expandedTweets.size === tweets.length ? 'Collapse All' : 'Expand All'}
+          </button>
         </div>
       </form>
 
@@ -249,16 +286,29 @@ const TweetsTable: React.FC = () => {
             {tweets.map((tweet) => (
               <tr key={tweet.id} className="border-b border-gray-100 hover:bg-gray-50">
                 <td className="py-3 px-4">
-                  <div className="max-w-xs">
-                    <p className="text-sm text-gray-900 line-clamp-2">
-                      {tweet.text}
+                  <div className="max-w-lg">
+                    <p className="text-sm text-gray-900 whitespace-pre-wrap">
+                      {isTweetExpanded(tweet.id) ? tweet.text : getTruncatedText(tweet.text)}
                     </p>
+                    {shouldShowExpandButton(tweet.text) && (
+                      <div className="mt-1 flex items-center space-x-2">
+                        <button
+                          onClick={() => toggleTweetExpansion(tweet.id)}
+                          className="text-xs text-blue-600 hover:text-blue-700 font-medium"
+                        >
+                          {isTweetExpanded(tweet.id) ? 'Show less' : 'Show more'}
+                        </button>
+                        <span className="text-xs text-gray-500">
+                          {isTweetExpanded(tweet.id) ? tweet.text.length : getTruncatedText(tweet.text).length} / {tweet.text.length} chars
+                        </span>
+                      </div>
+                    )}
                     {tweet.url && (
                       <a
                         href={tweet.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center text-xs text-primary-600 hover:text-primary-700 mt-1"
+                        className="inline-flex items-center text-xs text-primary-600 hover:text-primary-700 mt-1 ml-2"
                       >
                         <ExternalLink className="h-3 w-3 mr-1" />
                         View Tweet
@@ -316,7 +366,24 @@ const TweetsTable: React.FC = () => {
               </span>
               <span className={`px-3 py-1 rounded-full text-xs font-medium ${getSentimentColor(tweet.sentiment_score || undefined)}`}>{getSentimentLabel(tweet.sentiment_score || undefined)}</span>
             </div>
-            <p className="text-gray-800 text-sm flex-grow line-clamp-3">{tweet.text}</p>
+            <div className="text-gray-800 text-sm flex-grow">
+              <p className="whitespace-pre-wrap">
+                {isTweetExpanded(tweet.id) ? tweet.text : getTruncatedText(tweet.text, 200)}
+              </p>
+              {shouldShowExpandButton(tweet.text) && (
+                <div className="mt-1 flex items-center space-x-2">
+                  <button
+                    onClick={() => toggleTweetExpansion(tweet.id)}
+                    className="text-xs text-blue-600 hover:text-blue-700 font-medium"
+                  >
+                    {isTweetExpanded(tweet.id) ? 'Show less' : 'Show more'}
+                  </button>
+                  <span className="text-xs text-gray-500">
+                    {isTweetExpanded(tweet.id) ? tweet.text.length : getTruncatedText(tweet.text, 200).length} / {tweet.text.length} chars
+                  </span>
+                </div>
+              )}
+            </div>
             <div className="flex justify-between items-center text-xs text-gray-500">
               <span>❤️ {tweet.like_count}</span>
               <span>🔄 {tweet.retweet_count}</span>
