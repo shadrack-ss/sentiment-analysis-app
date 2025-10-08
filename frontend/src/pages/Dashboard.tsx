@@ -350,24 +350,68 @@ const Dashboard: React.FC = () => {
                 )}
                 {!isSidebarCollapsed && <h1 className="text-lg font-bold text-gray-900">Sentiment Dashboard</h1>}
               </div>
-              <div className="flex items-center space-x-2">
-                {/* Collapse/Expand button for desktop */}
-                <button
-                  className="hidden lg:inline-flex p-2 text-gray-900 hover:text-gray-700"
-                  onClick={() => setIsSidebarCollapsed((prev) => !prev)}
-                  aria-label={isSidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
-                >
-                  {isSidebarCollapsed ? (
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
-                  ) : (
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
-                  )}
-                </button>
-                {/* Close button for mobile */}
-                <button className="lg:hidden p-2 text-gray-900 hover:text-gray-700" onClick={() => setIsSidebarOpen(false)}>
-                  <Menu className="h-6 w-6" />
-                </button>
-              </div>
+              <div className="flex items-center">
+  {/* Collapse/Expand button for desktop */}
+  <button
+    className="hidden lg:inline-flex p-2 text-gray-900 hover:text-gray-700"
+    onClick={() => setIsSidebarCollapsed(prev => !prev)}
+    aria-label={isSidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+  >
+    {isSidebarCollapsed ? (
+      // Double right chevrons (>>)
+      <div className="relative w-8 h-6">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="absolute left-0 top-0 h-5 w-5 z-20"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        </svg>
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="absolute left-3 top-0 h-5 w-5 z-10"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        </svg>
+      </div>
+    ) : (
+      // Double left chevrons (<<)
+      <div className="relative w-8 h-6">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="absolute left-0 top-0 h-5 w-5 z-20"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+        </svg>
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="absolute left-3 top-0 h-5 w-5 z-10"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+        </svg>
+      </div>
+    )}
+  </button>
+
+  {/* mobile menu button (unchanged) */}
+  <button className="lg:hidden p-2 text-gray-900 hover:text-gray-700" onClick={() => setIsSidebarOpen(false)}>
+    <Menu className="h-6 w-6" />
+  </button>
+</div>
+
             </div>
             <nav className="flex-1 p-4 space-y-2">
               {tabs.map((tab) => {
