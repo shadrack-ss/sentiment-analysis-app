@@ -27,6 +27,12 @@ export interface Tweet {
   user_profile_location: string
   has_precise_geo: boolean
   sentiment_score?: 'Positive' | 'Negative' | 'Neutral' | null // Categorical sentiment values
+  // Reply-related fields added by n8n workflow
+  fact_checked?: boolean
+  correction_posted?: boolean
+  reply_text?: string
+  reply_posted_at?: string
+  checked_at?: string
 }
 
 export interface SentimentData {

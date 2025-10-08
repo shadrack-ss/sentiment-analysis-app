@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../contexts/AuthContext';
-import { LogOut, Search, TrendingUp, Users, BarChart3, MonitorPlay, RefreshCw, Clock, Menu, Download, Upload, X } from 'lucide-react';
+import { LogOut, Search, TrendingUp, Users, BarChart3, MonitorPlay, RefreshCw, Clock, Menu, Download, Upload, X, MessageSquare } from 'lucide-react';
 import SentimentTimeline from '../components/SentimentTimeline';
 import SentimentPieChart from '../components/SentimentPieChart';
 import TweetsTable from '../components/TweetsTable';
+import TweetReplies from '../components/TweetReplies';
 import { supabase } from '../lib/supabase';
 import { Tweet, SentimentData, SentimentDistribution } from '../lib/supabase';
 import '@n8n/chat/style.css';
@@ -275,6 +276,7 @@ const Dashboard: React.FC = () => {
   const tabs = [
     { id: 'overview', label: 'Overview', icon: TrendingUp },
     { id: 'tweets', label: 'Tweets', icon: BarChart3 },
+    { id: 'tweet-replies', label: 'Tweet Replies', icon: MessageSquare },
     { id: 'custom-search', label: 'Custom Search', icon: Search },
     { id: 'youtube', label: 'YouTube', icon: MonitorPlay },
     { id: 'send-sms', label: 'Send SMS', icon: Users },
@@ -607,6 +609,12 @@ const Dashboard: React.FC = () => {
               <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Tweets Analysis</h3>
                 <TweetsTable />
+              </div>
+            )}
+
+            {activeTab === 'tweet-replies' && (
+              <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
+                <TweetReplies />
               </div>
             )}
 
