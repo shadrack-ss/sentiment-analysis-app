@@ -1,3 +1,10 @@
+/* @license
+Papa Parse
+v5.5.3
+https://github.com/mholt/PapaParse
+License: MIT
+*/
+
 /*!
   * vue-router v4.5.0
   * (c) 2024 Eduardo San Martin Morote
