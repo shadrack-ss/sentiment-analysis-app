@@ -83,7 +83,7 @@ const TweetReplies: React.FC<TweetRepliesProps> = () => {
       // Then, post to Twitter
       console.log('Sending request to /api/twitter/post-reply');
       
-      const response = await fetch('http://localhost:5000/api/twitter/post-reply', {
+      const response = await fetch('/api/twitter/post-reply', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -235,7 +235,7 @@ const TweetReplies: React.FC<TweetRepliesProps> = () => {
       ) : (
         <div className="space-y-4">
           {tweets.map((tweet) => (
-            <div key={tweet.id} className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+            <div key={`reply-${tweet.id}`} className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
               {/* Original Tweet */}
               <div className="mb-4 p-4 bg-gray-50 rounded-lg">
                 <div className="flex items-start justify-between mb-2">

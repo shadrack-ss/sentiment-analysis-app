@@ -284,7 +284,7 @@ const TweetsTable: React.FC = () => {
           </thead>
           <tbody>
             {tweets.map((tweet) => (
-              <tr key={tweet.id} className="border-b border-gray-100 hover:bg-gray-50">
+              <tr key={`tweet-${tweet.id}`} className="border-b border-gray-100 hover:bg-gray-50">
                 <td className="py-3 px-4">
                   <div className="max-w-lg">
                     <p className="text-sm text-gray-900 whitespace-pre-wrap">
@@ -358,7 +358,7 @@ const TweetsTable: React.FC = () => {
       {/* Card View (Mobile) */}
       <div className="block md:hidden space-y-4">
         {tweets.map((tweet) => (
-          <div key={tweet.id} className="card p-4 flex flex-col space-y-3 bg-white shadow rounded-lg">
+          <div key={`tweet-card-${tweet.id}`} className="card p-4 flex flex-col space-y-3 bg-white shadow rounded-lg">
             <div className="flex justify-between items-center">
               <span className="font-semibold text-yellow-700 flex items-center">
                 <User className="h-4 w-4 text-gray-400 mr-1" />
