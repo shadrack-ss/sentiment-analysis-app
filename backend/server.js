@@ -204,7 +204,7 @@ async function handleApiRequest(req, res, pathname) {
   return true;
 }
 
-function handleRequest(req, res) {
+async function handleRequest(req, res) {
   const parsedUrl = url.parse(req.url, true);
   const pathname = parsedUrl.pathname;
   
@@ -213,7 +213,10 @@ function handleRequest(req, res) {
   // Handle API routes first
   if (pathname.startsWith('/api/')) {
     console.log('API route detected:', pathname);
-    handleApiRequest(req, res, pathname).catch(error => {
+    try {
+      await handleApiRequest(req, res, pathname);
+      return;
+    } catch (error) {
       console.error('Unhandled error in API request:', error);
       if (!res.headersSent) {
         res.statusCode = 500;
@@ -223,8 +226,8 @@ function handleRequest(req, res) {
           message: 'Internal server error' 
         }));
       }
-    });
-    return;
+      return;
+    }
   }
   
   // Only support GET/HEAD for static serving

@@ -42,6 +42,7 @@ const Dashboard: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [showBulkUploadModal, setShowBulkUploadModal] = useState(false);
+  const sidebarCollapseTimerRef = useRef<NodeJS.Timeout | null>(null);
   const [csvData, setCsvData] = useState<any[]>([]);
   const [csvError, setCsvError] = useState<string | null>(null);
   const [csvUploading, setCsvUploading] = useState(false);
@@ -67,6 +68,28 @@ const Dashboard: React.FC = () => {
       }
     };
   }, [autoRefreshEnabled, refreshInterval]);
+
+  // Auto-collapse sidebar after 5 seconds of being expanded
+  useEffect(() => {
+    // Clear any existing timer
+    if (sidebarCollapseTimerRef.current) {
+      clearTimeout(sidebarCollapseTimerRef.current);
+    }
+
+    // Only set timer if sidebar is expanded (not collapsed)
+    if (!isSidebarCollapsed) {
+      sidebarCollapseTimerRef.current = setTimeout(() => {
+        setIsSidebarCollapsed(true);
+      }, 10000); // 10 seconds
+    }
+
+    // Cleanup timer on unmount or when dependencies change
+    return () => {
+      if (sidebarCollapseTimerRef.current) {
+        clearTimeout(sidebarCollapseTimerRef.current);
+      }
+    };
+  }, [isSidebarCollapsed]);
 
   const startAutoRefresh = () => {
     if (refreshIntervalRef.current) {
@@ -284,6 +307,20 @@ const Dashboard: React.FC = () => {
     { id: 'upload-docs', label: 'Upload Documents', icon: Upload, external: true, url: 'https://n8n.nrmcampaign.com/form/22b59e82-ac8c-4f58-b264-1f2e0b77f549' }, // External link
   ];
 
+  // Tooltip component for collapsed sidebar
+  const TooltipWrapper: React.FC<{ label: string; children: React.ReactNode; show: boolean }> = ({ label, children, show }) => {
+    if (!show) return <>{children}</>;
+    return (
+      <div className="relative group">
+        {children}
+        <div className="absolute left-full ml-2 px-2 py-1 bg-gray-900 text-white text-xs rounded-md whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-200 z-50">
+          {label}
+          <div className="absolute right-full top-1/2 -translate-y-1/2 w-0 h-0 border-4 border-transparent border-r-gray-900" />
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="min-h-screen bg-yellow-50 flex flex-col">
       {/* Responsive Topbar */}
@@ -337,24 +374,35 @@ const Dashboard: React.FC = () => {
       <div className="flex flex-1">
         {/* Sidebar */}
         <aside
-          className={`fixed inset-y-0 left-0 z-50 bg-white shadow-lg transform transition-transform duration-300 ease-in-out lg:static lg:z-auto ${{
+          className={`fixed inset-y-0 left-0 z-50 bg-white shadow-lg transform transition-all duration-500 ease-in-out lg:static lg:z-auto ${{
             true: isSidebarOpen ? 'translate-x-0' : '-translate-x-full',
             false: ''
           }[String(window.innerWidth < 1024)]} ${isSidebarCollapsed ? 'w-20' : 'w-64'} lg:translate-x-0`}
         >
           <div className="flex flex-col h-full">
             <div className="flex items-center justify-between p-4 border-b border-yellow-200">
-              <div className="flex items-center">
-                {(!isSidebarCollapsed || typeof window !== 'undefined' && window.innerWidth < 1024) && (
-                  <img src="/logo.png" alt="Logo" className={`h-8 w-8 mr-3 transition-all duration-300 ${isSidebarCollapsed ? 'mr-0' : 'mr-3'}`} onError={() => console.error('Failed to load logo.png')} />
-                )}
-                {!isSidebarCollapsed && <h1 className="text-lg font-bold text-gray-900">Sentiment Dashboard</h1>}
+              <div className="flex items-center overflow-hidden">
+                <img 
+                  src="/logo.png" 
+                  alt="Logo" 
+                  className={`h-8 w-8 transition-all duration-500 ${isSidebarCollapsed ? 'mr-0' : 'mr-3'}`} 
+                  onError={() => console.error('Failed to load logo.png')} 
+                />
+                <h1 className={`text-lg font-bold text-gray-900 whitespace-nowrap transition-all duration-500 ${isSidebarCollapsed ? 'opacity-0 w-0' : 'opacity-100 w-auto'}`}>
+                  Sentiment Dashboard
+                </h1>
               </div>
               <div className="flex items-center">
   {/* Collapse/Expand button for desktop */}
   <button
     className="hidden lg:inline-flex p-2 text-gray-900 hover:text-gray-700"
-    onClick={() => setIsSidebarCollapsed(prev => !prev)}
+    onClick={() => {
+      setIsSidebarCollapsed(prev => !prev);
+      // Clear the auto-collapse timer when manually toggled
+      if (sidebarCollapseTimerRef.current) {
+        clearTimeout(sidebarCollapseTimerRef.current);
+      }
+    }}
     aria-label={isSidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
   >
     {isSidebarCollapsed ? (
@@ -437,56 +485,60 @@ const Dashboard: React.FC = () => {
                 );
                 if (tab.id === 'bulk-upload') {
                   return (
-                    <button
-                      key={tab.id}
-                      onClick={() => setShowBulkUploadModal(true)}
-                      className={`flex items-center space-x-2 w-full px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 text-gray-600 hover:text-gray-900 hover:bg-gray-100 ${isSidebarCollapsed ? 'justify-center px-2' : ''}`}
-                    >
-                      {renderIconWithLetter('V')}
-                      {!isSidebarCollapsed && <span>{tab.label}</span>}
-                    </button>
+                    <TooltipWrapper key={tab.id} label={tab.label} show={isSidebarCollapsed}>
+                      <button
+                        onClick={() => setShowBulkUploadModal(true)}
+                        className={`flex items-center space-x-2 w-full px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 text-gray-600 hover:text-gray-900 hover:bg-gray-100 ${isSidebarCollapsed ? 'justify-center px-2' : ''}`}
+                      >
+                        <span className="flex-shrink-0">{renderIconWithLetter('V')}</span>
+                        <span className={`whitespace-nowrap transition-all duration-500 ${isSidebarCollapsed ? 'opacity-0 w-0 overflow-hidden' : 'opacity-100 w-auto'}`}>{tab.label}</span>
+                      </button>
+                    </TooltipWrapper>
                   );
                 }
                 if (tab.external && tab.id === 'upload-docs') {
                   return (
-                    <a
-                      key={tab.id}
-                      href={tab.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`flex items-center space-x-2 w-full px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 text-gray-600 hover:text-gray-900 hover:bg-gray-100 ${isSidebarCollapsed ? 'justify-center px-2' : ''}`}
-                    >
-                      {renderIconWithLetter('D')}
-                      {!isSidebarCollapsed && <span>{tab.label}</span>}
-                    </a>
+                    <TooltipWrapper key={tab.id} label={tab.label} show={isSidebarCollapsed}>
+                      <a
+                        href={tab.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`flex items-center space-x-2 w-full px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 text-gray-600 hover:text-gray-900 hover:bg-gray-100 ${isSidebarCollapsed ? 'justify-center px-2' : ''}`}
+                      >
+                        <span className="flex-shrink-0">{renderIconWithLetter('D')}</span>
+                        <span className={`whitespace-nowrap transition-all duration-500 ${isSidebarCollapsed ? 'opacity-0 w-0 overflow-hidden' : 'opacity-100 w-auto'}`}>{tab.label}</span>
+                      </a>
+                    </TooltipWrapper>
                   );
                 }
                 if (tab.external) {
                   return (
-                    <a
-                      key={tab.id}
-                      href={tab.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`flex items-center space-x-2 w-full px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 text-gray-600 hover:text-gray-900 hover:bg-gray-100 ${isSidebarCollapsed ? 'justify-center px-2' : ''}`}
-                    >
-                      <Icon className="h-4 w-4" />
-                      {!isSidebarCollapsed && <span>{tab.label}</span>}
-                    </a>
+                    <TooltipWrapper key={tab.id} label={tab.label} show={isSidebarCollapsed}>
+                      <a
+                        href={tab.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`flex items-center space-x-2 w-full px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 text-gray-600 hover:text-gray-900 hover:bg-gray-100 ${isSidebarCollapsed ? 'justify-center px-2' : ''}`}
+                      >
+                        <Icon className="h-4 w-4 flex-shrink-0" />
+                        <span className={`whitespace-nowrap transition-all duration-500 ${isSidebarCollapsed ? 'opacity-0 w-0 overflow-hidden' : 'opacity-100 w-auto'}`}>{tab.label}</span>
+                      </a>
+                    </TooltipWrapper>
                   );
                 }
                 return (
-                  <button
-                    key={tab.id}
-                    onClick={() => {
-                      setActiveTab(tab.id);
-                      setIsSidebarOpen(false);
-                    }}
-                    className={`flex items-center space-x-2 w-full px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${activeTab === tab.id ? 'bg-yellow-100 text-yellow-700' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'} ${isSidebarCollapsed ? 'justify-center px-2' : ''}`}
-                  >
-                    <Icon className="h-4 w-4" />
-                    {!isSidebarCollapsed && <span>{tab.label}</span>}
-                  </button>
+                  <TooltipWrapper key={tab.id} label={tab.label} show={isSidebarCollapsed}>
+                    <button
+                      onClick={() => {
+                        setActiveTab(tab.id);
+                        setIsSidebarOpen(false);
+                      }}
+                      className={`flex items-center space-x-2 w-full px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${activeTab === tab.id ? 'bg-yellow-100 text-yellow-700' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'} ${isSidebarCollapsed ? 'justify-center px-2' : ''}`}
+                    >
+                      <Icon className="h-4 w-4 flex-shrink-0" />
+                      <span className={`whitespace-nowrap transition-all duration-500 ${isSidebarCollapsed ? 'opacity-0 w-0 overflow-hidden' : 'opacity-100 w-auto'}`}>{tab.label}</span>
+                    </button>
+                  </TooltipWrapper>
                 );
               })}
             </nav>

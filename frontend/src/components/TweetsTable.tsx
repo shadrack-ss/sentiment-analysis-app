@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { Search, ChevronLeft, ChevronRight, ExternalLink, User } from 'lucide-react'
+import React, { useState, useEffect, useCallback } from 'react'
+import { Search, ChevronLeft, ChevronRight, ExternalLink, User, Filter, X, Calendar, TrendingUp, ChevronDown, ChevronUp } from 'lucide-react'
 import { supabase } from '../lib/supabase'
 import { Tweet } from '../lib/supabase'
 import { format } from 'date-fns'
@@ -18,14 +18,9 @@ const TweetsTable: React.FC = () => {
   const [totalPages, setTotalPages] = useState(1)
   const [itemsPerPage] = useState(20)
   const [expandedTweets, setExpandedTweets] = useState<Set<number>>(new Set())
+  const [showAdvancedFilters, setShowAdvancedFilters] = useState(false)
 
-  useEffect(() => {
-    fetchTweets()
-  }, [tweetQuery, userQuery, sentimentFilter, dateFrom, dateTo, engagementType, engagementMin, currentPage])
-
-  // Removed district fetching
-
-  const fetchTweets = async () => {
+  const fetchTweets = useCallback(async () => {
     try {
       setLoading(true)
       
@@ -97,7 +92,11 @@ const TweetsTable: React.FC = () => {
     } finally {
       setLoading(false)
     }
-  }
+  }, [tweetQuery, userQuery, sentimentFilter, dateFrom, dateTo, engagementType, engagementMin, currentPage, itemsPerPage])
+
+  useEffect(() => {
+    fetchTweets()
+  }, [fetchTweets])
 
   const getSentimentColor = (sentiment?: string) => {
     if (!sentiment) return 'text-gray-500'
@@ -153,6 +152,26 @@ const TweetsTable: React.FC = () => {
     setCurrentPage(1)
   }
 
+  const getActiveFiltersCount = () => {
+    let count = 0
+    if (tweetQuery) count++
+    if (userQuery) count++
+    if (sentimentFilter) count++
+    if (dateFrom || dateTo) count++
+    if (engagementType && engagementMin) count++
+    return count
+  }
+
+  const removeFilter = (filterName: string) => {
+    switch(filterName) {
+      case 'tweet': setTweetQuery(''); break;
+      case 'user': setUserQuery(''); break;
+      case 'sentiment': setSentimentFilter(''); break;
+      case 'date': setDateFrom(''); setDateTo(''); break;
+      case 'engagement': setEngagementType(''); setEngagementMin(''); break;
+    }
+  }
+
   if (loading && tweets.length === 0) {
     return (
       <div className="h-64 flex items-center justify-center">
@@ -164,109 +183,230 @@ const TweetsTable: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Search and Filters */}
-      <form onSubmit={handleSearch} className="space-y-3">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
-          <div className="relative min-w-0">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-            <input
-              type="text"
-              placeholder="Filter by tweet text..."
-              value={tweetQuery}
-              onChange={(e) => setTweetQuery(e.target.value)}
-              className="input-field pl-10 w-full"
-            />
-          </div>
-
-          <div className="min-w-0">
-            <input
-              type="text"
-              placeholder="Filter by user..."
-              value={userQuery}
-              onChange={(e) => setUserQuery(e.target.value)}
-              className="input-field w-full"
-            />
-          </div>
-
-          <div className="min-w-0">
-            <select
-              value={sentimentFilter}
-              onChange={(e) => setSentimentFilter(e.target.value)}
-              className="input-field w-full"
+      <div className="bg-white rounded-lg border border-gray-200 shadow-sm">
+        <form onSubmit={handleSearch} className="p-4 space-y-4">
+          {/* Header */}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Filter className="h-5 w-5 text-gray-600" />
+              <h3 className="font-semibold text-gray-900">Filters</h3>
+              {getActiveFiltersCount() > 0 && (
+                <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-primary-100 text-primary-800">
+                  {getActiveFiltersCount()} active
+                </span>
+              )}
+            </div>
+            <button
+              type="button"
+              onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}
+              className="flex items-center gap-1 text-sm text-gray-600 hover:text-gray-900"
             >
-              <option value="">All sentiments</option>
-              <option value="Positive">Positive</option>
-              <option value="Neutral">Neutral</option>
-              <option value="Negative">Negative</option>
-            </select>
+              Advanced
+              {showAdvancedFilters ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+            </button>
           </div>
 
-          <div className="grid grid-cols-2 gap-2 min-w-0">
-            <input
-              type="date"
-              value={dateFrom}
-              onChange={(e) => setDateFrom(e.target.value)}
-              className="input-field w-full"
-            />
-            <input
-              type="date"
-              value={dateTo}
-              onChange={(e) => setDateTo(e.target.value)}
-              className="input-field w-full"
-            />
+          {/* Primary Filters */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            {/* Tweet Search */}
+            <div>
+              <label className="block text-xs font-medium text-gray-700 mb-1">
+                Tweet Text
+              </label>
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                <input
+                  type="text"
+                  placeholder="Search tweet content..."
+                  value={tweetQuery}
+                  onChange={(e) => setTweetQuery(e.target.value)}
+                  className="input-field pl-9 w-full"
+                />
+              </div>
+            </div>
+
+            {/* User Filter */}
+            <div>
+              <label className="block text-xs font-medium text-gray-700 mb-1">
+                Username
+              </label>
+              <div className="relative">
+                <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                <input
+                  type="text"
+                  placeholder="Filter by username..."
+                  value={userQuery}
+                  onChange={(e) => setUserQuery(e.target.value)}
+                  className="input-field pl-9 w-full"
+                />
+              </div>
+            </div>
+
+            {/* Sentiment Filter */}
+            <div>
+              <label className="block text-xs font-medium text-gray-700 mb-1">
+                Sentiment
+              </label>
+              <select
+                value={sentimentFilter}
+                onChange={(e) => setSentimentFilter(e.target.value)}
+                className="input-field w-full"
+              >
+                <option value="">All sentiments</option>
+                <option value="Positive">✓ Positive</option>
+                <option value="Neutral">○ Neutral</option>
+                <option value="Negative">✗ Negative</option>
+              </select>
+            </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-2 min-w-0">
-            <select
-              value={engagementType}
-              onChange={(e) => setEngagementType(e.target.value)}
-              className="input-field w-full"
+          {/* Advanced Filters */}
+          {showAdvancedFilters && (
+            <div className="pt-3 border-t border-gray-200 space-y-3">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {/* Date Range */}
+                <div>
+                  <label className="block text-xs font-medium text-gray-700 mb-1">
+                    <Calendar className="inline h-3 w-3 mr-1" />
+                    Date Range
+                  </label>
+                  <div className="grid grid-cols-2 gap-2">
+                    <input
+                      type="date"
+                      value={dateFrom}
+                      onChange={(e) => setDateFrom(e.target.value)}
+                      placeholder="From"
+                      className="input-field w-full text-sm"
+                    />
+                    <input
+                      type="date"
+                      value={dateTo}
+                      onChange={(e) => setDateTo(e.target.value)}
+                      placeholder="To"
+                      className="input-field w-full text-sm"
+                    />
+                  </div>
+                </div>
+
+                {/* Engagement Filter */}
+                <div>
+                  <label className="block text-xs font-medium text-gray-700 mb-1">
+                    <TrendingUp className="inline h-3 w-3 mr-1" />
+                    Minimum Engagement
+                  </label>
+                  <div className="grid grid-cols-2 gap-2">
+                    <select
+                      value={engagementType}
+                      onChange={(e) => setEngagementType(e.target.value)}
+                      className="input-field w-full text-sm"
+                    >
+                      <option value="">Type</option>
+                      <option value="likes">Likes</option>
+                      <option value="retweets">Retweets</option>
+                      <option value="comments">Comments</option>
+                    </select>
+                    <input
+                      type="number"
+                      min="0"
+                      placeholder="Count"
+                      value={engagementMin}
+                      onChange={(e) => setEngagementMin(e.target.value)}
+                      className="input-field w-full text-sm"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Active Filters Tags */}
+          {getActiveFiltersCount() > 0 && (
+            <div className="flex flex-wrap gap-2 pt-2">
+              {tweetQuery && (
+                <span className="inline-flex items-center gap-1 px-2 py-1 rounded-md text-xs bg-gray-100 text-gray-700">
+                  Tweet: "{tweetQuery.substring(0, 20)}{tweetQuery.length > 20 ? '...' : ''}"
+                  <button onClick={() => removeFilter('tweet')} className="hover:text-gray-900">
+                    <X className="h-3 w-3" />
+                  </button>
+                </span>
+              )}
+              {userQuery && (
+                <span className="inline-flex items-center gap-1 px-2 py-1 rounded-md text-xs bg-gray-100 text-gray-700">
+                  User: @{userQuery}
+                  <button onClick={() => removeFilter('user')} className="hover:text-gray-900">
+                    <X className="h-3 w-3" />
+                  </button>
+                </span>
+              )}
+              {sentimentFilter && (
+                <span className="inline-flex items-center gap-1 px-2 py-1 rounded-md text-xs bg-gray-100 text-gray-700">
+                  Sentiment: {sentimentFilter}
+                  <button onClick={() => removeFilter('sentiment')} className="hover:text-gray-900">
+                    <X className="h-3 w-3" />
+                  </button>
+                </span>
+              )}
+              {(dateFrom || dateTo) && (
+                <span className="inline-flex items-center gap-1 px-2 py-1 rounded-md text-xs bg-gray-100 text-gray-700">
+                  Date: {dateFrom || '...'} → {dateTo || '...'}
+                  <button onClick={() => removeFilter('date')} className="hover:text-gray-900">
+                    <X className="h-3 w-3" />
+                  </button>
+                </span>
+              )}
+              {(engagementType && engagementMin) && (
+                <span className="inline-flex items-center gap-1 px-2 py-1 rounded-md text-xs bg-gray-100 text-gray-700">
+                  {engagementType} ≥ {engagementMin}
+                  <button onClick={() => removeFilter('engagement')} className="hover:text-gray-900">
+                    <X className="h-3 w-3" />
+                  </button>
+                </span>
+              )}
+            </div>
+          )}
+
+          {/* Action Buttons */}
+          <div className="flex flex-wrap gap-2 pt-2">
+            <button type="submit" className="btn-primary">
+              <Search className="h-4 w-4 mr-1 inline" />
+              Apply Filters
+            </button>
+            {getActiveFiltersCount() > 0 && (
+              <button type="button" onClick={clearFilters} className="btn-secondary">
+                <X className="h-4 w-4 mr-1 inline" />
+                Clear All
+              </button>
+            )}
+            <button 
+              type="button" 
+              onClick={() => {
+                if (expandedTweets.size === tweets.length) {
+                  setExpandedTweets(new Set())
+                } else {
+                  setExpandedTweets(new Set(tweets.map(tweet => tweet.id)))
+                }
+              }}
+              className="px-3 py-2 text-sm font-medium text-blue-600 hover:text-blue-700 border border-blue-300 rounded-lg hover:bg-blue-50 transition-colors"
             >
-              <option value="">Engagement type</option>
-              <option value="likes">Likes</option>
-              <option value="retweets">Retweets</option>
-              <option value="comments">Comments</option>
-            </select>
-            <input
-              type="number"
-              min="0"
-              placeholder="Min count"
-              value={engagementMin}
-              onChange={(e) => setEngagementMin(e.target.value)}
-              className="input-field w-full"
-            />
+              {expandedTweets.size === tweets.length ? 'Collapse All' : 'Expand All'}
+            </button>
           </div>
-        </div>
-
-        <div className="flex gap-2">
-          <button type="submit" className="btn-primary">Apply</button>
-          <button type="button" onClick={clearFilters} className="btn-secondary">Clear</button>
-          <button 
-            type="button" 
-            onClick={() => {
-              if (expandedTweets.size === tweets.length) {
-                setExpandedTweets(new Set())
-              } else {
-                setExpandedTweets(new Set(tweets.map(tweet => tweet.id)))
-              }
-            }}
-            className="px-4 py-2 text-sm font-medium text-blue-600 hover:text-blue-700 border border-blue-300 rounded-lg hover:bg-blue-50"
-          >
-            {expandedTweets.size === tweets.length ? 'Collapse All' : 'Expand All'}
-          </button>
-        </div>
-      </form>
+        </form>
+      </div>
 
       {/* Results Count */}
-      <div className="flex justify-between items-center text-sm text-gray-600">
-        <span>
-          Showing {tweets.length} tweets
-          {tweetQuery && ` for tweet "${tweetQuery}"`}
-          {userQuery && ` by user "${userQuery}"`}
-          {sentimentFilter && ` with sentiment ${sentimentFilter}`}
-          {(dateFrom || dateTo) && ` between ${dateFrom || '...'} and ${dateTo || '...'}`}
-          {(engagementType && engagementMin) && ` with ${engagementType} ≥ ${engagementMin}`}
-        </span>
-        <span>Page {currentPage} of {totalPages}</span>
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 bg-gray-50 px-4 py-3 rounded-lg border border-gray-200">
+        <div className="text-sm">
+          <span className="text-gray-600">Displaying </span>
+          <span className="font-semibold text-gray-900">{tweets.length}</span>
+          <span className="text-gray-600"> tweets</span>
+          {getActiveFiltersCount() > 0 && (
+            <span className="text-gray-500 ml-1">with {getActiveFiltersCount()} filter{getActiveFiltersCount() > 1 ? 's' : ''}</span>
+          )}
+        </div>
+        <div className="text-sm text-gray-600">
+          Page <span className="font-medium text-gray-900">{currentPage}</span> of <span className="font-medium text-gray-900">{totalPages}</span>
+        </div>
       </div>
 
       {/* Table (Desktop/Tablet) */}
