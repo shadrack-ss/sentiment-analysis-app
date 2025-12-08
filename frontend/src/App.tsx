@@ -40,7 +40,7 @@ const AppShell: React.FC = () => {
         webhookUrl: AI_ASSISTANT_CONFIG.webhookUrl,
         loadPreviousSession: true,
         sessionId,
-        initialMessages: ["I'm ready to analyze Ugandan political discourse about the NRM and President Museveni, Hon Anita Among, the speaker of parliament of Uganda, and Hon. Thomas Tayebwa, the Deputy Speaker of the Parliament of Uganda. What kind of insights are you looking for today? I can access and analyze  a database of tweets, identify sentiment, and track trends."]
+        initialMessages: ["I'm ready to analyze Ugandan political discourse about the NRM and President Museveni, Hon. Anita Among, the speaker of parliament of Uganda, and Hon. Thomas Tayebwa, the Deputy Speaker of the Parliament of Uganda. What kind of insights are you looking for today? I can access and analyze  a database of tweets, identify sentiment, and track trends."]
       })
       ;(window as any).__n8nChatInitialized = true
 
@@ -87,9 +87,45 @@ const AppShell: React.FC = () => {
             })
           } catch {}
         }
+        // Style send button continuously
+        styleSendButton()
       }
-      const interval = window.setInterval(ensureChat, 2000)
+      
+      // Function to aggressively style the send button
+      const styleSendButton = () => {
+        // Find the chat container
+        const chatContainer = document.querySelector('[data-n8n-chat]')
+        if (!chatContainer) return
+        
+        // Find all buttons within the chat
+        const allButtons = chatContainer.querySelectorAll('button')
+        allButtons.forEach((btn: any) => {
+          // Check if this button contains an SVG (likely the send button)
+          const hasSvg = btn.querySelector('svg')
+          if (hasSvg) {
+            // Apply styles directly with setAttribute for maximum priority
+            btn.setAttribute('style', 'background-color: #1e3a8a !important; background: #1e3a8a !important; border-color: #1e3a8a !important;')
+            
+            // Find and style all SVG elements
+            const svgElements = btn.querySelectorAll('svg, svg path, svg circle, svg line, svg polyline, svg polygon, svg rect')
+            svgElements.forEach((svg: any) => {
+              svg.setAttribute('fill', 'white')
+              svg.setAttribute('stroke', 'white')
+              svg.setAttribute('color', 'white')
+              svg.setAttribute('style', 'fill: white !important; stroke: white !important; color: white !important;')
+            })
+          }
+        })
+      }
+      
+      // Run more frequently
+      const interval = window.setInterval(ensureChat, 500)
       ;(window as any).__n8nChatEnsureInterval = interval
+      
+      // Also add event listener to input fields to trigger styling
+      document.addEventListener('input', styleSendButton)
+      document.addEventListener('click', styleSendButton)
+      document.addEventListener('focus', styleSendButton, true)
     } catch (e) {
       console.warn('Failed to initialize chat:', e)
     }

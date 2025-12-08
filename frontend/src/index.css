@@ -30,3 +30,74 @@
     @apply w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200;
   }
 }
+
+/* Override n8n chat widget send button styling - only the input send button, not the chat toggle */
+
+/* Target only the send button in the input area, not the main chat button */
+[data-n8n-chat] form button[type="submit"],
+[data-n8n-chat] .chat-input button[type="submit"],
+.n8n-chat form button[type="submit"],
+#n8n-chat form button[type="submit"],
+[data-n8n-chat] button[aria-label*="send" i],
+[data-n8n-chat] button[aria-label*="Send" i] {
+  background-color: #1e3a8a !important;
+  border-color: #1e3a8a !important;
+}
+
+/* Target the SVG icon and all its children inside the send button with maximum specificity */
+[data-n8n-chat] form button[type="submit"] svg,
+[data-n8n-chat] form button[type="submit"] svg *,
+[data-n8n-chat] .chat-input button[type="submit"] svg,
+[data-n8n-chat] .chat-input button[type="submit"] svg *,
+.n8n-chat form button[type="submit"] svg,
+.n8n-chat form button[type="submit"] svg *,
+#n8n-chat form button[type="submit"] svg,
+#n8n-chat form button[type="submit"] svg *,
+[data-n8n-chat] button[aria-label*="send" i] svg,
+[data-n8n-chat] button[aria-label*="send" i] svg *,
+[data-n8n-chat] button[aria-label*="Send" i] svg,
+[data-n8n-chat] button[aria-label*="Send" i] svg * {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+/* Target SVG paths specifically */
+[data-n8n-chat] form button[type="submit"] svg path,
+[data-n8n-chat] .chat-input button[type="submit"] svg path,
+.n8n-chat form button[type="submit"] svg path,
+#n8n-chat form button[type="submit"] svg path,
+[data-n8n-chat] button[aria-label*="send" i] svg path,
+[data-n8n-chat] button[aria-label*="Send" i] svg path {
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+[data-n8n-chat] form button[type="submit"]:hover,
+[data-n8n-chat] .chat-input button[type="submit"]:hover,
+.n8n-chat form button[type="submit"]:hover,
+#n8n-chat form button[type="submit"]:hover,
+[data-n8n-chat] button[aria-label*="send" i]:hover,
+[data-n8n-chat] button[aria-label*="Send" i]:hover {
+  background-color: #1e40af !important;
+  border-color: #1e40af !important;
+}
+
+/* Filter to force white color on the icon */
+[data-n8n-chat] form button[type="submit"],
+[data-n8n-chat] .chat-input button[type="submit"],
+.n8n-chat form button[type="submit"],
+#n8n-chat form button[type="submit"],
+[data-n8n-chat] button[aria-label*="send" i],
+[data-n8n-chat] button[aria-label*="Send" i] {
+  filter: none !important;
+}
+
+[data-n8n-chat] form button[type="submit"] svg,
+[data-n8n-chat] .chat-input button[type="submit"] svg,
+.n8n-chat form button[type="submit"] svg,
+#n8n-chat form button[type="submit"] svg,
+[data-n8n-chat] button[aria-label*="send" i] svg,
+[data-n8n-chat] button[aria-label*="Send" i] svg {
+  filter: brightness(0) invert(1) !important;
+}

@@ -230,7 +230,7 @@ const AIAssistant: React.FC = () => {
               <button
                 type="submit"
                 disabled={!inputValue.trim() || isLoading}
-                className="px-4 py-2 bg-primary-600 hover:bg-primary-700 disabled:bg-gray-300 text-white rounded-xl transition-colors duration-200 disabled:cursor-not-allowed"
+                className="px-4 py-2 bg-yellow-400 hover:bg-yellow-500 disabled:bg-gray-300 text-gray-900 rounded-xl transition-colors duration-200 disabled:cursor-not-allowed shadow-sm"
               >
                 <Send className="h-4 w-4" />
               </button>
