@@ -6,6 +6,8 @@ import SentimentPieChart from '../components/SentimentPieChart';
 import TweetsTable from '../components/TweetsTable';
 import TweetReplies from '../components/TweetReplies';
 import UsersTable from '../components/UsersTable';
+import TopUsersChart from '../components/TopUsersChart';
+import DailyActivityChart from '../components/DailyActivityChart';
 import { supabase } from '../lib/supabase';
 import '@n8n/chat/style.css';
 import { AI_ASSISTANT_CONFIG } from '../config/ai-assistant';
@@ -518,7 +520,10 @@ const Dashboard: React.FC = () => {
               </div>
             </button>
 
-            <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
+            <button 
+              onClick={() => setActiveTab('overview')}
+              className="card p-4 sm:p-6 bg-white shadow rounded-lg hover:shadow-lg transition-shadow cursor-pointer text-left w-full"
+            >
               <div className="flex items-center">
                 <div className="p-2 bg-yellow-100 rounded-xl">
                   <BarChart3 className="h-6 w-6 text-yellow-600" />
@@ -528,7 +533,7 @@ const Dashboard: React.FC = () => {
                   <p className="text-2xl font-bold text-gray-900">{loading ? '...' : stats.averageSentiment}</p>
                 </div>
               </div>
-            </div>
+            </button>
 
             <button 
               onClick={() => setActiveTab('tweet-replies')}
@@ -553,15 +558,31 @@ const Dashboard: React.FC = () => {
               </div>
             )}
             {activeTab === 'overview' && (
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
-                <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Sentiment Timeline</h3>
-                  <SentimentTimeline />
+              <div className="space-y-6">
+                {/* First Row - Timeline and Distribution */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+                  <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
+                    <h3 className="text-lg font-semibold text-gray-900 mb-4">Sentiment Timeline</h3>
+                    <SentimentTimeline />
+                  </div>
+
+                  <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
+                    <h3 className="text-lg font-semibold text-gray-900 mb-4">Sentiment Distribution</h3>
+                    <SentimentPieChart />
+                  </div>
                 </div>
 
-                <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Sentiment Distribution</h3>
-                  <SentimentPieChart />
+                {/* Second Row - Top Users and Daily Activity */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+                  <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
+                    <h3 className="text-lg font-semibold text-gray-900 mb-4">Top 10 Most Active Users</h3>
+                    <TopUsersChart />
+                  </div>
+
+                  <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
+                    <h3 className="text-lg font-semibold text-gray-900 mb-4">Daily Tweet Activity</h3>
+                    <DailyActivityChart />
+                  </div>
                 </div>
               </div>
             )}
