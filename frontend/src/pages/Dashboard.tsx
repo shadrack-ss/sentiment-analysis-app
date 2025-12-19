@@ -36,11 +36,12 @@ const Dashboard: React.FC = () => {
     averageSentiment: 0,
     factChecked: 0,
   });
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(typeof window !== 'undefined' && window.innerWidth < 1024);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [showBulkUploadModal, setShowBulkUploadModal] = useState(false);
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 1024;
   const sidebarCollapseTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const initialCollapseTimerRef = useRef<NodeJS.Timeout | null>(null);
   const [csvData, setCsvData] = useState<any[]>([]);
   const [csvError, setCsvError] = useState<string | null>(null);
   const [csvUploading, setCsvUploading] = useState(false);
@@ -64,6 +65,21 @@ const Dashboard: React.FC = () => {
       clearInterval(interval);
     };
   }, []);
+
+  // On mobile, show sidebar for 5 seconds on initial load, then close it
+  useEffect(() => {
+    if (isMobile) {
+      initialCollapseTimerRef.current = setTimeout(() => {
+        setIsSidebarOpen(false);
+      }, 5000); // 5 seconds
+    }
+
+    return () => {
+      if (initialCollapseTimerRef.current) {
+        clearTimeout(initialCollapseTimerRef.current);
+      }
+    };
+  }, [isMobile]);
 
   // Auto-collapse sidebar after 5 seconds of being expanded
   useEffect(() => {
@@ -489,7 +505,7 @@ const Dashboard: React.FC = () => {
 
         {/* Main Content */}
         <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8">
+          <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8">
             <button 
               onClick={() => setActiveTab('tweets')}
               className="card p-4 sm:p-6 bg-white shadow rounded-lg hover:shadow-lg transition-shadow cursor-pointer text-left"
