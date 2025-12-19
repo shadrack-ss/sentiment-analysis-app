@@ -6,7 +6,6 @@ import SentimentPieChart from '../components/SentimentPieChart';
 import TweetsTable from '../components/TweetsTable';
 import TweetReplies from '../components/TweetReplies';
 import { supabase } from '../lib/supabase';
-import { Tweet, SentimentData, SentimentDistribution } from '../lib/supabase';
 import '@n8n/chat/style.css';
 import { AI_ASSISTANT_CONFIG } from '../config/ai-assistant';
 import Papa, { ParseResult, ParseError } from 'papaparse';
@@ -266,7 +265,10 @@ const Dashboard: React.FC = () => {
                 <Menu className="h-6 w-6" />
               </button>
 
-              <div className="flex items-center">
+              <button 
+                onClick={() => setActiveTab('overview')}
+                className="flex items-center hover:opacity-80 transition-opacity cursor-pointer"
+              >
                 <img
                   src="/logo.png"
                   alt="Logo"
@@ -280,7 +282,7 @@ const Dashboard: React.FC = () => {
                   <span className="hidden sm:inline">Sentiment Dashboard</span>
                   <span className="sm:hidden">Dashboard</span>
                 </span>
-              </div>
+              </button>
             </div>
 
             {/* Right Section */}
@@ -309,7 +311,10 @@ const Dashboard: React.FC = () => {
         >
           <div className="flex flex-col h-full">
             <div className="flex items-center justify-between p-4 border-b border-yellow-200">
-              <div className="flex items-center overflow-hidden">
+              <button 
+                onClick={() => setActiveTab('overview')}
+                className="flex items-center overflow-hidden hover:opacity-80 transition-opacity cursor-pointer"
+              >
                 <img 
                   src="/logo.png" 
                   alt="Logo" 
@@ -319,7 +324,7 @@ const Dashboard: React.FC = () => {
                 <h1 className={`text-lg font-bold text-gray-900 whitespace-nowrap transition-all duration-500 ${isSidebarCollapsed && !isMobile ? 'opacity-0 w-0' : 'opacity-100 w-auto'}`}>
                   Sentiment Dashboard
                 </h1>
-              </div>
+              </button>
               <div className="flex items-center">
   {/* Collapse/Expand button for desktop */}
   <button
@@ -481,7 +486,10 @@ const Dashboard: React.FC = () => {
         {/* Main Content */}
         <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8">
-            <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
+            <button 
+              onClick={() => setActiveTab('tweets')}
+              className="card p-4 sm:p-6 bg-white shadow rounded-lg hover:shadow-lg transition-shadow cursor-pointer text-left"
+            >
               <div className="flex items-center">
                 <div className="p-2 bg-yellow-100 rounded-xl">
                   <TrendingUp className="h-6 w-6 text-yellow-400" />
@@ -491,7 +499,7 @@ const Dashboard: React.FC = () => {
                   <p className="text-2xl font-bold text-gray-900">{loading ? '...' : stats.totalTweets.toLocaleString()}</p>
                 </div>
               </div>
-            </div>
+            </button>
 
             <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
               <div className="flex items-center">
@@ -517,7 +525,10 @@ const Dashboard: React.FC = () => {
               </div>
             </div>
 
-            <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
+            <button 
+              onClick={() => setActiveTab('tweet-replies')}
+              className="card p-4 sm:p-6 bg-white shadow rounded-lg hover:shadow-lg transition-shadow cursor-pointer text-left"
+            >
               <div className="flex items-center">
                 <div className="p-2 bg-red-100 rounded-xl">
                   <TrendingUp className="h-6 w-6 text-red-600" />
@@ -527,7 +538,7 @@ const Dashboard: React.FC = () => {
                   <p className="text-2xl font-bold text-gray-900">{loading ? '...' : stats.factChecked.toLocaleString()}</p>
                 </div>
               </div>
-            </div>
+            </button>
           </div>
 
           <div className="space-y-6 sm:space-y-8">
