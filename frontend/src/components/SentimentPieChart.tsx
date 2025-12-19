@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts'
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell, LabelList } from 'recharts'
 import { supabase } from '../lib/supabase'
 import { SentimentDistribution } from '../lib/supabase'
 
 const SentimentPieChart: React.FC = () => {
-  const [data, setData] = useState<Array<{ name: string; value: number; color: string }>>([])
+  const [data, setData] = useState<Array<{ name: string; value: number; color: string; percentage: string }>>([])
   const [loading, setLoading] = useState(true)
   const [totalTweets, setTotalTweets] = useState(0)
 
@@ -52,17 +52,20 @@ const SentimentPieChart: React.FC = () => {
         {
           name: 'Positive',
           value: positive,
-          color: '#22c55e'
+          color: '#22c55e',
+          percentage: ((positive / total) * 100).toFixed(1)
         },
-     /*   {
+        {
           name: 'Neutral',
           value: neutral,
-          color: '#6b7280'
-        },*/
+          color: '#f59e0b',
+          percentage: ((neutral / total) * 100).toFixed(1)
+        },
         {
           name: 'Negative',
           value: negative,
-          color: '#ef4444'
+          color: '#ef4444',
+          percentage: ((negative / total) * 100).toFixed(1)
         }
       ]
 
@@ -96,13 +99,12 @@ const SentimentPieChart: React.FC = () => {
   const CustomTooltip = ({ active, payload }: any) => {
     if (active && payload && payload.length) {
       const data = payload[0].payload
-      const percentage = ((data.value / totalTweets) * 100).toFixed(1)
       
       return (
         <div className="bg-white p-3 border border-gray-200 rounded-lg shadow-lg">
           <p className="font-medium text-gray-900">{data.name}</p>
           <p className="text-sm text-gray-600">
-            {data.value.toLocaleString()} tweets ({percentage}%)
+            {data.value.toLocaleString()} tweets ({data.percentage}%)
           </p>
         </div>
       )
@@ -110,52 +112,70 @@ const SentimentPieChart: React.FC = () => {
     return null
   }
 
-  const CustomLegend = ({ payload }: any) => (
-    <div className="flex flex-wrap justify-center gap-4 mt-4">
-      {payload.map((entry: any, index: number) => (
-        <div key={`legend-${index}`} className="flex items-center space-x-2">
-          <div 
-            className="w-3 h-3 rounded-full"
-            style={{ backgroundColor: entry.color }}
-          />
-          <span className="text-sm text-gray-700">
-            {entry.value} ({((entry.payload.value / totalTweets) * 100).toFixed(1)}%)
-          </span>
-        </div>
-      ))}
-    </div>
-  )
+  const renderCustomLabel = (props: any) => {
+    const { x, y, width, value, payload } = props
+    if (!payload || !payload.percentage) return null
+    
+    return (
+      <text 
+        x={x + width / 2} 
+        y={y - 10} 
+        fill="#374151" 
+        textAnchor="middle" 
+        fontSize="12"
+        fontWeight="600"
+      >
+        {payload.percentage}%
+      </text>
+    )
+  }
 
   return (
     <div className="space-y-4">
       {/* Header */}
-      <div className="text-center">
-        <h4 className="text-sm font-medium text-gray-700 mb-2">Sentiment Distribution</h4>
-        <p className="text-xs text-gray-500">
-          Based on {totalTweets.toLocaleString()} analyzed tweets
-        </p>
+      <div className="flex justify-between items-center">
+        <div>
+          <h4 className="text-sm font-medium text-gray-700">Sentiment Distribution</h4>
+          <p className="text-xs text-gray-500 mt-1">
+            Based on {totalTweets.toLocaleString()} analyzed tweets
+          </p>
+        </div>
       </div>
 
-      {/* Chart */}
+      {/* Bar Chart */}
       <div className="h-64">
         <ResponsiveContainer width="100%" height="100%">
-          <PieChart>
-            <Pie
-              data={data}
-              cx="50%"
-              cy="50%"
-              innerRadius={40}
-              outerRadius={80}
-              paddingAngle={2}
-              dataKey="value"
+          <BarChart 
+            data={data} 
+            margin={{ top: 20, right: 20, left: 20, bottom: 5 }}
+            barSize={60}
+          >
+            <CartesianGrid strokeDasharray="3 3" stroke="#f3f4f6" vertical={false} />
+            <XAxis 
+              dataKey="name" 
+              stroke="#6b7280"
+              fontSize={12}
+              tickLine={false}
+              axisLine={false}
+            />
+            <YAxis 
+              stroke="#6b7280"
+              fontSize={12}
+              tickLine={false}
+              axisLine={false}
+              tickFormatter={(value) => value.toLocaleString()}
+            />
+            <Tooltip content={<CustomTooltip />} cursor={{ fill: 'transparent' }} />
+            <Bar 
+              dataKey="value" 
+              radius={[8, 8, 0, 0]}
             >
               {data.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={entry.color} />
               ))}
-            </Pie>
-            <Tooltip content={<CustomTooltip />} />
-            <Legend content={<CustomLegend />} />
-          </PieChart>
+              <LabelList content={renderCustomLabel} />
+            </Bar>
+          </BarChart>
         </ResponsiveContainer>
       </div>
 
@@ -167,10 +187,11 @@ const SentimentPieChart: React.FC = () => {
               className="w-4 h-4 rounded-full mx-auto mb-2"
               style={{ backgroundColor: item.color }}
             />
-            <p className="text-lg font-semibold text-gray-900">
+            <p className="text-xl font-bold text-gray-900">
               {item.value.toLocaleString()}
             </p>
-            <p className="text-xs text-gray-500">{item.name}</p>
+            <p className="text-xs text-gray-600 font-medium mt-1">{item.name}</p>
+            <p className="text-xs text-gray-500">{item.percentage}%</p>
           </div>
         ))}
       </div>

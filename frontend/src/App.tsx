@@ -40,7 +40,7 @@ const AppShell: React.FC = () => {
         webhookUrl: AI_ASSISTANT_CONFIG.webhookUrl,
         loadPreviousSession: true,
         sessionId,
-        initialMessages: ["I'm ready to analyze Ugandan political discourse about the NRM and President Museveni, Hon. Anita Among,and Hon. Thomas Tayebwa, What kind of insights are you looking for today? I can access and analyze  a database of tweets, identify sentiment, and track trends."]
+        initialMessages: ["I'm ready to analyze Ugandan political discourse about the NRM and President Museveni, Hon. Anita Among, and Hon. Thomas Tayebwa, What kind of insights are you looking for today? I can access and analyze  a database of tweets, identify sentiment, and track trends."]
       })
       ;(window as any).__n8nChatInitialized = true
 

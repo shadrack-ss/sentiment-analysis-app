@@ -5,6 +5,7 @@ import SentimentTimeline from '../components/SentimentTimeline';
 import SentimentPieChart from '../components/SentimentPieChart';
 import TweetsTable from '../components/TweetsTable';
 import TweetReplies from '../components/TweetReplies';
+import UsersTable from '../components/UsersTable';
 import { supabase } from '../lib/supabase';
 import '@n8n/chat/style.css';
 import { AI_ASSISTANT_CONFIG } from '../config/ai-assistant';
@@ -227,6 +228,7 @@ const Dashboard: React.FC = () => {
     { id: 'overview', label: 'Overview', icon: TrendingUp },
     { id: 'tweets', label: 'Tweets', icon: BarChart3 },
     { id: 'tweet-replies', label: 'Tweet Replies', icon: MessageSquare },
+    { id: 'users', label: 'Users', icon: Users },
     { id: 'custom-search', label: 'Custom Search', icon: Search },
     { id: 'youtube', label: 'YouTube', icon: MonitorPlay },
     { id: 'send-sms', label: 'Send SMS', icon: Users },
@@ -501,7 +503,10 @@ const Dashboard: React.FC = () => {
               </div>
             </button>
 
-            <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
+            <button 
+              onClick={() => setActiveTab('users')}
+              className="card p-4 sm:p-6 bg-white shadow rounded-lg hover:shadow-lg transition-shadow cursor-pointer text-left w-full"
+            >
               <div className="flex items-center">
                 <div className="p-2 bg-green-100 rounded-xl">
                   <Users className="h-6 w-6 text-green-600" />
@@ -511,7 +516,7 @@ const Dashboard: React.FC = () => {
                   <p className="text-2xl font-bold text-gray-900">{loading ? '...' : stats.totalUsers.toLocaleString()}</p>
                 </div>
               </div>
-            </div>
+            </button>
 
             <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
               <div className="flex items-center">
@@ -571,6 +576,12 @@ const Dashboard: React.FC = () => {
             {activeTab === 'tweet-replies' && (
               <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
                 <TweetReplies />
+              </div>
+            )}
+
+            {activeTab === 'users' && (
+              <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
+                <UsersTable />
               </div>
             )}
 

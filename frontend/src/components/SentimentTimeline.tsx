@@ -3,11 +3,15 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 import { supabase } from '../lib/supabase'
 import { SentimentData } from '../lib/supabase'
 import { format, subDays, startOfDay } from 'date-fns'
+import { TrendingUp, TrendingDown, Minus } from 'lucide-react'
 
 const SentimentTimeline: React.FC = () => {
   const [data, setData] = useState<SentimentData[]>([])
   const [loading, setLoading] = useState(true)
   const [timeRange, setTimeRange] = useState('30d') // 7d, 30d, 90d
+  const [currentSentiment, setCurrentSentiment] = useState<number>(0)
+  const [trend, setTrend] = useState<number>(0)
+  const [periodTotal, setPeriodTotal] = useState<number>(0)
 
   useEffect(() => {
     fetchSentimentData()
@@ -70,6 +74,22 @@ const SentimentTimeline: React.FC = () => {
       }))
 
       setData(chartData)
+
+      // Calculate current sentiment (latest value)
+      if (chartData.length > 0) {
+        const latest = chartData[chartData.length - 1].average_sentiment
+        setCurrentSentiment(latest)
+
+        // Calculate trend (compare latest to previous period average)
+        if (chartData.length > 1) {
+          const previousAvg = chartData.slice(0, -1).reduce((sum, d) => sum + d.average_sentiment, 0) / (chartData.length - 1)
+          setTrend(latest - previousAvg)
+        }
+
+        // Calculate total tweets in period
+        const total = chartData.reduce((sum, d) => sum + d.tweet_count, 0)
+        setPeriodTotal(total)
+      }
     } catch (error) {
       console.error('Error processing sentiment data:', error)
     } finally {
@@ -166,16 +186,62 @@ const SentimentTimeline: React.FC = () => {
         </ResponsiveContainer>
       </div>
 
-      {/* Legend */}
-      <div className="flex items-center justify-center space-x-6 text-xs text-gray-600">
-        <div className="flex items-center space-x-2">
-          <div className="w-3 h-3 bg-primary-600 rounded-full"></div>
-          <span>Sentiment Score (-1 to 1)</span>
+      {/* Current Sentiment Card */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-gray-100">
+        {/* Latest Sentiment */}
+        <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-4">
+          <p className="text-xs text-blue-600 font-medium mb-2">Current Sentiment</p>
+          <p className="text-3xl font-bold text-blue-900">
+            {currentSentiment.toFixed(2)}
+          </p>
+          <p className="text-sm text-blue-600 mt-1">
+            {currentSentiment > 0 ? 'Positive' : currentSentiment < 0 ? 'Negative' : 'Neutral'}
+          </p>
         </div>
-        <div className="text-gray-400">•</div>
-        <div className="flex items-center space-x-2">
-          <div className="w-3 h-3 bg-primary-200 rounded-full"></div>
-          <span>Positive=1, Negative=-1, Neutral=0</span>
+
+        {/* Trend Indicator */}
+        <div className={`rounded-lg p-4 ${
+          trend > 0 ? 'bg-gradient-to-br from-green-50 to-green-100' : 
+          trend < 0 ? 'bg-gradient-to-br from-red-50 to-red-100' : 
+          'bg-gradient-to-br from-gray-50 to-gray-100'
+        }`}>
+          <p className={`text-xs font-medium mb-2 ${
+            trend > 0 ? 'text-green-600' : trend < 0 ? 'text-red-600' : 'text-gray-600'
+          }`}>
+            Trend vs Previous Period
+          </p>
+          <div className="flex items-center space-x-2">
+            {trend > 0 ? (
+              <TrendingUp className="h-6 w-6 text-green-600" />
+            ) : trend < 0 ? (
+              <TrendingDown className="h-6 w-6 text-red-600" />
+            ) : (
+              <Minus className="h-6 w-6 text-gray-600" />
+            )}
+            <p className={`text-2xl font-bold ${
+              trend > 0 ? 'text-green-900' : trend < 0 ? 'text-red-900' : 'text-gray-900'
+            }`}>
+              {trend > 0 ? '+' : ''}{trend.toFixed(2)}
+            </p>
+          </div>
+          <p className={`text-xs mt-1 ${
+            trend > 0 ? 'text-green-600' : trend < 0 ? 'text-red-600' : 'text-gray-600'
+          }`}>
+            {trend > 0 ? 'Improving' : trend < 0 ? 'Declining' : 'Stable'}
+          </p>
+        </div>
+
+        {/* Period Total */}
+        <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-4">
+          <p className="text-xs text-purple-600 font-medium mb-2">Period Total</p>
+          <div className="flex items-baseline space-x-2">
+            <p className="text-3xl font-bold text-purple-900">
+              {periodTotal.toLocaleString()}
+            </p>
+          </div>
+          <p className="text-xs text-purple-600 mt-1">
+            tweets analyzed
+          </p>
         </div>
       </div>
     </div>
