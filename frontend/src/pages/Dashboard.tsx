@@ -8,7 +8,11 @@ import TweetReplies from '../components/TweetReplies';
 import UsersTable from '../components/UsersTable';
 import TopUsersChart from '../components/TopUsersChart';
 import DailyActivityChart from '../components/DailyActivityChart';
-import { supabase } from '../lib/supabase';
+import FacebookPostsTable from '../components/FacebookPostsTable';
+import FacebookSentimentChart from '../components/FacebookSentimentChart';
+import FacebookActivityChart from '../components/FacebookActivityChart';
+import TopPageOwnersChart from '../components/TopPageOwnersChart';
+import { supabase, sentimentToNumber } from '../lib/supabase';
 import '@n8n/chat/style.css';
 import { AI_ASSISTANT_CONFIG } from '../config/ai-assistant';
 import Papa, { ParseResult, ParseError } from 'papaparse';
@@ -29,12 +33,24 @@ interface AgentTweetResponse {
 const Dashboard: React.FC = () => {
   const { user, signOut } = useAuth();
   const [activeTab, setActiveTab] = useState('overview');
+  const [activePlatform, setActivePlatform] = useState<'twitter' | 'facebook'>('twitter');
   const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState({
     totalTweets: 0,
     totalUsers: 0,
     averageSentiment: 0,
     factChecked: 0,
+  });
+  const [fbStats, setFbStats] = useState({
+    totalPosts: 0,
+    totalPages: 0,
+    averageSentiment: 0,
+  });
+  const [combinedStats, setCombinedStats] = useState({
+    totalPosts: 0,
+    twitterEngagement: 0,
+    facebookEngagement: 0,
+    averageSentiment: 0,
   });
   const [isSidebarOpen, setIsSidebarOpen] = useState(typeof window !== 'undefined' && window.innerWidth < 1024);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
@@ -56,9 +72,13 @@ const Dashboard: React.FC = () => {
 
   useEffect(() => {
     fetchDashboardStats();
+    fetchFacebookStats();
+    fetchCombinedStats();
 
     const interval = setInterval(() => {
       fetchDashboardStats();
+      fetchFacebookStats();
+      fetchCombinedStats();
     }, 300000); // 5 minutes
 
     return () => {
@@ -132,15 +152,7 @@ const Dashboard: React.FC = () => {
       const avgSentiment =
         sentimentData && sentimentData.length > 0
           ? sentimentData.reduce((sum, item) => {
-              let score = 0;
-              if (item.sentiment_score === 'Positive') {
-                score = 1;
-              } else if (item.sentiment_score === 'Negative') {
-                score = -1;
-              } else if (item.sentiment_score === 'Neutral') {
-                score = 0;
-              }
-              return sum + score;
+              return sum + sentimentToNumber(item.sentiment_score);
             }, 0) / sentimentData.length
           : 0;
 
@@ -154,6 +166,79 @@ const Dashboard: React.FC = () => {
       console.error('Error fetching dashboard stats:', error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const fetchFacebookStats = async () => {
+    try {
+      const { count: postsCount } = await supabase
+        .from('fb_posts')
+        .select('*', { count: 'exact', head: true });
+
+      const { data: ownerRows } = await supabase
+        .from('fb_posts')
+        .select('owner_name');
+      const uniqueOwners = ownerRows ? new Set(ownerRows.map(row => row.owner_name)) : new Set();
+      const ownersCount = uniqueOwners.size;
+
+      const { data: sentimentData } = await supabase
+        .from('fb_posts')
+        .select('sentiment')
+        .not('sentiment', 'is', null)
+        .not('sentiment', 'eq', '');
+
+      const avgSentiment =
+        sentimentData && sentimentData.length > 0
+          ? sentimentData.reduce((sum, item) => {
+              return sum + sentimentToNumber(item.sentiment);
+            }, 0) / sentimentData.length
+          : 0;
+
+      setFbStats({
+        totalPosts: postsCount || 0,
+        totalPages: ownersCount || 0,
+        averageSentiment: Math.round(avgSentiment * 100) / 100,
+      });
+    } catch (error) {
+      console.error('Error fetching Facebook stats:', error);
+    }
+  };
+
+  const fetchCombinedStats = async () => {
+    try {
+      // Fetch Twitter data
+      const { data: tweets } = await supabase
+        .from('nrm_tweets_kb')
+        .select('sentiment_score, like_count, retweet_count, reply_count');
+
+      // Fetch Facebook data
+      const { data: fbPosts } = await supabase
+        .from('fb_posts')
+        .select('sentiment, reactions_total, comments_count, shares_count');
+
+      const twitterCount = tweets?.length || 0;
+      const facebookCount = fbPosts?.length || 0;
+
+      // Calculate combined engagement
+      const twitterEngagement = tweets?.reduce((sum, t) => sum + (t.like_count || 0) + (t.retweet_count || 0) + (t.reply_count || 0), 0) || 0;
+      const facebookEngagement = fbPosts?.reduce((sum, p) => sum + (p.reactions_total || 0) + (p.comments_count || 0) + (p.shares_count || 0), 0) || 0;
+
+      // Calculate combined sentiment
+      const twitterSentiments = tweets?.filter(t => t.sentiment_score).map(t => sentimentToNumber(t.sentiment_score)) || [];
+      const facebookSentiments = fbPosts?.filter(p => p.sentiment).map(p => sentimentToNumber(p.sentiment)) || [];
+      const allSentiments = [...twitterSentiments, ...facebookSentiments];
+      const avgSentiment = allSentiments.length > 0 
+        ? allSentiments.reduce((sum, s) => sum + s, 0) / allSentiments.length 
+        : 0;
+
+      setCombinedStats({
+        totalPosts: twitterCount + facebookCount,
+        twitterEngagement: twitterEngagement,
+        facebookEngagement: facebookEngagement,
+        averageSentiment: Math.round(avgSentiment * 100) / 100,
+      });
+    } catch (error) {
+      console.error('Error fetching combined stats:', error);
     }
   };
 
@@ -247,6 +332,8 @@ const Dashboard: React.FC = () => {
     { id: 'tweets', label: 'Tweets', icon: BarChart3 },
     { id: 'tweet-replies', label: 'Tweet Replies', icon: MessageSquare },
     { id: 'users', label: 'Users', icon: Users },
+    { id: 'facebook-posts', label: '📘 Facebook Posts', icon: BarChart3 },
+    { id: 'facebook-pages', label: '📘 Top Pages', icon: Users },
     { id: 'custom-search', label: 'Custom Search', icon: Search },
     { id: 'youtube', label: 'YouTube', icon: MonitorPlay },
     { id: 'send-sms', label: 'Send SMS', icon: Users },
@@ -575,15 +662,105 @@ const Dashboard: React.FC = () => {
             )}
             {activeTab === 'overview' && (
               <div className="space-y-6">
-                {/* First Row - Timeline and Distribution */}
+                {/* Facebook Stats Cards */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+                  <div className="card p-4 sm:p-6 bg-gradient-to-br from-blue-50 to-blue-100 shadow rounded-lg border-2 border-blue-200">
+                    <div className="flex items-center">
+                      <div className="p-2 bg-blue-500 rounded-xl">
+                        <TrendingUp className="h-6 w-6 text-white" />
+                      </div>
+                      <div className="ml-4">
+                        <p className="text-sm font-medium text-blue-900">Facebook Posts</p>
+                        <p className="text-2xl font-bold text-blue-900">{loading ? '...' : fbStats.totalPosts.toLocaleString()}</p>
+                        <p className="text-xs text-blue-700 mt-1">📘 Posts</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="card p-4 sm:p-6 bg-gradient-to-br from-indigo-50 to-indigo-100 shadow rounded-lg border-2 border-indigo-200">
+                    <div className="flex items-center">
+                      <div className="p-2 bg-indigo-500 rounded-xl">
+                        <Users className="h-6 w-6 text-white" />
+                      </div>
+                      <div className="ml-4">
+                        <p className="text-sm font-medium text-indigo-900">Facebook Engagement</p>
+                        <p className="text-2xl font-bold text-indigo-900">{loading ? '...' : combinedStats.facebookEngagement.toLocaleString()}</p>
+                        <p className="text-xs text-indigo-700 mt-1">Reactions, Comments, Shares</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="card p-4 sm:p-6 bg-gradient-to-br from-purple-50 to-purple-100 shadow rounded-lg border-2 border-purple-200">
+                    <div className="flex items-center">
+                      <div className="p-2 bg-purple-500 rounded-xl">
+                        <BarChart3 className="h-6 w-6 text-white" />
+                      </div>
+                      <div className="ml-4">
+                        <p className="text-sm font-medium text-purple-900">Facebook Sentiment</p>
+                        <p className="text-2xl font-bold text-purple-900">{loading ? '...' : fbStats.averageSentiment}</p>
+                        <p className="text-xs text-purple-700 mt-1">-1 (Negative) to +1 (Positive)</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Platform Comparison */}
+                <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Platform Comparison</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="text-2xl">🐦</span>
+                        <h4 className="font-semibold text-gray-900">Twitter</h4>
+                      </div>
+                      <div className="space-y-2 text-sm">
+                        <p className="flex justify-between">
+                          <span className="text-gray-600">Total Posts:</span>
+                          <span className="font-semibold text-gray-900">{stats.totalTweets.toLocaleString()}</span>
+                        </p>
+                        <p className="flex justify-between">
+                          <span className="text-gray-600">Unique Users:</span>
+                          <span className="font-semibold text-gray-900">{stats.totalUsers.toLocaleString()}</span>
+                        </p>
+                        <p className="flex justify-between">
+                          <span className="text-gray-600">Avg Sentiment:</span>
+                          <span className="font-semibold text-gray-900">{stats.averageSentiment}</span>
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="text-2xl">📘</span>
+                        <h4 className="font-semibold text-gray-900">Facebook</h4>
+                      </div>
+                      <div className="space-y-2 text-sm">
+                        <p className="flex justify-between">
+                          <span className="text-gray-600">Total Posts:</span>
+                          <span className="font-semibold text-gray-900">{fbStats.totalPosts.toLocaleString()}</span>
+                        </p>
+                        <p className="flex justify-between">
+                          <span className="text-gray-600">Unique Pages:</span>
+                          <span className="font-semibold text-gray-900">{fbStats.totalPages.toLocaleString()}</span>
+                        </p>
+                        <p className="flex justify-between">
+                          <span className="text-gray-600">Avg Sentiment:</span>
+                          <span className="font-semibold text-gray-900">{fbStats.averageSentiment}</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Twitter Stats - First Row - Timeline and Distribution */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                   <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-4">Sentiment Timeline</h3>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-4">Twitter Sentiment Timeline</h3>
                     <SentimentTimeline />
                   </div>
 
                   <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-4">Sentiment Distribution</h3>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-4">Twitter Sentiment Distribution</h3>
                     <SentimentPieChart />
                   </div>
                 </div>
@@ -591,15 +768,57 @@ const Dashboard: React.FC = () => {
                 {/* Second Row - Top Users and Daily Activity */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                   <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-4">Top 10 Most Active Users</h3>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-4">Top 10 Most Active Twitter Users</h3>
                     <TopUsersChart />
                   </div>
 
                   <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-4">Daily Tweet Activity</h3>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-4">Daily Twitter Activity</h3>
                     <DailyActivityChart />
                   </div>
                 </div>
+
+                {/* Facebook Section Header */}
+                <div className="mt-8 mb-4">
+                  <h2 className="text-xl font-semibold text-gray-900 flex items-center gap-2">
+                    <span className="text-2xl">📘</span>
+                    Facebook Analytics
+                  </h2>
+                </div>
+
+                {/* Facebook Charts */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+                  <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
+                    <h3 className="text-lg font-semibold text-gray-900 mb-4">Facebook Sentiment Distribution</h3>
+                    <FacebookSentimentChart />
+                  </div>
+
+                  <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
+                    <h3 className="text-lg font-semibold text-gray-900 mb-4">Daily Facebook Activity</h3>
+                    <FacebookActivityChart />
+                  </div>
+                </div>
+
+                <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Top 10 Most Active Facebook Pages</h3>
+                  <TopPageOwnersChart />
+                </div>
+              </div>
+            )}
+
+            {/* Facebook Posts Tab */}
+            {activeTab === 'facebook-posts' && (
+              <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Facebook Posts Analysis</h3>
+                <FacebookPostsTable />
+              </div>
+            )}
+
+            {/* Facebook Pages Tab */}
+            {activeTab === 'facebook-pages' && (
+              <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Top Facebook Page Owners</h3>
+                <TopPageOwnersChart />
               </div>
             )}
 

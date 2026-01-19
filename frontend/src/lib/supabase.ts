@@ -47,3 +47,45 @@ export interface SentimentDistribution {
   neutral: number
   total: number
 }
+
+// Facebook Posts table schema
+export interface FacebookPost {
+  id: string // Primary key - Facebook Post ID
+  created_time: string // ISO timestamp
+  owner_name: string // e.g., "Daily Monitor"
+  owner_username: string // e.g., "DailyMonitor"
+  post_text: string | null // Main caption/text
+  text_lang: string | null // Language code e.g., "en"
+  attached_link: string | null // External link
+  attached_image_url: string | null // Photo URL
+  attached_video_url: string | null // Video URL
+  reactions_total: number // Total reactions
+  likes_count: number // Specific like count
+  comments_count: number // Number of comments
+  shares_count: number // Number of shares
+  sentiment: 'Positive' | 'Negative' | 'Neutral' | null // Categorical sentiment
+  inserted_at: string // When saved to Supabase
+}
+
+// Combined social media stats
+export interface CombinedStats {
+  totalPosts: number
+  totalEngagement: number
+  sentimentDistribution: SentimentDistribution
+  twitterStats: {
+    posts: number
+    engagement: number
+  }
+  facebookStats: {
+    posts: number
+    engagement: number
+  }
+}
+
+// Helper function to convert sentiment to numeric value
+export const sentimentToNumber = (sentiment: string | null | undefined): number => {
+  if (sentiment === 'Positive') return 1
+  if (sentiment === 'Negative') return -1
+  if (sentiment === 'Neutral') return 0
+  return 0
+}
