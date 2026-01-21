@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../contexts/AuthContext';
-import { LogOut, Search, TrendingUp, Users, BarChart3, MonitorPlay, Menu, Download, Upload, X, MessageSquare } from 'lucide-react';
+import { LogOut, Search, TrendingUp, Users, BarChart3, MonitorPlay, Menu, Download, Upload, X, MessageSquare, Send } from 'lucide-react';
 import SentimentTimeline from '../components/SentimentTimeline';
 import SentimentPieChart from '../components/SentimentPieChart';
 import TweetsTable from '../components/TweetsTable';
@@ -9,6 +9,7 @@ import UsersTable from '../components/UsersTable';
 import TopUsersChart from '../components/TopUsersChart';
 import DailyActivityChart from '../components/DailyActivityChart';
 import FacebookPostsTable from '../components/FacebookPostsTable';
+import FacebookPagesTable from '../components/FacebookPagesTable';
 import FacebookSentimentChart from '../components/FacebookSentimentChart';
 import FacebookActivityChart from '../components/FacebookActivityChart';
 import TopPageOwnersChart from '../components/TopPageOwnersChart';
@@ -329,14 +330,12 @@ const Dashboard: React.FC = () => {
 
   const tabs = [
     { id: 'overview', label: 'Overview', icon: TrendingUp },
-    { id: 'tweets', label: 'Tweets', icon: BarChart3 },
+    { id: 'posts', label: 'Posts', icon: BarChart3 },
     { id: 'tweet-replies', label: 'Tweet Replies', icon: MessageSquare },
     { id: 'users', label: 'Users', icon: Users },
-    { id: 'facebook-posts', label: '📘 Facebook Posts', icon: BarChart3 },
-    { id: 'facebook-pages', label: '📘 Top Pages', icon: Users },
     { id: 'custom-search', label: 'Custom Search', icon: Search },
     { id: 'youtube', label: 'YouTube', icon: MonitorPlay },
-    { id: 'send-sms', label: 'Send SMS', icon: Users },
+    { id: 'send-sms', label: 'Send SMS', icon: Send },
     { id: 'bulk-upload', label: 'Upload Voters', icon: Upload }, // NEW
     { id: 'upload-docs', label: 'Upload Documents', icon: Upload, external: true, url: 'https://n8n.nrmcampaign.com/form/22b59e82-ac8c-4f58-b264-1f2e0b77f549' }, // External link
   ];
@@ -592,67 +591,69 @@ const Dashboard: React.FC = () => {
 
         {/* Main Content */}
         <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
-          <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8">
-            <button 
-              onClick={() => setActiveTab('tweets')}
-              className="card p-4 sm:p-6 bg-white shadow rounded-lg hover:shadow-lg transition-shadow cursor-pointer text-left"
-            >
-              <div className="flex items-center">
-                <div className="p-2 bg-yellow-100 rounded-xl">
-                  <TrendingUp className="h-6 w-6 text-yellow-400" />
+          {activeTab !== 'posts' && activeTab !== 'users' && (
+            <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8">
+              <button 
+                onClick={() => setActiveTab('posts')}
+                className="card p-4 sm:p-6 bg-white shadow rounded-lg hover:shadow-lg transition-shadow cursor-pointer text-left"
+              >
+                <div className="flex items-center">
+                  <div className="p-2 bg-yellow-100 rounded-xl">
+                    <TrendingUp className="h-6 w-6 text-yellow-400" />
+                  </div>
+                  <div className="ml-4">
+                    <p className="text-sm font-medium text-gray-600">Total Tweets</p>
+                    <p className="text-2xl font-bold text-gray-900">{loading ? '...' : stats.totalTweets.toLocaleString()}</p>
+                  </div>
                 </div>
-                <div className="ml-4">
-                  <p className="text-sm font-medium text-gray-600">Total Tweets</p>
-                  <p className="text-2xl font-bold text-gray-900">{loading ? '...' : stats.totalTweets.toLocaleString()}</p>
-                </div>
-              </div>
-            </button>
+              </button>
 
-            <button 
-              onClick={() => setActiveTab('users')}
-              className="card p-4 sm:p-6 bg-white shadow rounded-lg hover:shadow-lg transition-shadow cursor-pointer text-left w-full"
-            >
-              <div className="flex items-center">
-                <div className="p-2 bg-green-100 rounded-xl">
-                  <Users className="h-6 w-6 text-green-600" />
+              <button 
+                onClick={() => setActiveTab('users')}
+                className="card p-4 sm:p-6 bg-white shadow rounded-lg hover:shadow-lg transition-shadow cursor-pointer text-left w-full"
+              >
+                <div className="flex items-center">
+                  <div className="p-2 bg-green-100 rounded-xl">
+                    <Users className="h-6 w-6 text-green-600" />
+                  </div>
+                  <div className="ml-4">
+                    <p className="text-sm font-medium text-gray-600">Unique Users</p>
+                    <p className="text-2xl font-bold text-gray-900">{loading ? '...' : stats.totalUsers.toLocaleString()}</p>
+                  </div>
                 </div>
-                <div className="ml-4">
-                  <p className="text-sm font-medium text-gray-600">Unique Users</p>
-                  <p className="text-2xl font-bold text-gray-900">{loading ? '...' : stats.totalUsers.toLocaleString()}</p>
-                </div>
-              </div>
-            </button>
+              </button>
 
-            <button 
-              onClick={() => setActiveTab('overview')}
-              className="card p-4 sm:p-6 bg-white shadow rounded-lg hover:shadow-lg transition-shadow cursor-pointer text-left w-full"
-            >
-              <div className="flex items-center">
-                <div className="p-2 bg-yellow-100 rounded-xl">
-                  <BarChart3 className="h-6 w-6 text-yellow-600" />
+              <button 
+                onClick={() => setActiveTab('overview')}
+                className="card p-4 sm:p-6 bg-white shadow rounded-lg hover:shadow-lg transition-shadow cursor-pointer text-left w-full"
+              >
+                <div className="flex items-center">
+                  <div className="p-2 bg-yellow-100 rounded-xl">
+                    <BarChart3 className="h-6 w-6 text-yellow-600" />
+                  </div>
+                  <div className="ml-4">
+                    <p className="text-sm font-medium text-gray-600">Avg Sentiment</p>
+                    <p className="text-2xl font-bold text-gray-900">{loading ? '...' : stats.averageSentiment}</p>
+                  </div>
                 </div>
-                <div className="ml-4">
-                  <p className="text-sm font-medium text-gray-600">Avg Sentiment</p>
-                  <p className="text-2xl font-bold text-gray-900">{loading ? '...' : stats.averageSentiment}</p>
-                </div>
-              </div>
-            </button>
+              </button>
 
-            <button 
-              onClick={() => setActiveTab('tweet-replies')}
-              className="card p-4 sm:p-6 bg-white shadow rounded-lg hover:shadow-lg transition-shadow cursor-pointer text-left"
-            >
-              <div className="flex items-center">
-                <div className="p-2 bg-red-100 rounded-xl">
-                  <TrendingUp className="h-6 w-6 text-red-600" />
+              <button 
+                onClick={() => setActiveTab('tweet-replies')}
+                className="card p-4 sm:p-6 bg-white shadow rounded-lg hover:shadow-lg transition-shadow cursor-pointer text-left"
+              >
+                <div className="flex items-center">
+                  <div className="p-2 bg-red-100 rounded-xl">
+                    <TrendingUp className="h-6 w-6 text-red-600" />
+                  </div>
+                  <div className="ml-4">
+                    <p className="text-sm font-medium text-gray-600">Corrected Tweets</p>
+                    <p className="text-2xl font-bold text-gray-900">{loading ? '...' : stats.factChecked.toLocaleString()}</p>
+                  </div>
                 </div>
-                <div className="ml-4">
-                  <p className="text-sm font-medium text-gray-600">Corrected Tweets</p>
-                  <p className="text-2xl font-bold text-gray-900">{loading ? '...' : stats.factChecked.toLocaleString()}</p>
-                </div>
-              </div>
-            </button>
-          </div>
+              </button>
+            </div>
+          )}
 
           <div className="space-y-6 sm:space-y-8">
             {activeTab === 'send-sms' && (
@@ -710,8 +711,8 @@ const Dashboard: React.FC = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
                       <div className="flex items-center gap-2 mb-3">
-                        <span className="text-2xl">🐦</span>
-                        <h4 className="font-semibold text-gray-900">Twitter</h4>
+                        <span className="text-2xl font-bold">𝕏</span>
+                        <h4 className="font-semibold text-gray-900">X (twitter)</h4>
                       </div>
                       <div className="space-y-2 text-sm">
                         <p className="flex justify-between">
@@ -731,7 +732,7 @@ const Dashboard: React.FC = () => {
 
                     <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
                       <div className="flex items-center gap-2 mb-3">
-                        <span className="text-2xl">📘</span>
+                        <span className="text-2xl font-bold text-blue-600">f</span>
                         <h4 className="font-semibold text-gray-900">Facebook</h4>
                       </div>
                       <div className="space-y-2 text-sm">
@@ -806,26 +807,48 @@ const Dashboard: React.FC = () => {
               </div>
             )}
 
-            {/* Facebook Posts Tab */}
-            {activeTab === 'facebook-posts' && (
+            {/* Combined Posts Tab with Platform Switcher */}
+            {activeTab === 'posts' && (
               <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Facebook Posts Analysis</h3>
-                <FacebookPostsTable />
-              </div>
-            )}
+                {/* Platform Switcher Buttons */}
+                <div className="flex items-center justify-between mb-6">
+                  <h3 className="text-lg font-semibold text-gray-900">Social Media Posts</h3>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => setActivePlatform('twitter')}
+                      className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center gap-2 ${
+                        activePlatform === 'twitter'
+                          ? 'bg-blue-500 text-white shadow-md'
+                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      }`}
+                    >
+                      <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                      </svg>
+                      Twitter
+                    </button>
+                    <button
+                      onClick={() => setActivePlatform('facebook')}
+                      className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center gap-2 ${
+                        activePlatform === 'facebook'
+                          ? 'bg-blue-600 text-white shadow-md'
+                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      }`}
+                    >
+                      <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                      </svg>
+                      Facebook
+                    </button>
+                  </div>
+                </div>
 
-            {/* Facebook Pages Tab */}
-            {activeTab === 'facebook-pages' && (
-              <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Top Facebook Page Owners</h3>
-                <TopPageOwnersChart />
-              </div>
-            )}
-
-            {activeTab === 'tweets' && (
-              <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Tweets Analysis</h3>
-                <TweetsTable />
+                {/* Platform Content */}
+                {activePlatform === 'twitter' ? (
+                  <TweetsTable />
+                ) : (
+                  <FacebookPostsTable />
+                )}
               </div>
             )}
 
@@ -837,14 +860,51 @@ const Dashboard: React.FC = () => {
 
             {activeTab === 'users' && (
               <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
-                <UsersTable />
+                {/* Platform Switcher Buttons */}
+                <div className="flex items-center justify-between mb-6">
+                  <h3 className="text-lg font-semibold text-gray-900">Social Media Users & Pages</h3>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => setActivePlatform('twitter')}
+                      className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center gap-2 ${
+                        activePlatform === 'twitter'
+                          ? 'bg-blue-500 text-white shadow-md'
+                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      }`}
+                    >
+                      <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                      </svg>
+                      Twitter
+                    </button>
+                    <button
+                      onClick={() => setActivePlatform('facebook')}
+                      className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center gap-2 ${
+                        activePlatform === 'facebook'
+                          ? 'bg-blue-600 text-white shadow-md'
+                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      }`}
+                    >
+                      <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                      </svg>
+                      Facebook
+                    </button>
+                  </div>
+                </div>
+
+                {/* Platform Content */}
+                {activePlatform === 'twitter' ? (
+                  <UsersTable />
+                ) : (
+                  <FacebookPagesTable />
+                )}
               </div>
             )}
 
             {activeTab === 'custom-search' && (
               <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Custom Search</h3>
-                <CustomSearchTab />
               </div>
             )}
             {activeTab === 'youtube' && (

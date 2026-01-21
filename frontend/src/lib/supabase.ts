@@ -56,6 +56,7 @@ export interface FacebookPost {
   owner_username: string // e.g., "DailyMonitor"
   post_text: string | null // Main caption/text
   text_lang: string | null // Language code e.g., "en"
+  post_url: string | null // Direct link to Facebook post
   attached_link: string | null // External link
   attached_image_url: string | null // Photo URL
   attached_video_url: string | null // Video URL

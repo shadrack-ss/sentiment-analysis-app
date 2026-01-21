@@ -459,19 +459,34 @@ const FacebookPostsTable: React.FC = () => {
               {(post.attached_image_url || post.attached_video_url || post.attached_link) && (
                 <div className="mb-4 flex flex-wrap gap-2">
                   {post.attached_image_url && (
-                    <span className="inline-flex items-center px-2 py-1 rounded-md text-xs bg-blue-50 text-blue-700 border border-blue-200">
+                    <a
+                      href={post.attached_image_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center px-2 py-1 rounded-md text-xs bg-blue-50 text-blue-700 border border-blue-200 hover:bg-blue-100 transition-colors cursor-pointer"
+                    >
                       📷 Photo
-                    </span>
+                    </a>
                   )}
                   {post.attached_video_url && (
-                    <span className="inline-flex items-center px-2 py-1 rounded-md text-xs bg-purple-50 text-purple-700 border border-purple-200">
+                    <a
+                      href={post.attached_video_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center px-2 py-1 rounded-md text-xs bg-purple-50 text-purple-700 border border-purple-200 hover:bg-purple-100 transition-colors cursor-pointer"
+                    >
                       🎥 Video
-                    </span>
+                    </a>
                   )}
                   {post.attached_link && (
-                    <span className="inline-flex items-center px-2 py-1 rounded-md text-xs bg-green-50 text-green-700 border border-green-200">
+                    <a
+                      href={post.attached_link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center px-2 py-1 rounded-md text-xs bg-green-50 text-green-700 border border-green-200 hover:bg-green-100 transition-colors cursor-pointer"
+                    >
                       🔗 Link
-                    </span>
+                    </a>
                   )}
                 </div>
               )}
@@ -496,17 +511,30 @@ const FacebookPostsTable: React.FC = () => {
                     {post.shares_count.toLocaleString()}
                   </span>
                 </div>
-                {post.attached_link && (
-                  <a
-                    href={post.attached_link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1 text-sm text-primary-600 hover:text-primary-700 font-medium"
-                  >
-                    View on Facebook
-                    <ExternalLink className="h-3.5 w-3.5" />
-                  </a>
-                )}
+                <div className="flex items-center gap-2">
+                  {post.post_url && (
+                    <a
+                      href={post.post_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1 text-sm text-primary-600 hover:text-primary-700 font-medium"
+                    >
+                      View Post
+                      <ExternalLink className="h-3.5 w-3.5" />
+                    </a>
+                  )}
+                  {post.attached_link && (
+                    <a
+                      href={post.attached_link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1 text-sm text-green-600 hover:text-green-700 font-medium"
+                    >
+                      External Link
+                      <ExternalLink className="h-3.5 w-3.5" />
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
           </div>
