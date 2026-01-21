@@ -263,9 +263,9 @@ export default function FacebookPagesTable() {
               <button
                 key={page.owner_name}
                 onClick={() => handlePageClick(page.owner_name)}
-                className="bg-white rounded-lg border border-gray-200 p-6 hover:shadow-lg hover:border-blue-400 transition-all duration-200 cursor-pointer text-center"
+                className="bg-white rounded-lg border-2 border-gray-200 p-6 hover:shadow-xl hover:border-blue-500 hover:scale-105 hover:bg-blue-50 active:scale-100 transition-all duration-200 cursor-pointer text-center transform"
               >
-                <div className="w-20 h-20 mx-auto rounded-full bg-blue-500 flex items-center justify-center text-white text-2xl font-bold mb-4">
+                <div className="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-2xl font-bold mb-4 shadow-md">
                   {page.owner_name.charAt(0).toUpperCase()}
                 </div>
                 <h3 className="font-semibold text-gray-900 text-base mb-2 truncate" title={page.owner_name}>
@@ -279,6 +279,9 @@ export default function FacebookPagesTable() {
                 </div>
                 <div className={`mt-3 text-sm font-medium ${getSentimentColor(page.last_sentiment)}`}>
                   {page.last_sentiment}
+                </div>
+                <div className="mt-3 text-xs text-blue-600 font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                  Click to view posts →
                 </div>
               </button>
             ))}

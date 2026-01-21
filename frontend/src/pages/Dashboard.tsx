@@ -665,44 +665,62 @@ const Dashboard: React.FC = () => {
               <div className="space-y-6">
                 {/* Facebook Stats Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
-                  <div className="card p-4 sm:p-6 bg-gradient-to-br from-blue-50 to-blue-100 shadow rounded-lg border-2 border-blue-200">
+                  <button
+                    onClick={() => {
+                      setActiveTab('posts');
+                      setActivePlatform('facebook');
+                    }}
+                    className="card p-4 sm:p-6 bg-white shadow rounded-lg border border-gray-200 hover:shadow-xl hover:border-blue-400 hover:scale-105 active:scale-100 transition-all duration-200 cursor-pointer text-left w-full"
+                  >
                     <div className="flex items-center">
                       <div className="p-2 bg-blue-500 rounded-xl">
                         <TrendingUp className="h-6 w-6 text-white" />
                       </div>
                       <div className="ml-4">
-                        <p className="text-sm font-medium text-blue-900">Facebook Posts</p>
-                        <p className="text-2xl font-bold text-blue-900">{loading ? '...' : fbStats.totalPosts.toLocaleString()}</p>
-                        <p className="text-xs text-blue-700 mt-1">📘 Posts</p>
+                        <p className="text-sm font-medium text-gray-700">Facebook Posts</p>
+                        <p className="text-2xl font-bold text-gray-900">{loading ? '...' : fbStats.totalPosts.toLocaleString()}</p>
+                        <p className="text-xs text-gray-600 mt-1">📘 Posts</p>
                       </div>
                     </div>
-                  </div>
+                  </button>
 
-                  <div className="card p-4 sm:p-6 bg-gradient-to-br from-indigo-50 to-indigo-100 shadow rounded-lg border-2 border-indigo-200">
+                  <button
+                    onClick={() => {
+                      setActiveTab('posts');
+                      setActivePlatform('facebook');
+                    }}
+                    className="card p-4 sm:p-6 bg-white shadow rounded-lg border border-gray-200 hover:shadow-xl hover:border-indigo-400 hover:scale-105 active:scale-100 transition-all duration-200 cursor-pointer text-left w-full"
+                  >
                     <div className="flex items-center">
                       <div className="p-2 bg-indigo-500 rounded-xl">
                         <Users className="h-6 w-6 text-white" />
                       </div>
                       <div className="ml-4">
-                        <p className="text-sm font-medium text-indigo-900">Facebook Engagement</p>
-                        <p className="text-2xl font-bold text-indigo-900">{loading ? '...' : combinedStats.facebookEngagement.toLocaleString()}</p>
-                        <p className="text-xs text-indigo-700 mt-1">Reactions, Comments, Shares</p>
+                        <p className="text-sm font-medium text-gray-700">Facebook Engagement</p>
+                        <p className="text-2xl font-bold text-gray-900">{loading ? '...' : combinedStats.facebookEngagement.toLocaleString()}</p>
+                        <p className="text-xs text-gray-600 mt-1">Reactions, Comments, Shares</p>
                       </div>
                     </div>
-                  </div>
+                  </button>
 
-                  <div className="card p-4 sm:p-6 bg-gradient-to-br from-purple-50 to-purple-100 shadow rounded-lg border-2 border-purple-200">
+                  <button
+                    onClick={() => {
+                      setActiveTab('posts');
+                      setActivePlatform('facebook');
+                    }}
+                    className="card p-4 sm:p-6 bg-white shadow rounded-lg border border-gray-200 hover:shadow-xl hover:border-purple-400 hover:scale-105 active:scale-100 transition-all duration-200 cursor-pointer text-left w-full"
+                  >
                     <div className="flex items-center">
                       <div className="p-2 bg-purple-500 rounded-xl">
                         <BarChart3 className="h-6 w-6 text-white" />
                       </div>
                       <div className="ml-4">
-                        <p className="text-sm font-medium text-purple-900">Facebook Sentiment</p>
-                        <p className="text-2xl font-bold text-purple-900">{loading ? '...' : fbStats.averageSentiment}</p>
-                        <p className="text-xs text-purple-700 mt-1">-1 (Negative) to +1 (Positive)</p>
+                        <p className="text-sm font-medium text-gray-700">Facebook Sentiment</p>
+                        <p className="text-2xl font-bold text-gray-900">{loading ? '...' : fbStats.averageSentiment}</p>
+                        <p className="text-xs text-gray-600 mt-1">-1 (Negative) to +1 (Positive)</p>
                       </div>
                     </div>
-                  </div>
+                  </button>
                 </div>
 
                 {/* Platform Comparison */}
