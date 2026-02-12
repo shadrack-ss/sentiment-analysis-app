@@ -52,12 +52,14 @@ const AppShell: React.FC = () => {
         const header = root.querySelector('.chat-header') as HTMLElement | null
         if (!header) return false
         const titleEl = header.querySelector('h1, h2, .chat-heading, [class*="title"]') as HTMLElement | null
-        if (titleEl) {
-          titleEl.textContent = AI_ASSISTANT_CONFIG.name
-        }
         const subtitleEl = header.querySelector('p, [class*="subtitle"], [class*="sub-title"]') as HTMLElement | null
-        if (subtitleEl) {
-          subtitleEl.textContent = AI_ASSISTANT_CONFIG.description
+        if (titleEl) {
+          // Show heading with icon and 'I'm Nathan'
+          titleEl.textContent = "Hi there! 👋 I'm Nathan"
+        }
+        // Remove the paragraph element
+        if (subtitleEl && subtitleEl.parentNode) {
+          subtitleEl.parentNode.removeChild(subtitleEl)
         }
         return true
       }
@@ -84,7 +86,7 @@ const AppShell: React.FC = () => {
               webhookUrl: AI_ASSISTANT_CONFIG.webhookUrl,
               loadPreviousSession: true,
               sessionId: sid,
-              initialMessages: ["I\'m ready to analyze Ugandan political discourse about the NRM and President Museveni. What kind of insights are you looking for today? I can access and analyze  a database of tweets, identify sentiment, and track trends."]
+              initialMessages: ["I'm ready to analyze political discourse around the NRM, President Museveni, Right Hon. Robinah Nabbanja, Chief of Defence Forces General Muhoozi Kainerugaba, Hon. Anita Among, Deputy Speaker Thomas Tayebwa, Chief Justice Dr. Flavian Zeija, Patience Rwabwogo, Natasha Karugire, and First Lady Janet Kataaha Museveni. I can access and analyze a database of tweets, facebook posts,  track trends, and identify sentiment. What kind of insights are you looking for today?"]
             })
           } catch {}
         }
@@ -172,7 +174,7 @@ const AppShell: React.FC = () => {
         webhookUrl: AI_ASSISTANT_CONFIG.webhookUrl,
         loadPreviousSession: true,
         sessionId: desiredId,
-        initialMessages: ["I\'m ready to analyze Ugandan political discourse about the NRM and President Museveni. What kind of insights are you looking for today? I can access and analyze  a database of tweets, identify sentiment, and track trends."]
+        initialMessages: ["I'm ready to analyze political discourse around the NRM, President Museveni, Right Hon. Robinah Nabbanja, Chief of Defence Forces General Muhoozi Kainerugaba, Hon. Anita Among, Deputy Speaker Thomas Tayebwa, Chief Justice Dr. Flavian Zeija, Patience Rwabwogo, Natasha Karugire, and First Lady Janet Kataaha Museveni. I can access and analyze a database of tweets, facebook posts,  track trends, and identify sentiment. What kind of insights are you looking for today?"]
       })
 
       // Re-apply header override for the new instance
