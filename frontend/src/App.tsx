@@ -40,7 +40,7 @@ const AppShell: React.FC = () => {
         webhookUrl: AI_ASSISTANT_CONFIG.webhookUrl,
         loadPreviousSession: true,
         sessionId,
-        initialMessages: ["I'm ready to analyze Ugandan political discourse around the NRM, President Museveni, Right Hon. Robinah Nabbanja, Chief of Defence Forces General Muhoozi Kainerugaba, Hon. Anita Among, Deputy Speaker Thomas Tayebwa, Chief Justice Justice Dr. Flavian Zeija, Patience Rwabwogo, Natasha Karugire, and First Lady Janet Kataaha Museveni. I can access and analyze a database of tweets, track trends, and identify sentiment. What kind of insights are you looking for today?"]
+        initialMessages: ["I'm ready to analyze Ugandan political discourse around the NRM, President Museveni, Right Hon. Robinah Nabbanja, Chief of Defence Forces General Muhoozi Kainerugaba, Hon. Anita Among, Deputy Speaker Thomas Tayebwa, Chief Justice Dr. Flavian Zeija, Patience Rwabwogo, Natasha Karugire, and First Lady Janet Kataaha Museveni. I can access and analyze a database of tweets, track trends, and identify sentiment. What kind of insights are you looking for today?"]
 
       })
       ;(window as any).__n8nChatInitialized = true
