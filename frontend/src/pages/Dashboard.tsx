@@ -14,7 +14,6 @@ import FacebookSentimentChart from '../components/FacebookSentimentChart';
 import FacebookActivityChart from '../components/FacebookActivityChart';
 import TopPageOwnersChart from '../components/TopPageOwnersChart';
 import { supabase, sentimentToNumber } from '../lib/supabase';
-import '@n8n/chat/style.css';
 import { AI_ASSISTANT_CONFIG } from '../config/ai-assistant';
 import Papa, { ParseResult, ParseError } from 'papaparse';
 
@@ -57,8 +56,8 @@ const Dashboard: React.FC = () => {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [showBulkUploadModal, setShowBulkUploadModal] = useState(false);
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 1024;
-  const sidebarCollapseTimerRef = useRef<NodeJS.Timeout | null>(null);
   const initialCollapseTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const hasAutoCollapsedRef = useRef(false);
   const [csvData, setCsvData] = useState<any[]>([]);
   const [csvError, setCsvError] = useState<string | null>(null);
   const [csvUploading, setCsvUploading] = useState(false);
@@ -102,27 +101,17 @@ const Dashboard: React.FC = () => {
     };
   }, [isMobile]);
 
-  // Auto-collapse sidebar after 5 seconds of being expanded
+  // Auto-collapse sidebar once on initial page load
   useEffect(() => {
-    // Clear any existing timer
-    if (sidebarCollapseTimerRef.current) {
-      clearTimeout(sidebarCollapseTimerRef.current);
-    }
+    if (hasAutoCollapsedRef.current) return;
+    hasAutoCollapsedRef.current = true;
 
-    // Only set timer if sidebar is expanded (not collapsed)
-    if (!isSidebarCollapsed) {
-      sidebarCollapseTimerRef.current = setTimeout(() => {
-        setIsSidebarCollapsed(true);
-      }, 10000); // 10 seconds
-    }
+    const timer = setTimeout(() => {
+      setIsSidebarCollapsed(true);
+    }, 5000); // 5 seconds after first load
 
-    // Cleanup timer on unmount or when dependencies change
-    return () => {
-      if (sidebarCollapseTimerRef.current) {
-        clearTimeout(sidebarCollapseTimerRef.current);
-      }
-    };
-  }, [isSidebarCollapsed]);
+    return () => clearTimeout(timer);
+  }, []);
 
   const fetchDashboardStats = async () => {
     try {
@@ -355,9 +344,9 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-yellow-50 flex flex-col">
+    <div className="min-h-screen bg-stone-50 flex flex-col">
       {/* Responsive Topbar */}
-      <nav className="bg-yellow-400 shadow-md sticky top-0 z-50 lg:static">
+      <nav className="bg-gradient-to-r from-yellow-400 via-yellow-400 to-yellow-300 backdrop-blur-sm shadow-md sticky top-0 z-50 lg:static">
         <div className="max-w-7xl mx-auto px-2 sm:px-4">
           <div className="flex items-center justify-between h-16">
             {/* Left Section */}
@@ -384,7 +373,7 @@ const Dashboard: React.FC = () => {
                     (e.target as HTMLImageElement).style.display = 'none';
                   }}
                 />
-                <span className="text-base sm:text-lg font-bold text-gray-900">
+                <span className="text-base sm:text-lg font-display font-bold text-gray-900">
                   <span className="hidden sm:inline">Sentiment Dashboard</span>
                   <span className="sm:hidden">Dashboard</span>
                 </span>
@@ -437,10 +426,6 @@ const Dashboard: React.FC = () => {
     className="hidden lg:inline-flex p-2 text-gray-900 hover:text-gray-700"
     onClick={() => {
       setIsSidebarCollapsed(prev => !prev);
-      // Clear the auto-collapse timer when manually toggled
-      if (sidebarCollapseTimerRef.current) {
-        clearTimeout(sidebarCollapseTimerRef.current);
-      }
     }}
     aria-label={isSidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
   >
@@ -572,7 +557,7 @@ const Dashboard: React.FC = () => {
                         setActiveTab(tab.id);
                         setIsSidebarOpen(false);
                       }}
-                      className={`flex items-center space-x-2 w-full px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${activeTab === tab.id ? 'bg-yellow-100 text-yellow-700' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'} ${isSidebarCollapsed && !isMobile ? 'justify-center px-2' : ''}`}
+                      className={`flex items-center space-x-2 w-full px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 ${activeTab === tab.id ? 'bg-yellow-50 text-yellow-700 border-l-3 border-yellow-500 font-semibold' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'} ${isSidebarCollapsed && !isMobile ? 'justify-center px-2' : ''}`}
                     >
                       <Icon className="h-4 w-4 flex-shrink-0" />
                       <span className={`whitespace-nowrap transition-all duration-500 ${isSidebarCollapsed && !isMobile ? 'opacity-0 w-0 overflow-hidden' : 'opacity-100 w-auto'}`}>{tab.label}</span>
@@ -593,62 +578,62 @@ const Dashboard: React.FC = () => {
         <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
           {activeTab !== 'posts' && activeTab !== 'users' && (
             <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8">
-              <button 
+              <button
                 onClick={() => setActiveTab('posts')}
-                className="card p-4 sm:p-6 bg-white shadow rounded-lg hover:shadow-lg transition-shadow cursor-pointer text-left"
+                className="metric-card hover-lift card p-4 sm:p-6 bg-white shadow rounded-lg hover:shadow-lg transition-shadow cursor-pointer text-left"
               >
                 <div className="flex items-center">
-                  <div className="p-2 bg-yellow-100 rounded-xl">
-                    <TrendingUp className="h-6 w-6 text-yellow-400" />
+                  <div className="p-2 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-xl">
+                    <TrendingUp className="h-6 w-6 text-white" />
                   </div>
                   <div className="ml-4">
                     <p className="text-sm font-medium text-gray-600">Total Tweets</p>
-                    <p className="text-2xl font-bold text-gray-900">{loading ? '...' : stats.totalTweets.toLocaleString()}</p>
+                    <p className="text-3xl font-bold text-gray-900">{loading ? '...' : stats.totalTweets.toLocaleString()}</p>
                   </div>
                 </div>
               </button>
 
-              <button 
+              <button
                 onClick={() => setActiveTab('users')}
-                className="card p-4 sm:p-6 bg-white shadow rounded-lg hover:shadow-lg transition-shadow cursor-pointer text-left w-full"
+                className="metric-card hover-lift card p-4 sm:p-6 bg-white shadow rounded-lg hover:shadow-lg transition-shadow cursor-pointer text-left w-full"
               >
                 <div className="flex items-center">
-                  <div className="p-2 bg-green-100 rounded-xl">
-                    <Users className="h-6 w-6 text-green-600" />
+                  <div className="p-2 bg-gradient-to-br from-emerald-400 to-emerald-500 rounded-xl">
+                    <Users className="h-6 w-6 text-white" />
                   </div>
                   <div className="ml-4">
                     <p className="text-sm font-medium text-gray-600">Unique Users</p>
-                    <p className="text-2xl font-bold text-gray-900">{loading ? '...' : stats.totalUsers.toLocaleString()}</p>
+                    <p className="text-3xl font-bold text-gray-900">{loading ? '...' : stats.totalUsers.toLocaleString()}</p>
                   </div>
                 </div>
               </button>
 
-              <button 
+              <button
                 onClick={() => setActiveTab('overview')}
-                className="card p-4 sm:p-6 bg-white shadow rounded-lg hover:shadow-lg transition-shadow cursor-pointer text-left w-full"
+                className="metric-card hover-lift card p-4 sm:p-6 bg-white shadow rounded-lg hover:shadow-lg transition-shadow cursor-pointer text-left w-full"
               >
                 <div className="flex items-center">
-                  <div className="p-2 bg-yellow-100 rounded-xl">
-                    <BarChart3 className="h-6 w-6 text-yellow-600" />
+                  <div className="p-2 bg-gradient-to-br from-blue-400 to-blue-500 rounded-xl">
+                    <BarChart3 className="h-6 w-6 text-white" />
                   </div>
                   <div className="ml-4">
                     <p className="text-sm font-medium text-gray-600">Avg Sentiment</p>
-                    <p className="text-2xl font-bold text-gray-900">{loading ? '...' : stats.averageSentiment}</p>
+                    <p className="text-3xl font-bold text-gray-900">{loading ? '...' : stats.averageSentiment}</p>
                   </div>
                 </div>
               </button>
 
-              <button 
+              <button
                 onClick={() => setActiveTab('tweet-replies')}
-                className="card p-4 sm:p-6 bg-white shadow rounded-lg hover:shadow-lg transition-shadow cursor-pointer text-left"
+                className="metric-card hover-lift card p-4 sm:p-6 bg-white shadow rounded-lg hover:shadow-lg transition-shadow cursor-pointer text-left"
               >
                 <div className="flex items-center">
-                  <div className="p-2 bg-red-100 rounded-xl">
-                    <TrendingUp className="h-6 w-6 text-red-600" />
+                  <div className="p-2 bg-gradient-to-br from-rose-400 to-rose-500 rounded-xl">
+                    <TrendingUp className="h-6 w-6 text-white" />
                   </div>
                   <div className="ml-4">
                     <p className="text-sm font-medium text-gray-600">Corrected Tweets</p>
-                    <p className="text-2xl font-bold text-gray-900">{loading ? '...' : stats.factChecked.toLocaleString()}</p>
+                    <p className="text-3xl font-bold text-gray-900">{loading ? '...' : stats.factChecked.toLocaleString()}</p>
                   </div>
                 </div>
               </button>
@@ -670,15 +655,15 @@ const Dashboard: React.FC = () => {
                       setActiveTab('posts');
                       setActivePlatform('facebook');
                     }}
-                    className="card p-4 sm:p-6 bg-white shadow rounded-lg border border-gray-200 hover:shadow-xl hover:border-blue-400 hover:scale-105 active:scale-100 transition-all duration-200 cursor-pointer text-left w-full"
+                    className="metric-card hover-lift card p-4 sm:p-6 bg-white shadow rounded-lg border border-gray-200 hover:shadow-xl hover:border-blue-400 hover:scale-105 active:scale-100 transition-all duration-200 cursor-pointer text-left w-full"
                   >
                     <div className="flex items-center">
-                      <div className="p-2 bg-blue-500 rounded-xl">
+                      <div className="p-2 bg-gradient-to-br from-blue-400 to-blue-500 rounded-xl">
                         <TrendingUp className="h-6 w-6 text-white" />
                       </div>
                       <div className="ml-4">
                         <p className="text-sm font-medium text-gray-700">Facebook Posts</p>
-                        <p className="text-2xl font-bold text-gray-900">{loading ? '...' : fbStats.totalPosts.toLocaleString()}</p>
+                        <p className="text-3xl font-bold text-gray-900">{loading ? '...' : fbStats.totalPosts.toLocaleString()}</p>
                         <p className="text-xs text-gray-600 mt-1">📘 Posts</p>
                       </div>
                     </div>
@@ -689,15 +674,15 @@ const Dashboard: React.FC = () => {
                       setActiveTab('posts');
                       setActivePlatform('facebook');
                     }}
-                    className="card p-4 sm:p-6 bg-white shadow rounded-lg border border-gray-200 hover:shadow-xl hover:border-indigo-400 hover:scale-105 active:scale-100 transition-all duration-200 cursor-pointer text-left w-full"
+                    className="metric-card hover-lift card p-4 sm:p-6 bg-white shadow rounded-lg border border-gray-200 hover:shadow-xl hover:border-indigo-400 hover:scale-105 active:scale-100 transition-all duration-200 cursor-pointer text-left w-full"
                   >
                     <div className="flex items-center">
-                      <div className="p-2 bg-indigo-500 rounded-xl">
+                      <div className="p-2 bg-gradient-to-br from-indigo-400 to-indigo-500 rounded-xl">
                         <Users className="h-6 w-6 text-white" />
                       </div>
                       <div className="ml-4">
                         <p className="text-sm font-medium text-gray-700">Facebook Engagement</p>
-                        <p className="text-2xl font-bold text-gray-900">{loading ? '...' : combinedStats.facebookEngagement.toLocaleString()}</p>
+                        <p className="text-3xl font-bold text-gray-900">{loading ? '...' : combinedStats.facebookEngagement.toLocaleString()}</p>
                         <p className="text-xs text-gray-600 mt-1">Reactions, Comments, Shares</p>
                       </div>
                     </div>
@@ -708,15 +693,15 @@ const Dashboard: React.FC = () => {
                       setActiveTab('posts');
                       setActivePlatform('facebook');
                     }}
-                    className="card p-4 sm:p-6 bg-white shadow rounded-lg border border-gray-200 hover:shadow-xl hover:border-purple-400 hover:scale-105 active:scale-100 transition-all duration-200 cursor-pointer text-left w-full"
+                    className="metric-card hover-lift card p-4 sm:p-6 bg-white shadow rounded-lg border border-gray-200 hover:shadow-xl hover:border-purple-400 hover:scale-105 active:scale-100 transition-all duration-200 cursor-pointer text-left w-full"
                   >
                     <div className="flex items-center">
-                      <div className="p-2 bg-purple-500 rounded-xl">
+                      <div className="p-2 bg-gradient-to-br from-purple-400 to-purple-500 rounded-xl">
                         <BarChart3 className="h-6 w-6 text-white" />
                       </div>
                       <div className="ml-4">
                         <p className="text-sm font-medium text-gray-700">Facebook Sentiment</p>
-                        <p className="text-2xl font-bold text-gray-900">{loading ? '...' : fbStats.averageSentiment}</p>
+                        <p className="text-3xl font-bold text-gray-900">{loading ? '...' : fbStats.averageSentiment}</p>
                         <p className="text-xs text-gray-600 mt-1">-1 (Negative) to +1 (Positive)</p>
                       </div>
                     </div>
@@ -725,9 +710,9 @@ const Dashboard: React.FC = () => {
 
                 {/* Platform Comparison */}
                 <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Platform Comparison</h3>
+                  <h3 className="text-xl font-display font-bold text-gray-900 mb-4">Platform Comparison</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                    <div className="bg-sky-50 p-4 rounded-lg border border-sky-200">
                       <div className="flex items-center gap-2 mb-3">
                         <span className="text-2xl font-bold">𝕏</span>
                         <h4 className="font-semibold text-gray-900">X (twitter)</h4>
@@ -748,7 +733,7 @@ const Dashboard: React.FC = () => {
                       </div>
                     </div>
 
-                    <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                    <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-200">
                       <div className="flex items-center gap-2 mb-3">
                         <span className="text-2xl font-bold text-blue-600">f</span>
                         <h4 className="font-semibold text-gray-900">Facebook</h4>
@@ -773,53 +758,51 @@ const Dashboard: React.FC = () => {
 
                 {/* Twitter Stats - First Row - Timeline and Distribution */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-                  <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-4">Twitter Sentiment Timeline</h3>
+                  <div className="chart-card card p-4 sm:p-6 bg-white shadow rounded-lg">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-sky-500"></span>Twitter Sentiment Timeline</h3>
                     <SentimentTimeline />
                   </div>
 
-                  <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-4">Twitter Sentiment Distribution</h3>
+                  <div className="chart-card card p-4 sm:p-6 bg-white shadow rounded-lg">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-sky-500"></span>Twitter Sentiment Distribution</h3>
                     <SentimentPieChart />
                   </div>
                 </div>
 
                 {/* Second Row - Top Users and Daily Activity */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-                  <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-4">Top 10 Most Active Twitter Users</h3>
+                  <div className="chart-card card p-4 sm:p-6 bg-white shadow rounded-lg">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-sky-500"></span>Top 10 Most Active Twitter Users</h3>
                     <TopUsersChart />
                   </div>
 
-                  <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-4">Daily Twitter Activity</h3>
+                  <div className="chart-card card p-4 sm:p-6 bg-white shadow rounded-lg">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-sky-500"></span>Daily Twitter Activity</h3>
                     <DailyActivityChart />
                   </div>
                 </div>
 
                 {/* Facebook Section Header */}
-                <div className="mt-8 mb-4">
-                  <h2 className="text-xl font-semibold text-gray-900 flex items-center gap-2">
-                    <span className="text-2xl">📘</span>
-                    Facebook Analytics
-                  </h2>
+                <div className="mt-8 mb-4 flex items-center gap-3">
+                  <div className="w-1 h-8 bg-gradient-to-b from-blue-500 to-indigo-500 rounded-full"></div>
+                  <h2 className="text-xl font-display font-bold text-gray-900">Facebook Analytics</h2>
                 </div>
 
                 {/* Facebook Charts */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-                  <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-4">Facebook Sentiment Distribution</h3>
+                  <div className="chart-card card p-4 sm:p-6 bg-white shadow rounded-lg">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-indigo-500"></span>Facebook Sentiment Distribution</h3>
                     <FacebookSentimentChart />
                   </div>
 
-                  <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-4">Daily Facebook Activity</h3>
+                  <div className="chart-card card p-4 sm:p-6 bg-white shadow rounded-lg">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-indigo-500"></span>Daily Facebook Activity</h3>
                     <FacebookActivityChart />
                   </div>
                 </div>
 
-                <div className="card p-4 sm:p-6 bg-white shadow rounded-lg">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Top 10 Most Active Facebook Pages</h3>
+                <div className="chart-card card p-4 sm:p-6 bg-white shadow rounded-lg">
+                  <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-indigo-500"></span>Top 10 Most Active Facebook Pages</h3>
                   <TopPageOwnersChart />
                 </div>
               </div>

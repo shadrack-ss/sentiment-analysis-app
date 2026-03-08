@@ -3,14 +3,12 @@ import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'r
 import { AuthProvider, useAuth } from './contexts/AuthContext'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
-import '@n8n/chat/style.css'
-import { createChat } from '@n8n/chat'
-import { AI_ASSISTANT_CONFIG } from './config/ai-assistant'
+import NathanChat from './components/NathanChat'
 
 // Protected route component
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { user, loading } = useAuth()
-  
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -18,209 +16,30 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) =
       </div>
     )
   }
-  
+
   return user ? <>{children}</> : <Navigate to="/login" replace />
 }
 
 const AppShell: React.FC = () => {
-  const { user, loading } = useAuth()
   const location = useLocation()
 
-  // Create chat ONCE and never tear it down, to preserve DOM and history
-  React.useEffect(() => {
-    if ((window as any).__n8nChatInitialized) return
-    try {
-      const existing = localStorage.getItem('n8n-chat-session-id') || ''
-      let sessionId = existing
-      if (!sessionId) {
-        sessionId = 'nrm-dashboard-global'
-        localStorage.setItem('n8n-chat-session-id', sessionId)
-      }
-      createChat({
-        webhookUrl: AI_ASSISTANT_CONFIG.webhookUrl,
-        loadPreviousSession: true,
-        sessionId,
-        initialMessages: ["I'm ready to analyze political discourse around the NRM, President Museveni, Right Hon. Robinah Nabbanja, Chief of Defence Forces General Muhoozi Kainerugaba, Hon. Anita Among, Deputy Speaker Thomas Tayebwa, Chief Justice Dr. Flavian Zeija, Patience Rwabwogo, Natasha Karugire, and First Lady Janet Kataaha Museveni. I can access and analyze a database of tweets, facebook posts,  track trends, and identify sentiment. What kind of insights are you looking for today?"]
-
-      })
-      ;(window as any).__n8nChatInitialized = true
-
-      // Try to override the embedded widget header (title/subtitle)
-      const applyHeaderOverride = () => {
-        const root = document.querySelector('#n8n-chat') as HTMLElement | null
-        if (!root) return false
-        const header = root.querySelector('.chat-header') as HTMLElement | null
-        if (!header) return false
-        const titleEl = header.querySelector('h1, h2, .chat-heading, [class*="title"]') as HTMLElement | null
-        const subtitleEl = header.querySelector('p, [class*="subtitle"], [class*="sub-title"]') as HTMLElement | null
-        if (titleEl) {
-          // Show heading with icon and 'I'm Nathan'
-          titleEl.textContent = "Hi there! 👋 I'm Nathan"
-        }
-        // Remove the paragraph element
-        if (subtitleEl && subtitleEl.parentNode) {
-          subtitleEl.parentNode.removeChild(subtitleEl)
-        }
-        return true
-      }
-
-      // Attempt immediately and then observe DOM mutations for late render
-      let applied = applyHeaderOverride()
-      if (!applied) {
-        const observer = new MutationObserver(() => {
-          if (applyHeaderOverride()) {
-            observer.disconnect()
-          }
-        })
-        observer.observe(document.body, { childList: true, subtree: true })
-        ;(window as any).__n8nChatHeaderObserver = observer
-      }
-
-      // Watcher: if widget disappears (e.g., iframe reload), recreate with same sessionId
-      const ensureChat = () => {
-        const exists = document.querySelector('[data-n8n-chat]')
-        if (!exists) {
-          try {
-            const sid = localStorage.getItem('n8n-chat-session-id') || sessionId
-            createChat({
-              webhookUrl: AI_ASSISTANT_CONFIG.webhookUrl,
-              loadPreviousSession: true,
-              sessionId: sid,
-              initialMessages: ["I'm ready to analyze political discourse around the NRM, President Museveni, Right Hon. Robinah Nabbanja, Chief of Defence Forces General Muhoozi Kainerugaba, Hon. Anita Among, Deputy Speaker Thomas Tayebwa, Chief Justice Dr. Flavian Zeija, Patience Rwabwogo, Natasha Karugire, and First Lady Janet Kataaha Museveni. I can access and analyze a database of tweets, facebook posts,  track trends, and identify sentiment. What kind of insights are you looking for today?"]
-            })
-          } catch {}
-        }
-        // Style send button continuously
-        styleSendButton()
-      }
-      
-      // Function to aggressively style the send button
-      const styleSendButton = () => {
-        // Find the chat container
-        const chatContainer = document.querySelector('[data-n8n-chat]')
-        if (!chatContainer) return
-        
-        // Find all buttons within the chat
-        const allButtons = chatContainer.querySelectorAll('button')
-        allButtons.forEach((btn: any) => {
-          // Check if this button contains an SVG (likely the send button)
-          const hasSvg = btn.querySelector('svg')
-          if (hasSvg) {
-            // Apply styles directly with setAttribute for maximum priority
-            btn.setAttribute('style', 'background-color: #1e3a8a !important; background: #1e3a8a !important; border-color: #1e3a8a !important;')
-            
-            // Find and style all SVG elements
-            const svgElements = btn.querySelectorAll('svg, svg path, svg circle, svg line, svg polyline, svg polygon, svg rect')
-            svgElements.forEach((svg: any) => {
-              svg.setAttribute('fill', 'white')
-              svg.setAttribute('stroke', 'white')
-              svg.setAttribute('color', 'white')
-              svg.setAttribute('style', 'fill: white !important; stroke: white !important; color: white !important;')
-            })
-          }
-        })
-      }
-      
-      // Run more frequently
-      const interval = window.setInterval(ensureChat, 500)
-      ;(window as any).__n8nChatEnsureInterval = interval
-      
-      // Also add event listener to input fields to trigger styling
-      document.addEventListener('input', styleSendButton)
-      document.addEventListener('click', styleSendButton)
-      document.addEventListener('focus', styleSendButton, true)
-    } catch (e) {
-      console.warn('Failed to initialize chat:', e)
-    }
-    return () => {
-      if ((window as any).__n8nChatEnsureInterval) {
-        clearInterval((window as any).__n8nChatEnsureInterval)
-        ;(window as any).__n8nChatEnsureInterval = null
-      }
-    }
-  }, [])
-
-  // Toggle visibility instead of removing, so history persists across route/auth transitions
-  React.useEffect(() => {
-    const onLoginPage = location.pathname === '/login'
-    const containers: HTMLElement[] = Array.from(document.querySelectorAll('[data-n8n-chat], .n8n-chat-container, #n8n-chat')) as HTMLElement[]
-    if (containers.length === 0) return
-    containers.forEach((el) => {
-      if (onLoginPage) {
-        el.style.visibility = 'hidden'
-        el.style.opacity = '0'
-        el.style.pointerEvents = 'none'
-      } else {
-        el.style.visibility = ''
-        el.style.opacity = ''
-        el.style.pointerEvents = ''
-      }
-    })
-  }, [location.pathname, loading, user])
-
-  // Per-user session: switch sessionId when a different user logs in
-  React.useEffect(() => {
-    if (loading) return
-    const desiredId = user ? `nrm-dashboard-${user.id}` : 'nrm-dashboard-guest'
-    const currentId = localStorage.getItem('n8n-chat-session-id') || ''
-    if (currentId === desiredId) return
-
-    try {
-      localStorage.setItem('n8n-chat-session-id', desiredId)
-      // Remove existing widget to re-initialize with the new session
-      const nodes = document.querySelectorAll('[data-n8n-chat], .n8n-chat-container, #n8n-chat, iframe[src*="n8n"]')
-      nodes.forEach(n => n.remove())
-      createChat({
-        webhookUrl: AI_ASSISTANT_CONFIG.webhookUrl,
-        loadPreviousSession: true,
-        sessionId: desiredId,
-        initialMessages: ["I'm ready to analyze political discourse around the NRM, President Museveni, Right Hon. Robinah Nabbanja, Chief of Defence Forces General Muhoozi Kainerugaba, Hon. Anita Among, Deputy Speaker Thomas Tayebwa, Chief Justice Dr. Flavian Zeija, Patience Rwabwogo, Natasha Karugire, and First Lady Janet Kataaha Museveni. I can access and analyze a database of tweets, facebook posts,  track trends, and identify sentiment. What kind of insights are you looking for today?"]
-      })
-
-      // Re-apply header override for the new instance
-      const applyHeaderOverride = () => {
-        const root = document.querySelector('#n8n-chat') as HTMLElement | null
-        if (!root) return false
-        const header = root.querySelector('.chat-header') as HTMLElement | null
-        if (!header) return false
-        const titleEl = header.querySelector('h1, h2, .chat-heading, [class*="title"]') as HTMLElement | null
-        if (titleEl) {
-          titleEl.textContent = AI_ASSISTANT_CONFIG.name
-        }
-        const subtitleEl = header.querySelector('p, [class*="subtitle"], [class*="sub-title"]') as HTMLElement | null
-        if (subtitleEl) {
-          subtitleEl.textContent = AI_ASSISTANT_CONFIG.description
-        }
-        return true
-      }
-      let applied = applyHeaderOverride()
-      if (!applied) {
-        const observer = new MutationObserver(() => {
-          if (applyHeaderOverride()) {
-            observer.disconnect()
-          }
-        })
-        observer.observe(document.body, { childList: true, subtree: true })
-      }
-    } catch (e) {
-      console.warn('Failed to switch chat session:', e)
-    }
-  }, [user, loading])
+  const isLoginPage = location.pathname === '/login'
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-stone-50">
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route 
-          path="/dashboard" 
+        <Route
+          path="/dashboard"
           element={
             <ProtectedRoute>
               <Dashboard />
             </ProtectedRoute>
-          } 
+          }
         />
         <Route path="/" element={<Navigate to="/dashboard" replace />} />
       </Routes>
+      {!isLoginPage && <NathanChat />}
     </div>
   )
 }
